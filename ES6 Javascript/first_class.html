@@ -1,0 +1,212 @@
+<script>
+    // var a = 10;
+    // // console.log(a);
+    // var a = 20;
+    // console.log(a);
+    // const addtion = ()=>{
+    //     var a= 10;
+    //     console.log(a); 
+    // }
+    // addtion();
+    // let condtion = true;
+    // if(condtion){
+    //     let a= 10;
+    // }
+    // console.log(a); 
+
+    // let b = 10;
+    // console.log(b);
+    // b = 20;
+    // let b = 20;
+    // console.log(b);
+
+
+
+    // const c = 10;
+    // console.log(c);
+    // c = 20; // This line will throw an error because const variables are immutable
+    // console.log(c);
+
+    // const d = { name: 'John', age: 30 };
+    // d.name = 'Jane';
+    // console.log(d.name);
+    // d = { name: 'Jane', age: 35 }; // This line will throw an error because const variables cannot be reassigned
+    // console.log(d);
+
+    //we can use Object.freeze() to make an object immutable
+    // const person = Object.freeze({ name: 'John', age: 30 });
+    // person.name = 'Jane';
+    // console.log(person);
+
+    // const colors = ['red', 'blue', 'green'];
+    // colors.push('yellow');
+    // console.log(colors);
+    // colors = ['red', 'blue', 'green', 'yellow']; // This line will throw an error because const variables cannot be reassigned
+    // console.log(colors);
+
+    // var name = 'John';
+    
+    // name= 'Jane';
+    // console.log("new var" +name);
+    // var name = 'kamran'
+    // console.log('redeclared var ' +name);
+    // console.log("old var" +name);
+    
+
+    // let name = 'John';
+    // console.log(name);
+    // name = 'Jane';
+    // console.log(name);
+
+    // let name = 'John';
+    // console.log(name);
+    
+    
+    // const name = 'John';
+    // console.log(name);
+    // name = 'Jane';
+    // console.log(name);
+    // const name = 'kamran';
+    // console.log(name);
+    
+// Clousure
+    
+//     const test1 = ()=>{
+//         // let a = 10;
+//         // console.log(a);
+        
+//         console.log(a);
+//         const test2 = ()=>{
+//             var a = 20;
+//         }
+//         // const test3 = ()=>{
+//         //     // let a = 20;
+//         //     console.log(a);
+//         // }
+//         test2()
+//         // test3()
+//     }
+    
+// test1()    
+  
+// let a= 10;
+// let b = 20;
+
+// // Template literals
+// const name = 'John';
+// const intro = 'My name is ' + name;
+// const intro2 = `My name is ${name} 
+// and I am ${a+b} years old.`;
+// console.log(intro2);
+
+    
+// Destructuring
+
+// const {name, age, address} = {
+//     name: 'John',
+//     age: 25,
+//     address: {
+//         street: '123 Main St',
+//         city: 'New York',
+//         state: 'NY''John', 25, 'peshawar', 
+//     }
+// }
+
+// const student2 = {
+//     name: 'John',
+//     age: 25,
+//     address: {
+//         street: '123 Main St',
+//         city: 'New York',
+//         state: 'NY'
+//     }
+// }
+// console.log(...student2, ...student1);
+
+// const student1 = [['123 Main St', 'New York', 'NY'], ['456 Elm St', 'Los Angeles', 'CA']];
+// const newArray = student1.flat()
+// // console.log(newArray);
+
+// // console.log(newArray);
+// const student2 = ['Jane', 30, 'mardan'];
+
+
+// console.log([...student2,...student1]);
+
+
+// Default parameters
+
+// const calculateSum = (a=10, b=20) => {
+//     var a = 1;
+//     let sumTowNum = a + b;
+//     console.log(sumTowNum);
+// }
+
+// calculateSum(40, 50);
+
+// Rest parameter
+// const calculateSum = (...numbers) => {
+//     const findNumber = numbers.forEach((item, index)=>{
+//         const output = item === 50 ? `Found ${index}`: '' ;
+//         console.log(output);
+        
+        
+//     })
+// }
+// calculateSum(10, 20, 30, 40, 50)
+
+// const calculateSum = (...numbers) => {
+//     console.log(numbers);
+    
+// }
+
+// JavaScript(ES6) Object Literal Enhancement
+// let name = 'John';
+// let age = 30;
+// let address = 'Peshawar';
+
+// const person = {
+//     name: 'Jane',
+//     age: 35,
+//     address : 'Los Angeles'
+// }
+
+// const { name, age, address } = person;
+
+// const response = {
+//     name ,
+//     age,
+//     address,
+//     phone: '123-456-7890',
+//     addTwoNumbers: ()=> {
+//         return 10+11;  
+//     }
+// }
+// console.log(response.addTwoNumbers());
+
+// const numbers = [1, 4, 3, 4, 5];
+// for(var i=0; i<numbers.length; i++){
+//     console.log(i);
+// }
+
+// for (digit of numbers) {
+//     console.log(digit);
+// }
+
+function* generatorFun(){
+    console.log("Hello 1");
+    yield 1;
+    console.log("Hello 2");
+    yield 3;
+    console.log("Hello 3");
+    yield 2;   
+}
+
+let result1 = generatorFun()
+console.log(result1.next());
+console.log(result1.next());
+
+
+// result1.next()
+
+</script>
