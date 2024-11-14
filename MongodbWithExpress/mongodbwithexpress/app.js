@@ -2,7 +2,8 @@ import express, { json } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { User } from "./useSchema.js";
+import { User } from "./schemas/useSchema.js";
+import userRoutes from "./routers/userRoute.js";
 const app = express();
 dotenv.config();
 const dbConnect = async () => {
@@ -15,48 +16,59 @@ const dbConnect = async () => {
 };
 
 dbConnect();
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
 app.use(express.json());
-const logMiddleware = (req, res, next) => {
-  console.log(req.method, req.url, new Date().toISOString());
-  next();
-};
+app.use("/", userRoutes);
 
-app.use(logMiddleware);
-app.get("/:id", function (req, res) {
-  console.log(req.query, req.params, req.body);
-
-  // res.send("Hello World!");
-  throw new Error("somthing went wrong!");
-  res.status(200).json({ message: "Hello World!" });
-});
-
-app.post("/adduser", async (req, res, next) => {
+app.get("/allUsers", async (req, res) => {
   try {
-    const userId = req.params;
-    const user = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
-    const { name, email, password } = req.body;
+    const users = await User.find();
 
-    res.json(user);
+    res.json({
+      success: true,
+      message: "All users",
+      data: users,
+    });
   } catch (error) {
-    next(error); // Pass errors to the error handler
+    res.json({
+      success: false,
+      message: "Failed to add user",
+      error: error.message,
+    });
   }
 });
-app.use((err, req, res, next) => {
-  res.json({
-    status: 500,
-    message: err.message,
-  });
-  next();
+
+app.get("/user/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const findUser = await User.findOne({
+      _id: id,
+    });
+
+    if (!findUser) {
+      return res.json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "user fetched successfully",
+      data: findUser,
+    });
+  } catch (error) {
+    res.json({
+      success: false,
+      message: "Failed to get user",
+      error: error.message,
+    });
+  }
 });
 
 const PORT = process.env.PORT || 3000;
