@@ -1,6 +1,10 @@
-const addUserController = async (req, res) => {
+import { User } from "../schemas/useSchema.js";
+import bcrypt from "bcrypt";
+export const addUserController = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    const hashPassword = await bcrypt.hash(password, 10);
+    console.log(hashPassword);
 
     const isExistEmail = await User.findOne({
       email,
@@ -15,13 +19,13 @@ const addUserController = async (req, res) => {
     const newUser = await User.create({
       name: name,
       email: email,
-      password: password,
+      password: hashPassword,
     });
 
     res.json({
       success: true,
       message: "User added successfully",
-      user: newUser,
+      // user: newUser,
     });
   } catch (error) {
     res.json({
@@ -32,4 +36,41 @@ const addUserController = async (req, res) => {
   }
 };
 
-module.exports = { addUserController };
+export const updateUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const exitUser = await User.findById({ _id: id });
+    const hashPassword = await bcrypt.hash(req.body.password, 10);
+
+    if (!exitUser) {
+      return res.json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    await User.updateOne(
+      { _id: id },
+      {
+        $set: {
+          name: req.body.name,
+          email: req.body.email,
+          password: hashPassword,
+        },
+      }
+    );
+    const updateUser = await User.findById({ _id: id });
+
+    return res.json({
+      success: true,
+      message: "User Updated successfully",
+      user: updateUser,
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "Failed to update user",
+      error: error.message,
+    });
+  }
+};
