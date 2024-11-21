@@ -74,3 +74,30 @@ export const updateUser = async (req, res) => {
     });
   }
 };
+
+export const deleteUser = async (req, res) => {
+  try {
+    const id = req.params.userId;
+    const existUser = await User.findById({ _id: id });
+
+    if (!existUser) {
+      return res.json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    await User.deleteOne({ _id: id });
+
+    return res.json({
+      success: true,
+      message: "User deleted successfully",
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: "Failed to delete user",
+      error: error.message,
+    });
+  }
+};
