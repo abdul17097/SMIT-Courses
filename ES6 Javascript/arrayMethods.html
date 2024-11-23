@@ -1,0 +1,141 @@
+<script>
+// map() method
+
+const studentNames = ["kamran", "jhon", "waqas", "Furqan", "kamran"];
+const studentNames2 = [
+    {
+        id: 1,
+        name: "kamran",
+        age: 20,
+    },
+        {
+        id: 2,
+        name: "jhon",
+        age: 22,
+    },
+    {
+        id: 3,
+        name: "waqas",
+        age: 21,
+    },
+    {
+        id: 4,
+        name: "kamran",
+        age: 25,
+    },
+        {
+        id: 5,
+        name: "jhon",
+        age: 30,
+    },
+    {
+        id: 6,
+        name: "waqas",
+        age: 18,
+    }
+]
+
+
+// const newArray = studentNames2.map(
+//     (item, index) => {
+//        if(item.age < 20){
+//         return item
+//        }
+//     }
+// );
+// console.log(newArray);
+
+// forEach() method
+
+// studentNames.forEach((item, index)=>{
+//     if(item === "kamran"){
+//         const output =  `Found at index ${index} + ${item}`
+//         console.log(output); 
+//     }
+// })
+
+// filter() method
+
+// const filterStudent = studentNames.filter((item, index)=>{
+//     return item === "kamran";
+// })
+// console.log(filterStudent);
+
+// const numbers = [6,7,1,2,3,8,9,4,5]
+
+// const newSortedNumber =  numbers.sort((a, b)=> a > b ? -1 : 1)
+// console.log(newSortedNumber);
+
+// const alphabet = ["C", "D", "E", "F","A", "B" ]
+// // alphabet.reverse()
+// // console.log(alphabet);
+
+// const newalphabet =  alphabet.sort((a, b)=> a < b ? -1 : 1)
+// console.log(newalphabet);
+
+// console.log(alphabet);
+
+// concat() method
+// const array1 = [ 1, 2, 3, 4];
+// const array2 = ["a", "b", "c", "d", "e", "f"];
+// const array3 = ["kamal", "jamal"];
+// const array5 = [...array1, "text"];
+// console.log(array5);
+// const newArray = array1.concat(array2, array3);
+// console.log(newArray);
+
+// every() method
+// const array2 = [ 8, 2, 6, 4];
+// const check = array2.every((item, index)=>{
+//     return item % 2 == 0 
+// })
+// console.log(check);
+
+// some() method
+// const array2 = [ 8, 2, 6, 4];
+// const check = array2.some((item, index)=>{
+//     return item === 5
+// })
+// console.log(check);
+
+// includes() method
+// const array2 = [ 8, 2, 6, 4];
+// const check = array2.includes(10)
+// console.log(check);
+
+// join() method
+// const array2 = ["a", "b", "c", "d", "e", "f"];
+// const newArray = array2.join('/');
+// console.log(newArray);
+
+// reduce() method
+// const array1 = [ 1, 2, 3, 4];
+// let sum = 0;
+// for(var i = 0; i < array1.length; i++){
+//     sum = sum + array1[i];
+// }
+// console.log(sum);
+
+    // const sum2 = array1.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    // console.log(sum2);
+
+
+// find() method
+// const array1 = [ 1, 2, 3, 4, 3];
+// const found =  array1.find((x)=> x > 2)
+// console.log(found);
+
+// findIndex() method
+// const array2 = ["a", "b", "c", "d", "e", "f"];
+// const indexOfElement = array2.findIndex((item)=> item === "g" );
+// console.log(indexOfElement);
+
+// fill()
+const array1 = new Array(5)
+console.log(array1);
+array1.fill(true)
+console.log(array1);
+
+
+
+</script>
