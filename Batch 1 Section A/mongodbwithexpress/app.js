@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { User } from "./schemas/useSchema.js";
 import userRoutes from "./routers/userRoute.js";
+import productRoutes from "./routers/productRoute.js";
 const app = express();
 dotenv.config();
 const dbConnect = async () => {
@@ -24,6 +25,7 @@ dbConnect();
 // );
 app.use(express.json());
 app.use("/", userRoutes);
+app.use("/product", productRoutes);
 
 app.get("/user/:id", async (req, res) => {
   try {
