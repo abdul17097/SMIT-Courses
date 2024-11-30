@@ -2,7 +2,9 @@ import express from "express";
 import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 configDotenv();
+
 const app = express();
 app.use(express.json());
 const port = 3000;
@@ -17,6 +19,7 @@ const connection = async () => {
 connection();
 
 app.use("/user", userRoutes);
+app.use("/product", productRoutes);
 app.listen(port, () => {
   console.log(`Server listening on ${port}`);
 });
