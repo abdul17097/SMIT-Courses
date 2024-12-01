@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-
+import Login from "./Pages/Login";
 function App() {
   // const [message, setMessage] = useState("Welcome to SMIT Again");
   // setMessage("How are you?");
@@ -9,15 +9,13 @@ function App() {
   //   setMessage("How are you?");
   // };
 
-  const [userName, setUserName] = useState();
-  const [storeUserName, setStoreUserName] = useState();
+  // const [userName, setUserName] = useState();
+  // const [storeUserName, setStoreUserName] = useState();
 
   return (
     <>
-      {/* <h1>{message}</h1>
-      <p>Lorem ipsum dolor sit amet.</p>
-       */}
-      <h1>Print User Name</h1>
+      <Login />
+      {/* <h1 className="border bg-red-700">Print User Name</h1>
       <label htmlFor="">userName: </label>
       <p>{userName}</p>
 
@@ -34,7 +32,7 @@ function App() {
         }}
       >
         print
-      </button>
+      </button> */}
       {/* <button onClick={() => setMessage("senga ye")}>Update Text</button> */}
     </>
   );
