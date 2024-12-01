@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { User } from "../schema/userSchema.js";
 export const verifyUser = async (req, res, next) => {
   if (!req.headers.authorization) {
     return res.json({
@@ -12,6 +13,31 @@ export const verifyUser = async (req, res, next) => {
   next();
 
   try {
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const verifyAdmin = async (req, res, next) => {
+  try {
+    const userId = req.userId;
+    const userExists = await User.findById({ _id: userId });
+    if (!userExists) {
+      return res.json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    if (!userExists.isAdmin) {
+      return res.json({
+        success: false,
+        message: "Unauthorized access",
+      });
+    }
+    next();
   } catch (error) {
     return res.json({
       success: false,

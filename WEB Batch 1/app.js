@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { configDotenv } from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
+import cartRoutes from "./routes/cartRoutes.js";
 configDotenv();
 
 const app = express();
@@ -20,6 +21,7 @@ connection();
 
 app.use("/user", userRoutes);
 app.use("/product", productRoutes);
+app.use("/cart", cartRoutes);
 app.listen(port, () => {
   console.log(`Server listening on ${port}`);
 });

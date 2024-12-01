@@ -75,8 +75,8 @@ export const login = async (req, res) => {
   try {
     const userExist = await User.findOne({
       email: req.body.email,
-      password: req.body.password,
     });
+
     if (!req.body.email) {
       return res.json({
         success: false,
@@ -93,6 +93,14 @@ export const login = async (req, res) => {
       return res.json({
         success: false,
         message: "User not found",
+      });
+    }
+    const isMatch = await bcrypt.compare(req.body.password, userExist.password);
+    console.log(isMatch);
+    if (!isMatch) {
+      return res.json({
+        success: false,
+        message: "Invalid Creadintial",
       });
     }
     const jwtToken = await jwt.sign(

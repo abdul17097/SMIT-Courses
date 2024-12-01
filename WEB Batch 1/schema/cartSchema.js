@@ -14,14 +14,16 @@ const cartSchema = mongoose.Schema(
           ref: "products",
           required: true,
         },
-        quantity: {
-          type: Number,
-          required: true,
-        },
       },
     ],
+    quantity: {
+      type: Number,
+      default: 1,
+    },
   },
   {
     timestamps: true,
   }
 );
+
+export const Cart = mongoose.model("carts", cartSchema);

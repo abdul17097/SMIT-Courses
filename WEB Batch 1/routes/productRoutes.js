@@ -5,10 +5,10 @@ import {
   deleteProduct,
   updateProduct,
 } from "../controller/productController.js";
-import { verifyUser } from "../middleware/verifyUser.js";
+import { verifyAdmin, verifyUser } from "../middleware/verifyUser.js";
 const routes = express.Router();
 
-routes.post("/new-product", verifyUser, createProduct);
+routes.post("/new-product", verifyUser, verifyAdmin, createProduct);
 routes.get("/all-products", allProducts);
 routes.put("/update-product/:productId", verifyUser, updateProduct);
 routes.delete("/delete-product/:productId", verifyUser, deleteProduct);

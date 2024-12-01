@@ -5,7 +5,7 @@ import {
   getUsers,
   login,
 } from "../controller/userController.js";
-import { verifyUser } from "../middleware/verifyUser.js";
+import { verifyAdmin, verifyUser } from "../middleware/verifyUser.js";
 const userRoutes = express.Router();
 
 userRoutes.post("/addUser", addUser);
