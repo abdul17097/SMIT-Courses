@@ -18,6 +18,10 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    quantity: {
+      type: Number,
+      default: 5,
+    },
   },
   {
     timestamps: true,

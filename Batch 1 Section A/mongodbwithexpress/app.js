@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { User } from "./schemas/useSchema.js";
 import userRoutes from "./routers/userRoute.js";
 import productRoutes from "./routers/productRoute.js";
+import cartRoutes from "./routers/cartRoutes.js";
 const app = express();
 dotenv.config();
 const dbConnect = async () => {
@@ -17,6 +18,12 @@ const dbConnect = async () => {
 };
 
 dbConnect();
+app.use(
+  cors({
+    origin: "http://localhost:5173/",
+    credentials: true,
+  })
+);
 // app.use(
 //   cors({
 //     origin: "http://localhost:3000",
@@ -26,6 +33,7 @@ dbConnect();
 app.use(express.json());
 app.use("/", userRoutes);
 app.use("/product", productRoutes);
+app.use("/cart", cartRoutes);
 
 app.get("/user/:id", async (req, res) => {
   try {

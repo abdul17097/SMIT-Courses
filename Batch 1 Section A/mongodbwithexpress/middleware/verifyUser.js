@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { decode } from "jsonwebtoken";
 export const verifyUser = async (req, res, next) => {
   try {
     if (!req.headers["authorization"]) {
@@ -10,6 +10,9 @@ export const verifyUser = async (req, res, next) => {
     const token = req.headers["authorization"].split(" ")[1];
 
     const decodedToken = jwt.verify(token, process.env.SECRET);
+
+    req.userId = decodedToken.userId;
+
     if (!decodedToken.userId) {
       res.json({
         success: false,
