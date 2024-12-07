@@ -14,7 +14,7 @@ const Login = () => {
     setUserData({ ...userData, password: event.target.value });
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const { email, password } = userData;
 
     if (email.trim().length == 0) {
@@ -25,11 +25,13 @@ const Login = () => {
       alert("Please enter password");
       return;
     }
+
     setUserData({
       email: "",
       password: "",
     });
   };
+
   return (
     <>
       <div className="w-screen h-screen border flex justify-center items-center">
