@@ -18,7 +18,7 @@ const connection = async () => {
   }
 };
 connection();
-
+mongoose.set("strictPopulate", false);
 app.use("/user", userRoutes);
 app.use("/product", productRoutes);
 app.use("/cart", cartRoutes);
