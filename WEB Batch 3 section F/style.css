@@ -1,0 +1,31 @@
+/* h1 {
+  color: red;
+}
+#Lorem {
+  font-size: 18px;
+}
+.para {
+  color: brown;
+  font-style: italic;
+  font-size: 24px;
+}
+
+ul > li > a {
+  font-style: italic;
+  text-decoration: none;
+} */
+
+.card {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+}
+.cardImg {
+}
+
+.cardTitle {
+  font-size: 20px;
+  margin: 0;
+}
