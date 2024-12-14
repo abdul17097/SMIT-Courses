@@ -1,0 +1,22 @@
+meta {
+  name: payment
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:3000/payment/checkout
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "products": [
+      {"name": "shoes", "quantity": 3, "unit_amount": 50},
+      {"name": "Book", "quantity": 3, "unit_amount": 30},
+      {"name": "Mobile", "quantity": 1, "unit_amount": 500},
+      {"name": "Tablet", "quantity": 1, "unit_amount": 100}
+    ]
+  }
+}

@@ -111,7 +111,7 @@ export const login = async (req, res) => {
     return res.json({
       success: true,
       message: "Logged in successfully",
-      data: { ...userExist, jwtToken },
+      data: { userExist, jwtToken },
     });
   } catch (error) {
     return res.json({

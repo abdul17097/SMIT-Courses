@@ -57,10 +57,24 @@ export const cartData = async (req, res) => {
         },
       },
       {
+        $lookup: {
+          from: "products",
+          localField: "products.productId",
+          foreignField: "_id",
+          as: "products",
+        },
+      },
+      {
         $unwind: "$user", // Deconstruct the user array to get a single object
+      },
+      {
+        $unwind: "$products",
       },
     ]);
 
+    // const cartData = await Cart.findOne({ userId: req.userId })
+    //   .populate("userId")
+    //   .populate("products.productId");
     return res.json({
       success: true,
       message: "Cart data fetched",
