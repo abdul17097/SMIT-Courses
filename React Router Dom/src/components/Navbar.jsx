@@ -17,6 +17,10 @@ export const Navbar = () => {
       url: "/signup",
       title: "Sign Up",
     },
+    {
+      url: "/test-form",
+      title: "Test Form",
+    },
   ];
   return (
     <nav>

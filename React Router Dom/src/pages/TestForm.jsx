@@ -1,38 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-export const LoginPage = () => {
-  // const history = useNavigate();
-
-  // const userLoginSuccess = false;
-
-  // const handleLogin = () => {
-  //   if (userLoginSuccess) {
-  //     history("/products");
-  //   } else {
-  //     history("/");
-  //   }
-  // };
-  // const history("/");
+export const TestForm = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    setFormData({
-      email: "",
-      password: "",
-    });
   };
+  const handleChangeEmail = (e) => {
+    setFormData({ ...formData, email: e.target.value });
+  };
+
+  const handleChangePassword = (e) => {
+    setFormData({ ...formData, password: e.target.value });
+  };
+
   return (
     <div className="flex justify-center items-center flex-col">
-      <h1 className="my-10">Login Page</h1>
+      <h1 className="my-10">Test Form Page</h1>
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 border border-black rounded-lg p-4 w-[500px]"
@@ -43,7 +31,7 @@ export const LoginPage = () => {
             className="border border-black focus:outline-none rounded-md px-2 py-1"
             type="email"
             value={formData.email}
-            onChange={handleChange}
+            onChange={handleChangeEmail}
             name="email"
           />
         </div>
@@ -54,7 +42,7 @@ export const LoginPage = () => {
             type="password"
             name="password"
             value={formData.password}
-            onChange={handleChange}
+            onChange={handleChangePassword}
           />
         </div>
         <button

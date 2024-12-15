@@ -53,12 +53,20 @@ export const ProductDetail = () => {
       imageUrl: image2,
     },
   ];
-  const productDetail = products.filter((item) => item.id === productId);
+  const productDetail = products.find((item) => item.id == productId);
   console.log(productDetail);
 
   return (
     <div>
       <h1>Product Detail Page</h1>
+      <div className="">
+        <img src={productDetail?.imageUrl} alt={productDetail?.name} />
+        <h2>{productDetail?.name}</h2>
+        <p>Price: ${productDetail?.price}</p>
+        <p>Description: {productDetail?.description}</p>
+        <p>Category: {productDetail?.category}</p>
+        <p>Stock: {productDetail?.stock}</p>
+      </div>
     </div>
   );
 };
