@@ -23,6 +23,7 @@ ul > li > a {
   gap: 10px;
 }
 .cardImg {
+  background-color: rgb(46, 46, 65);
 }
 
 .cardTitle {

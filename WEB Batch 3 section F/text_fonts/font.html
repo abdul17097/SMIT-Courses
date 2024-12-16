@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+VN+Guides&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        html{
+            font-family: "Playwrite VN Guides", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+        h1{
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+        div{
+            font-size: 16px;
+        }
+        p{
+            font-size: 2rem;
+        }
+    </style>
+    <div>
+        <p>world</p>
+    </div>
+    <h1>Hello</h1>
+</body>
+</html>
+
+<!-- A typeface is the design or style of a set of characters, including letters, numbers, and symbols. It defines how the characters look in terms of shape, weight, size, and other visual elements. A typeface is essentially a collection of fonts that share the same design.
+
+Key Characteristics of a Typeface:
+Design Identity: A typeface is the overarching artistic design or look of the text.
+Includes Multiple Fonts: Each typeface can have different fonts, which vary by weight (e.g., bold), style (e.g., italic), and size.
+Example: "Arial" is a typeface, while "Arial Bold 12pt" is a specific font.
+Example of Typeface and Fonts:
+Typeface: Times New Roman
+Fonts within the Typeface:
+Times New Roman Regular
+Times New Roman Bold
+Times New Roman Italic
+Times New Roman Bold Italic
+Typeface vs. Font
+Typeface: Refers to the overall design of text characters.
+Font: Refers to a specific implementation of a typeface in a particular weight, style, or size.
+Think of a typeface as a "family" of related styles, and each font is a "member" of that family. -->
+<!-- 
+1. px (Pixels)
+Definition: A fixed, absolute unit of measurement based on screen resolution. One px represents one dot on the screen.
+
+Behavior: Does not scale relative to other elements or the root font size.
+
+Use Case: Best for precise, fixed measurements where scalability is not required. -->
+
+
+<!-- 2. em
+Definition: A relative unit that is based on the font size of the parent element.
+
+Behavior: Multiplies its value based on the parent's font size.
+
+Use Case: Useful for elements that should scale relative to their immediate parent. -->
+
+<!-- 3. rem (Root Em)
+Definition: A relative unit that is based on the font size of the root element (<html>).
+
+Behavior: Scales uniformly across the entire document regardless of nesting.
+
+Use Case: Preferred for scalable and consistent designs -->
+
+
+
+
+
+
+
+
+
+Types of Attribute Selectors
+[attr] — Attribute Presence Selector
+
+Selects elements that have the specified attribute, regardless of its value.
+Example:
+
+css
+Copy code
+[title] {
+    color: blue;
+}
+html
+Copy code
+<div title="hello">This text will be blue.</div>
+<div>This text won't be blue.</div>
+[attr=value] — Exact Match Selector
+
+Selects elements with an attribute that exactly matches the given value.
+Example:
+
+css
+Copy code
+[type="button"] {
+    background-color: yellow;
+}
+html
+Copy code
+<input type="button" value="Click me"> <!-- Yellow background -->
+<input type="text" value="Enter text"> <!-- Not styled -->
+[attr~=value] — Word Match Selector
+
+Selects elements with an attribute containing a word that matches the value, separated by spaces.
+Example:
+
+css
+Copy code
+[class~="featured"] {
+    border: 2px solid green;
+}
+html
+Copy code
+<div class="box featured">Styled box</div> <!-- Matches -->
+<div class="box not-featured">Not styled</div> <!-- Doesn't match -->
+[attr|=value] — Prefix Match Selector
+
+Matches elements with an attribute value that is exactly the given value or starts with the value followed by a -.
+Example:
+
+css
+Copy code
+[lang|="en"] {
+    font-style: italic;
+}
+html
+Copy code
+<p lang="en">This will be italic.</p> <!-- Matches -->
+<p lang="en-us">This will also be italic.</p> <!-- Matches -->
+<p lang="fr">This will not be italic.</p> <!-- Doesn't match -->
+[attr^=value] — Starts With Selector
+
+Selects elements with an attribute value that begins with the specified value.
+Example:
+
+css
+Copy code
+[href^="https"] {
+    color: green;
+}
+html
+Copy code
+<a href="https://example.com">Secure Link</a> <!-- Matches -->
+<a href="http://example.com">Non-Secure Link</a> <!-- Doesn't match -->
+[attr$=value] — Ends With Selector
+
+Selects elements with an attribute value that ends with the specified value.
+Example:
+
+css
+Copy code
+[src$=".png"] {
+    border: 1px solid red;
+}
+html
+Copy code
+<img src="image.png"> <!-- Matches -->
+<img src="photo.jpg"> Doesn't match
