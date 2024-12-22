@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        text-shadow: -5px -5px 5px red;
+    }
+    .text1:first-letter{
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    p::first-line{
+        color: red
+    }
+    /* a:link{
+       text-decoration: none;
+       color:  green; 
+    } */
+    a{
+        color: blue;
+    }
+    a:visited{
+        color: pink;
+    }
+    /* a:hover{
+        color: green;
+        text-decoration: underline;
+    } */
+    a:active{
+        color: blue;
+    }
+     .contact:visited{
+        color: burlywood;
+     }
+</style>
+<body>
+    <h1>Text Shadow</h1>
+    <div class="text1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus reiciendis voluptatibus omnis veniam quis fugiat facere officiis, dolore saepe, sit similique ratione, a praesentium consectetur. Necessitatibus illo alias recusandae sequi expedita dicta. Provident nulla, minima vero quod quas accusamus quis.</p>
+
+    <ul>
+        <li><a href="">Home</a></li>
+        <li><a class="contact" href="">Contact</a></li>
+        <li><a href="https://styled-components.com/docs/basics#getting-started">About</a></li>
+    </ul>
+</body>
+</html>

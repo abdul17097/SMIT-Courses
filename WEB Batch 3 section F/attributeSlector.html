@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Existance */
+    /* p[class]{
+        color: red
+    } */
+    /* Equality */
+    /* p[class="thirdPara"]{
+        color: blue
+    } */
+     /* Space */
+     /* p[class~="third"]{
+        color: green;
+     } */
+      /* Prefix */
+      /* p[class^="t"]{
+        color: blue;
+      } */
+       /* Substring */
+       /* p[class*="ir"]{
+        color: gray;
+      } */
+       /* Suffix */
+       p[class$="a"]{
+        color: purple;
+      }
+</style>
+<body>
+    <h1>Attribute Selector</h1>
+    <p class="third Parab">Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+    <p class="thirdPara">Lorem ipsum dolor sit amet.</p>
+    <p>Lorem ipsum dolor sit amet.</p>
+</body>
+</html>
