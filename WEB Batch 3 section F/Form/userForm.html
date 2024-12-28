@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    form{
+        border: 1px solid black;
+        display: inline-block;
+        padding: 20px 30px;
+        border-radius: 10px;
+        margin:  auto 12px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        /* align-items: center; */
+    }
+    label{
+        font-weight: bold;
+    }
+    input{
+        padding: 5px;
+        margin-top: 8px;
+        border-radius: 10px;
+    }
+    .textField{
+        background-color: aliceblue;
+        display: block;  
+        padding-left: 10px;
+        font-size: 18px;
+        color: blue; 
+        padding-left: 20px;  
+    }
+    input#email{
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../icons8-email-50.png'); 
+    }
+    #submit{
+        padding: 10px 0;
+        font-size: 20px;
+        /* cursor: pointer; */
+        /* cursor: move; */
+        /* cursor: progress; */
+        /* cursor: text; */
+        /* cursor: crosshair; */
+        /* cursor: wait; */
+        /* cursor: help; */
+        background-color: transparent;
+    }
+    #submit:hover{
+        background-color: aqua;
+        /* text-shadow: 5px 5px 2px black; */
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Student Form</h1>
+        <form action="">
+           <div>
+             <label for="">Name</label>
+            <input class="textField" type="text"><br>
+           </div>
+            <div>
+                <label for="">Email</label>
+                <input id="email" class="textField" type="email">
+            </div>
+            <label for="">Gender</label>
+           <div>
+             <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female">Female
+           </div>
+            
+            <input id="submit" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

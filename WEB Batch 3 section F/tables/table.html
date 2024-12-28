@@ -5,6 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    table{
+        /* border: 1px solid black; */
+        background-color: lightblue;
+        /* border-collapse: collapse; */
+        /* border-collapse: collapse; */
+        border-spacing: 4px 10px;
+        border-radius: 10px;
+    }
+
+    td{
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
+    }
+    /* td:hover{
+        background-color: antiquewhite;
+        color: red;
+    } */
+  
+    
+    th{
+        padding: 5px;
+    }
+    .head{
+        border-bottom: 5px solid black;
+    }
+    #phy{
+        background: lightgray;
+        letter-spacing: 2px;
+        font-size: 500;
+    }
+    /* .even{
+        background-color: gainsboro;
+    } */
+     tr:hover{
+        background-color: beige;
+     }
+     .mon{
+        empty-cells: show;
+     }
+</style>
 <body>
     <h1>Student Record</h1>
 
@@ -29,24 +71,24 @@
         </tr>       
     </table> -->
 
-    <table border="1">
+    <table>
         <tr>
-            <th>Days</th>   
-            <th>9am</th>
-            <th>10am</th>
-            <th>11am</th>
-            <th>12am</th>
+            <th class="head">Days</th>   
+            <th class="head">9am</th>
+            <th class="head">10am</th>
+            <th class="head">11am</th>
+            <th class="head">12am</th>
         </tr>
-        <tr bgcolor="green">
-            <td>Monday</td>
+        <tr >
+            <td class="mon"></td>
             <td colspan="2">English</td>
-            <td >Physics</td>
+            <td>Physics</td>
             <td>Chemistry</td>
         </tr>
-        <tr>
+        <tr class="even">
             <th>Thuesday</th>
             <td rowspan="2">English</td>
-            <td>Physics</td>
+            <td id="phy">Physics</td>
             <td colspan="2">Chemistry</td>
         </tr>
         <tr>
@@ -54,7 +96,7 @@
             <td colspan="2">Gym</td>
             <td>Chemistry</td>
         </tr>
-        <tr>
+        <tr class="even">
             <th>Thrusday</th>
             <td colspan="3">Gym</td>
             <td>Chemistry</td>

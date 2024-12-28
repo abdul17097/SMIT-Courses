@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        border: 1px solid black;
+        height: 3000px;
+    }
+    .box{
+        width: 100px;
+        height: 100px;
+        border:1px solid black;
+        display: inline-block;
+    }
+    #box3{
+        /* position: relative; */
+        /* position: absolute; */
+        position: fixed;
+        /* position: sticky; */
+        top: 500px;
+        background-color: red;
+        /* top: 20px; */
+    }
+</style>
+<body>
+    <!-- <div class="container">
+        <div class="box" id="box1"></div>
+        <div class="box" id="box2"></div>
+        <div class="box" id="box3"></div>
+    </div> -->
+    <!-- <div style="height: 2000px;">
+  <div style="height: 400px; background: lightblue;">
+    <h1 style="position: sticky; top: 20px; background: yellow;">I'm sticky!</h1>
+    <p>Scroll down and notice how this title sticks to the top after scrolling 20px.</p>
+  </div>
+</div> -->
+<div style="height: 2000px;">
+  <div style="height: 400px; background: lightgreen;">
+    <p>Scroll down and notice the fixed button stays at the bottom-right corner.</p>
+  </div>
+  <button style="position: fixed; bottom: 20px; right: 20px; background: red; color: white;">
+    I'm fixed!
+  </button>
+</div>
+
+</body>
+</html>
+
+<!-- 
+relative: Position the element relative to its normal position and will leave a gap at its normal position
+absolute: Position the element relative to the position of the first parent
+fixed: Position the element relative to the browser window
+-->
