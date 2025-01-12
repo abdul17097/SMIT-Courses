@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+/* .container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  position: absolute; 
+  border: 2px solid black;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bold;
+  color: white;
+}
+
+.behind {
+  background-color: lightblue;
+  top: 50px;
+  left: 50px;
+  z-index: 1; 
+}
+
+.in-front {
+  background-color: orange;
+  top: 70px;
+  left: 70px;
+  z-index: 2; 
+}
+
+.top-layer {
+  background-color: red;
+  top: 90px;
+  left: 90px;
+  z-index: 3; 
+} */
+.box{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  background: #000;
+  position: absolute;
+}
+.box1{
+  background-color: red;
+  /* position: absolute; */
+  top: 50px;
+  left: 50px;
+  z-index: 2;
+}
+.box2{
+  background-color: blue;
+  /* position: absolute; */
+  top: 100px;
+  left: 100px;
+  z-index: 1;
+}
+.box3{
+  background-color: green;
+  /* position: absolute; */
+  top: 150px;
+  left: 150px;
+  z-index: -3;
+}
+</style>
+<body>
+<div class="container">
+  <div class="box box1"></div>
+  <div class="box box2"></div>
+  <div class="box box3"></div>
+</div>
+</div>
+</body>
+</html>

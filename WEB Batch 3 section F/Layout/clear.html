@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.container {
+  width: 400px;
+  border: 1px solid #ccc;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.left {
+  float: left;
+  background-color: lightblue;
+}
+
+.right {
+  float: right;
+  background-color: lightgreen;
+}
+
+.clear-box {
+  background-color: lightcoral;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  /* clear: both;  */
+  /* Moves below both floated elements */
+}
+
+
+</style>
+<body>
+   <div class="container">
+  <div class="box left">Left Float</div>
+  <div class="box right">Right Float</div>
+  <div class="clear-box">Cleared Box</div>
+</div>
+
+</body>
+</html>

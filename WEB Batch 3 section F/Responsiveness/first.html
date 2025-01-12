@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* @media screen and (max-width: 600px) and (orientation: landscape) { */
+    /* @media screen and (max-width: 600px), screen and (orientation: landscape) { */
+    /* @media not all and (orientation: landscape) {
+        p{
+            color: blue
+        }
+    }
+    *{
+        font-family: Plus Jakarta Sans;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: -0.007em;
+        text-align: left;
+    } */
+      *{
+            padding: 0;
+            margin: 0;
+        }
+    .header{
+            border:1px solid black;
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: pink;
+    }
+         .footer{
+            border:1px solid black;
+            height: 10vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: lightgreen;
+        }
+     @media screen and (max-width: 426px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .main{
+            display: flex;
+            flex-direction: column;
+            background: lightblue;
+        }
+        .box1{
+            border:1px solid black;
+            height: 20vh;
+        }
+        .box2{
+            border:1px solid black;
+            height: 40vh;
+        }
+        .box3{
+            border:1px solid black;
+            height: 20vh;
+        }
+       
+        
+     }
+     @media screen and (min-width: 427px) and (max-width: 768px){
+        .main{
+            display: flex;
+            /* background: rgb(136, 85, 165); */
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            /* justify-content: space-between; */
+            flex-wrap: wrap;
+        }
+        .box1{
+            /* border:1px solid black; */
+            /* height: 20vh; */
+            background: lightskyblue;
+            width: 50vw;
+        }
+        .box2{
+            border:1px solid black;
+            /* height: 40vh; */
+            width: 100%;
+            order: 2;
+
+        }
+        .box3{
+            /* border:1px solid black; */
+            /* height: 20vh; */
+            background: yellowgreen;
+            width: 50vw;
+        }
+        
+     }
+     @media screen and (min-width: 769px) and (max-width: 1440px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+        }
+        .main{
+            display: flex;
+            background: rgb(136, 85, 165);
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: space-between  ;
+        }
+        .box1{
+            background: lightskyblue;
+            width: 15vw;
+        }
+        .box3{
+            background: lightskyblue;
+            width: 15vw;
+        }
+     }
+     
+</style>
+<body>
+   <div class="container">
+    <div class="box header">Header</div>
+    <div class="main">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+    </div>
+    <div class="box footer">Footer</div>
+   </div>
+</body>
+</html>
