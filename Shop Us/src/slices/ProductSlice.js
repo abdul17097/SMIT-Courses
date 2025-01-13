@@ -24,6 +24,11 @@ export const productSlice = createSlice({
     isLoading: false,
     message: "",
   },
+  // reducers: {
+  //   setProduct: (state, action) => {
+  //     state.products = action.payload;
+  //   },
+  // },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading = true;
@@ -39,4 +44,5 @@ export const productSlice = createSlice({
   },
 });
 
+export const { setProduct } = productSlice.actions;
 export default productSlice.reducer;

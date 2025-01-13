@@ -3,8 +3,12 @@ import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const Navabar = () => {
   const [toggle, setToggle] = useState(false);
+  const { favoriteProducts } = useSelector((state) => state.favorite);
+  const { cartProducts } = useSelector((state) => state.cart);
   const handleToggle = () => {
     setToggle(!toggle);
   };
@@ -17,7 +21,7 @@ const Navabar = () => {
           <h1 className="lg:text-[1.5rem]">Shop Us</h1>
           <ul className="hidden lg:flex gap-4">
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
-              Home
+              <Link to="/">Home</Link>
             </li>
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
               Product
@@ -37,8 +41,29 @@ const Navabar = () => {
             </label>
             <input type="text" id="search" name="search" />
           </div>
-          <CiHeart className="text-[1.3rem] lg:text-[1.5rem]" />
-          <CiShoppingCart className="text-[1.3rem] lg:text-[1.5rem]" />
+          <Link to="/favorite">
+            <div className="relative">
+              <span
+                className={`${
+                  favoriteProducts?.length === 0 && "invisible"
+                } absolute text-sm top-[-10px] border border-black rounded-full bg-black text-white flex justify-center items-center right-0 w-4 h-4`}
+              >
+                {favoriteProducts?.length}
+              </span>
+              <CiHeart className="text-[1.3rem] lg:text-[1.5rem]" />
+            </div>
+          </Link>
+          <Link to="/cart">
+            <div className="relative">
+              <span
+                className={`absolute text-sm top-[-10px] border border-black rounded-full bg-black text-white flex justify-center items-center right-0 w-4 h-4`}
+              >
+                {cartProducts?.length}
+              </span>
+              <CiShoppingCart className="text-[1.3rem] lg:text-[1.5rem]" />
+            </div>
+          </Link>
+
           <GiHamburgerMenu className="lg:hidden" onClick={handleToggle} />
         </div>
       </div>
@@ -61,7 +86,7 @@ const Navabar = () => {
           </div>
         </li>
         <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
-          Home
+          <Link to="/">Home</Link>
         </li>
         <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
           Product
