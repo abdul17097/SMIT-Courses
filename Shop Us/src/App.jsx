@@ -11,6 +11,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 import Cart from "./pages/Cart";
+import { FilterProduct } from "./customComponents/FilterProduct";
 // import { setProduct } from "./slices/ProductSlice";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/product" element={<FilterProduct />} />
       </Routes>
     </>
   );

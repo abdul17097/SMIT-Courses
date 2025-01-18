@@ -24,7 +24,7 @@ const Navabar = () => {
               <Link to="/">Home</Link>
             </li>
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
-              Product
+              <Link to="/product">Product</Link>
             </li>
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
               Contact

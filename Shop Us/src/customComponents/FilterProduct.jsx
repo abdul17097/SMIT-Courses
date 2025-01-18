@@ -1,69 +1,52 @@
-import { toggleCart } from "@/slices/CartSlice";
-import { toggleFavorite } from "@/slices/FavoriteSlice";
-import React from "react";
-import { useToast } from "@/hooks/use-toast";
+import { setCategory, setSearchQuery } from "@/slices/ProductSlice";
+import React, { useState } from "react";
 import { CiHeart, CiShoppingCart } from "react-icons/ci";
-// import image1 from "../assets/featured_product/image1.png";
-// import image2 from "../assets/featured_product/image2.png";
-// import image3 from "../assets/featured_product/image3.png";
-// import image4 from "../assets/featured_product/image4.png";
 import { useDispatch, useSelector } from "react-redux";
-const FeaturedProduct = () => {
-  const dispatch = useDispatch();
-  const { toast } = useToast();
-  // const featuredProduct = [
-  //   {
-  //     id: 1,
-  //     image: image1,
-  //     title: "Cantilever Chair",
-  //     code: "Y523201",
-  //     price: "$42.00",
-  //   },
-  //   {
-  //     id: 2,
-  //     image: image2,
-  //     title: "Office Chair",
-  //     code: "W321456",
-  //     price: "$35.00",
-  //   },
-  //   {
-  //     id: 3,
-  //     image: image3,
-  //     title: "Office Table",
-  //     code: "X123456",
-  //     price: "$50.00",
-  //   },
-  //   {
-  //     id: 4,
-  //     image: image4,
-  //     title: "Bookshelf",
-  //     code: "Z789123",
-  //     price: "$25.00",
-  //   },
-  // ];
-  const { isLoading, products, message } = useSelector(
+import { Checkbox } from "@/components/ui/checkbox";
+
+export const FilterProduct = () => {
+  const { filterProducts, searchQuery, category } = useSelector(
     (state) => state.products
   );
-  const state = useSelector((state) => state.cart);
-
-  const handleFavorite = (data) => {
-    dispatch(toggleFavorite(data));
+  const dispatch = useDispatch();
+  const handleSearch = (event) => {
+    dispatch(setSearchQuery(event.target.value));
   };
-  const handleAddToCart = (data) => {
-    dispatch(toggleCart(data));
-    toast({ title: state.message });
+  const handleCategory = (event) => {
+    event ? dispatch(setCategory("Electronics")) : dispatch(setCategory(""));
   };
+  console.log(category);
 
   return (
-    <div className="flex flex-col px-8 gap-5 md:gap-10 py-5 xl:px-[12rem] md:py-10">
-      <h1 className="text-center font-bold text-blue-950 text-xl md:text-3xl">
-        Featured Products
-      </h1>
+    <div className="px-12">
+      <h1 className="">FilterProduct</h1>
+      <div className="">
+        <input
+          type="text"
+          className="border border-black"
+          onChange={handleSearch}
+        />
+      </div>
+      <div className="">
+        <div className="flex items-center space-x-2">
+          <Checkbox
+            id="terms"
+            // value={category}
+            onCheckedChange={handleCategory}
+          />
+          <label
+            htmlFor="terms"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            Electronics
+          </label>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 px-5 gap-y-8 md:gap-x-8">
         {/* {isLoading ? (
-          <p>Loading...</p>
-        ) : ( */}
-        {products?.slice(0, 4).map((product) => (
+                    <p>Loading...</p>
+                  ) : ( */}
+        {filterProducts?.map((product) => (
           <div
             key={product.id} // Add a unique key for each product
             className="flex flex-col border rounded-lg hover:shadow-2xl shadow-xl group cursor-pointer h-[24rem]"
@@ -77,7 +60,7 @@ const FeaturedProduct = () => {
                 {product.name}
               </h3>
               <p className="group-hover:text-white text-blue-950 font-semibold">
-                Code - {product.code}
+                {product.title}
               </p>
               <span className="group-hover:text-white text-blue-950 font-semibold">
                 ${product.price}
@@ -85,13 +68,13 @@ const FeaturedProduct = () => {
               <div className="flex gap">
                 <span className="group-hover:text-white text-blue-950 font-semibold">
                   <CiHeart
-                    onClick={() => handleFavorite(product)}
+                    //   onClick={() => handleFavorite(product)}
                     className="text-[1.3rem] lg:text-[1.5rem] hover:text-red-800 shadow-2xl shadow-red-800 cursor-pointer"
                   />
                 </span>
                 <span className="group-hover:text-white text-blue-950 font-semibold">
                   <CiShoppingCart
-                    onClick={() => handleAddToCart(product)}
+                    //   onClick={() => handleAddToCart(product)}
                     className="text-[1.3rem] lg:text-[1.5rem] hover:text-red-800 shadow-2xl shadow-red-800 cursor-pointer"
                   />
                 </span>
@@ -104,5 +87,3 @@ const FeaturedProduct = () => {
     </div>
   );
 };
-
-export default FeaturedProduct;
