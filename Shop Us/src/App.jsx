@@ -12,6 +12,9 @@ import Home from "./pages/Home";
 import Favorite from "./pages/Favorite";
 import Cart from "./pages/Cart";
 import { FilterProduct } from "./customComponents/FilterProduct";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import ProductForm from "./pages/ProductForm";
 // import { setProduct } from "./slices/ProductSlice";
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product" element={<FilterProduct />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/productForm" element={<ProductForm />} />
       </Routes>
     </>
   );
