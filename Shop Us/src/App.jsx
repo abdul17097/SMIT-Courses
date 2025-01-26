@@ -15,10 +15,14 @@ import { FilterProduct } from "./customComponents/FilterProduct";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import ProductForm from "./pages/ProductForm";
+import { app } from "./firebaseConfig";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { toast } from "react-toastify";
 // import { setProduct } from "./slices/ProductSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const auth = getAuth(app);
   // Alternative for createASyncThunk
   // const fetchProducts = async () => {
   //   const response = await axios.get(
@@ -34,9 +38,26 @@ function App() {
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+  const handleResetPassword = async () => {
+    const response = await sendPasswordResetEmail(auth, "abdul17097@gmail.com");
+    sendPasswordResetEmail(auth, "abdul17097@gmail.com")
+      .then(() => {
+        toast.success("Email sent successfully");
+        // Password reset email sent!
+        // ..
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
   return (
     <>
       <Navabar />
+      <button onClick={handleResetPassword} className="">
+        Reset Password
+      </button>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/favorite" element={<Favorite />} />

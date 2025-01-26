@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import { useAuthContext, useFirebaseContext } from "@/context/firebaseContext";
+import { toast } from "react-toastify";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import React, { useEffect, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
@@ -9,21 +12,69 @@ const Navabar = () => {
   const [toggle, setToggle] = useState(false);
   const { favoriteProducts } = useSelector((state) => state.favorite);
   const { cartProducts } = useSelector((state) => state.cart);
+  const auth = useAuthContext();
   const handleToggle = () => {
     setToggle(!toggle);
   };
-  console.log(toggle);
 
+  const publicRoutes = [
+    { routename: "Home", url: "/" },
+    { routename: "Favorite", url: "/favorite" },
+    { routename: "Signup", url: "/signup" },
+    { routename: "Login", url: "/login" },
+  ];
+  const context = useFirebaseContext();
+  // console.log(context);
+  const protectedRoutes = [
+    { routename: "Home", url: "/" },
+    { routename: "Product", url: "/product" },
+    { routename: "Form", url: "/productForm" },
+    { routename: "Logout", url: "" },
+  ];
+  const handleLogout = () => {
+    signOut(auth);
+    toast.success("Logout Successfully");
+  };
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        context.setIsLogin(true);
+      } else {
+        context.setIsLogin(false);
+      }
+    });
+  });
   return (
     <>
       <div className=" h-[3rem] lg:h-[5rem] flex items-center justify-between px-4 lg:px-10 w-[100%]">
         <div className="flex gap-10 items-center w-[60%] justify-between">
           <h1 className="lg:text-[1.5rem]">Shop Us</h1>
           <ul className="hidden lg:flex gap-4">
-            <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
+            {!context.isLogin
+              ? publicRoutes.map((item, index) => (
+                  <li
+                    className={`text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]`}
+                  >
+                    <Link to={item.url}>{item.routename}</Link>
+                  </li>
+                ))
+              : protectedRoutes.map((item, index) => {
+                  return item.routename === "Logout" ? (
+                    <li
+                      onClick={handleLogout}
+                      className={`text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]`}
+                    >
+                      <Link to={item.url}>{item.routename}</Link>
+                    </li>
+                  ) : (
+                    <li
+                      className={`text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]`}
+                    >
+                      <Link to={item.url}>{item.routename}</Link>
+                    </li>
+                  );
+                })}
+            {/* <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
               <Link to="/product">Product</Link>
             </li>
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
@@ -40,7 +91,7 @@ const Navabar = () => {
             </li>
             <li className="text-[1.2rem] font-semibold hover:border border-black w-[5.5rem] h-[2rem] px-2 flex justify-center items-center rounded-[5px]">
               Logout
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="flex items-center gap-3 ">

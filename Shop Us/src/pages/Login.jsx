@@ -1,12 +1,22 @@
-import React, { useState } from "react";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import React, { useEffect, useState } from "react";
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+} from "firebase/auth";
 import { app } from "@/firebaseConfig";
+import { useFirebaseContext } from "@/context/firebaseContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const context = useFirebaseContext();
+  const auth = getAuth(app);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   // Handle input value changes
   const handleChange = (e) => {
@@ -16,24 +26,35 @@ const Login = () => {
       [name]: value,
     });
   };
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
+      } else {
+        console.log("kuch bi nahi");
+      }
+    });
+  }, [context.isLogin]);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    context.login(formData);
+  };
 
   // Handle form submission
-  const auth = getAuth(app);
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const { email, password } = formData;
-    const data = await signInWithEmailAndPassword(auth, email, password);
-    if (data.user) {
-      console.log("User created:", data.user);
-    } else {
-      console.error("Error creating user:", data.error);
-    }
+  // const auth = getAuth(app);
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   const { email, password } = formData;
+  //   const data = await signInWithEmailAndPassword(auth, email, password);
+  //   if (data.user) {
+  //     console.log("User created:", data.user);
+  //   } else {
+  //     console.error("Error creating user:", data.error);
+  //   }
 
-    console.log("Login Data:", formData);
-
-    // Add your login logic here (e.g., API call)
-    alert(`Logged in with email: ${formData.email}`);
-  };
+  //   // Add your login logic here (e.g., API call)
+  //   alert(`Logged in with email: ${formData.email}`);
+  // };
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
