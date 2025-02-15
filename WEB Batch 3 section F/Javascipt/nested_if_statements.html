@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    var a = 10;
+    var b = 11;
+    var c = 11;
+    var d;
+    if ((a === b || b === c) && c === b) {
+      d = a + b;
+    } else {
+      d = a - b;
+    }
+
+    if (c === b) {
+      if (a === b) {
+        d = a + b;
+        document.write(d);
+      } else if (b === c) {
+        d = a + b;
+        document.write(d);
+      }
+    } else {
+      d = a - b;
+      document.write(d);
+    }
+  </script>
+  <body></body>
+</html>
