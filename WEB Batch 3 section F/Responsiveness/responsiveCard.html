@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Product Cards</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Base styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  /* flex: 1 1 calc(20% - 20px);  */
+  /* For 5 cards in a row */
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 2;
+  box-sizing: border-box;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .product-card {
+    /* flex: 1 1 calc(33.33% - 20px); For 3 cards in a row */
+    /* flex-grow: 1; */
+    /* flex-shrink: 1; */
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex: 1 1 100%; 
+     /* For 1 card in a row */
+  }
+}
+
+</style>
+<body>
+  <div class="product-container">
+    <div class="product-card">Product 1</div>
+    <div class="product-card">Product 2</div>
+    <div class="product-card">Product 3</div>
+    <div class="product-card">Product 4</div>
+    <div class="product-card">Product 5</div>
+    <div class="product-card">Product 6</div>
+    <div class="product-card">Product 7</div>
+    <div class="product-card">Product 8</div>
+    <div class="product-card">Product 9</div>
+    <div class="product-card">Product 10</div>
+  </div>
+</body>
+</html>
