@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <%- include('header.ejs') %>
+    <h1 class="main"><% userData[0].name %></h1>
+    <img src="image1.jpg" alt="" width="50" height="100" />
+
+    <ul>
+      <% userData.forEach((item, index) => { %> <% if(item.age === 30){%>
+
+      <li class="a"><%= item.name %></li>
+      <% } else{ %>
+      <li class="b"><%= item.name %></li>
+      <% } %> <% }) %>
+    </ul>
+    <!-- <ul>
+      <% for(var i=0; i< userData.length; i++){ %>
+      <li><% userData[i].name %></li>
+      <% } %>
+    </ul> -->
+    <!-- <ul>
+      <% for(let i = 0; i < userData.length; i++) { %>
+      <li><%= userData[i] %></li>
+      <% } %>
+    </ul> -->
+  </body>
+</html>
