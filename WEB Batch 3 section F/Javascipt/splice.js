@@ -56,16 +56,23 @@ let subject = ["Math", "Physics", "Chemistry", "Biology"];
 
 // console.log(output);
 // console.log(subject.length);
-console.log(subject);
-subject.pop();
-console.log(subject);
+// console.log(subject);
+// subject.pop();
+// console.log(subject);
 
-var age = 45;
-var studentsAge = [23, 28, 12, 34, 45, 67, 24];
+// var age = 45;
+// var studentsAge = [23, 28, 12, 34, 45, 67, 24];
 
-for (var j = 0; j < studentsAge.length; j++) {
-  if (studentsAge[j] === age) {
-    console.log("you are exit");
+// for (var j = 0; j < studentsAge.length; j++) {
+//   if (studentsAge[j] === age) {
+//     console.log("you are exit");
+//     break;
+//   }
+// }
+
+for (var i = 0; i < 10; i++) {
+  if (i === 5) {
     break;
   }
+  console.log(i);
 }
