@@ -1,14 +1,16 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
-const { verifyUser } = require("./middleware/veryUser");
+const { verifyUser, verifyUserRole } = require("./middleware/veryUser");
+const userRoutes = require("./routes/user.js");
+const dotenv = require("dotenv");
 const app = express();
 
 app.use(express.json());
+dotenv.config();
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/add-to-cart", verifyUser, (req, res) => {
+app.get("/add-to-cart", verifyUser, verifyUserRole, (req, res) => {
   res.json([
     { id: 1, name: "User 1" },
     { id: 2, name: "User 2" },
@@ -16,31 +18,6 @@ app.get("/add-to-cart", verifyUser, (req, res) => {
   ]);
 });
 
-const userData = {
-  userName: "test123",
-  password: "password123",
-};
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-
-  if (username === userData.userName && password === userData.password) {
-    const token = jwt.sign(
-      { username },
-      "aksldjf;849u5238945ijlkajsflkjaslfj3o4u5oijefkland;lkfj",
-      {
-        expiresIn: "5s",
-      }
-    );
-
-    res.json({
-      message: "Login successful",
-      token: token,
-    });
-  } else {
-    res.status(401).json({
-      message: "Invalid credentials",
-    });
-  }
-});
+app.use("/user", userRoutes);
 
 app.listen(5000);
