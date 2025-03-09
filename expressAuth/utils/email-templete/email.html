@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Template</title>
+    <style>
+      /* Simple reset for email clients */
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+      /* Responsive styles */
+      @media only screen and (max-width: 600px) {
+        .container {
+          width: 100% !important;
+        }
+        .header,
+        .footer {
+          text-align: center !important;
+        }
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0; background-color: #f4f4f4">
+    <!-- Main container -->
+    <table
+      role="presentation"
+      width="100%"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+      align="center"
+      style="max-width: 600px; margin: 0 auto; background-color: #ffffff"
+    >
+      <!-- Header -->
+      <tr>
+        <td
+          align="center"
+          style="padding: 20px 0; background-color: #4caf50; color: #ffffff"
+        >
+          <h1 style="margin: 0; font-family: Arial, sans-serif">
+            Your Company Name
+          </h1>
+        </td>
+      </tr>
+      <!-- Content -->
+      <tr>
+        <td
+          style="padding: 20px; font-family: Arial, sans-serif; color: #333333"
+        >
+          <h2 style="margin: 0 0 20px 0">Hello, [Recipient's Name]</h2>
+          <p style="margin: 0 0 20px 0">
+            Thank you for signing up with us! We're excited to have you on
+            board. If you have any questions or need assistance, feel free to
+            reach out to us.
+          </p>
+          <p style="margin: 0 0 20px 0">
+            Best regards,<br />
+            The Team at Your Company Name
+          </p>
+        </td>
+      </tr>
+      <!-- Footer -->
+      <tr>
+        <td
+          align="center"
+          style="
+            padding: 20px;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            color: #333333;
+          "
+        >
+          <p style="margin: 0">
+            &copy; 2023 Your Company Name. All rights reserved.
+          </p>
+          <p style="margin: 0">
+            You are receiving this email because you signed up on our website.
+          </p>
+          <p style="margin: 0">
+            <a href="#" style="color: #4caf50; text-decoration: none"
+              >Unsubscribe</a
+            >
+          </p>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
