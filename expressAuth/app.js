@@ -129,4 +129,58 @@ app.delete("/delete-user/:id", async (req, res) => {
     });
   }
 });
+
+app.put("/update/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userExist = await userModel.findOne({ _id: userId });
+    if (!userExist) {
+      res.json({
+        message: "User not found",
+      });
+    }
+    await userModel.updateOne(
+      {
+        _id: userExist._id,
+      },
+      {
+        $set: {
+          userName: "khan123",
+          email: "khan123@gmail.com",
+        },
+      }
+    );
+    res.json({
+      message: "User Updated Successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/all", async (req, res) => {
+  try {
+    const query = req.query;
+    console.log(query);
+
+    // const users = await userModel.find({
+    //   $nor: [
+    //     {
+    //       age: 55,
+    //     },
+    //     {
+    //       name: "test1",
+    //     },
+    //   ],
+    // });
+    const users = await userModel.find({ age: { $eq: query.age } });
+
+    res.json({
+      data: users,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 app.listen(5000);

@@ -5,7 +5,7 @@ const mongodbConn = async () => {
     //   127.0.0.0.1
     // const conn = await mongoose.connect("mongodb://localhost:27017/eCom");
     mongoose
-      .connect("mongodb://localhost:27017/eCom")
+      .connect("mongodb://localhost:27017/ecommerce")
       .then(() => {
         console.log("Connection Successfully");
       })

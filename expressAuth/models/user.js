@@ -10,6 +10,9 @@ const registerSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
+  age: {
+    type: Number,
+  },
   password: {
     type: String,
     min: 8,
