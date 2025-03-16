@@ -173,7 +173,7 @@ app.get("/all", async (req, res) => {
     //     },
     //   ],
     // });
-    const users = await userModel.find({ age: { $eq: query.age } });
+    const users = await userModel.find({ age: { $eq: query } });
 
     res.json({
       data: users,

@@ -96,4 +96,157 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login, sendEmail };
+const allUser = async (req, res) => {
+  try {
+    // const users = await userModel
+    //   .find({
+    //     userName: "test123",
+    //   })
+    //   .limit(1);
+    const users = await userModel.find();
+    if (users.length === 0) {
+      return res.json({
+        message: "Users not availabe",
+      });
+    }
+
+    res.json({
+      message: "All Users",
+      data: users,
+    });
+  } catch (error) {
+    res.json({
+      message: error.message,
+      status: 404,
+    });
+  }
+};
+
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userExist = await userModel.find({
+      _id: id,
+    });
+    if (!userExist) {
+      return res.json({
+        message: "User not found",
+      });
+    }
+
+    const deleteUser = await userModel.deleteOne({
+      _id: id,
+    });
+    res.json({
+      message: "User Deleted Successfully",
+      data: deleteUser,
+    });
+  } catch (error) {
+    res.json({
+      message: error.message,
+      status: 404,
+    });
+  }
+};
+
+const updateUSer = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userExist = await userModel.findOne({ _id: userId });
+    if (!userExist) {
+      res.json({
+        message: "User not found",
+      });
+    }
+    await userModel.updateOne(
+      {
+        _id: userExist._id,
+      },
+      {
+        $set: {
+          userName: "khan123",
+          email: "khan123@gmail.com",
+        },
+      }
+    );
+    res.json({
+      message: "User Updated Successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// app.get("/all", async (req, res) => {
+//   try {
+//     const query = req.query;
+//     console.log(query);
+
+//     // const users = await userModel.find({
+//     //   $nor: [
+//     //     {
+//     //       age: 55,
+//     //     },
+//     //     {
+//     //       name: "test1",
+//     //     },
+//     //   ],
+//     // });
+//     const users = await userModel.find({ age: { $eq: query.age } });
+
+//     res.json({
+//       data: users,
+//     });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+
+const filterUsers = async (req, res) => {
+  try {
+    const query = req.query;
+
+    // const users = await userModel.find({
+    //   $and: [
+    //     {
+    //       age: {
+    //         $eq: query.age,
+    //       },
+    //     },
+    //     {
+    //       email: {
+    //         $eq: query.email,
+    //       },
+    //     },
+    //   ],
+    // });
+    const users = await userModel.find({
+      $or: [
+        {
+          age: {
+            $gte: query.age,
+          },
+        },
+        {
+          email: {
+            $eq: query.email,
+          },
+        },
+      ],
+    });
+    res.json({
+      message: "success",
+      data: users,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+module.exports = {
+  register,
+  login,
+  sendEmail,
+  allUser,
+  deleteUser,
+  updateUSer,
+  filterUsers,
+};
