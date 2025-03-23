@@ -1,6 +1,7 @@
 const express = require("express");
 const { verifyUser, verifyUserRole } = require("./middleware/veryUser");
 const userRoutes = require("./routes/user.js");
+const postRoutes = require("./routes/post.js");
 const dotenv = require("dotenv");
 const dbconnection = require("./config/connect.js");
 const app = express();
@@ -29,6 +30,7 @@ const app = express();
 app.use(express.json());
 dotenv.config();
 dbconnection();
+
 app.get("/", async (req, res) => {
   try {
     // const newUser = new User({
@@ -53,5 +55,6 @@ app.get("/add-to-cart", verifyUser, verifyUserRole, (req, res) => {
 });
 
 app.use("/user", userRoutes);
+app.use("/post", postRoutes);
 
 app.listen(5000);

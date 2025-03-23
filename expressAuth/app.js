@@ -1,12 +1,19 @@
 const express = require("express");
 const dbconnection = require("./config/connect.js");
-const { userModel } = require("./models/user.js");
+const { userModel, productModel } = require("./models/user.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const app = express();
 
 app.use(express.json());
 dbconnection();
+
+app.get("/test", async (req, res) => {
+  const newProduct = await productModel.insertOne({
+    title: "test",
+    userData: "67cd3831b9ec73a49c5f14d8",
+  });
+});
 app.post("/register", async (req, res) => {
   try {
     const { userName, email, password } = req.body;

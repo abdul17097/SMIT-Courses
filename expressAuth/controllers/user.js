@@ -56,13 +56,13 @@ const register = async (req, res) => {
 
     const hashPassword = await bcrypt.hash(password, 10);
 
-    // const creatUser = await userModel.insertOne({
-    //   userName: username,
-    //   email,
-    //   password: hashPassword,
-    // });
+    const creatUser = await userModel.insertOne({
+      userName: username,
+      email,
+      password: hashPassword,
+    });
 
-    const createUser = res.status(200).json({
+    res.status(200).json({
       message: "User Register Successfully",
       user: creatUser,
     });
@@ -72,16 +72,16 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
-
+  const { email, password } = req.body;
+  const userData = await userModel.findOne({ email });
   const comparePassword = await bcrypt.compare(password, userData.password);
 
   if (!comparePassword) {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  if (username === userData.userName) {
-    const token = jwt.sign(userData, process.env.SECRET_KEY, {
+  if (email === userData.email) {
+    const token = jwt.sign({ id: userData._id }, process.env.SECRET_KEY, {
       expiresIn: "5h",
     });
 
