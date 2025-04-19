@@ -4,13 +4,24 @@ const postSchema = new mongoose.Schema({
   title: {
     type: String,
   },
+  slug: {
+    type: String,
+    unique: true,
+    lowercase: true,
+  },
   description: {
     type: String,
   },
   image: {
     type: String,
   },
-  user: {
+  tags: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "tags",
+    },
+  ],
+  author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },

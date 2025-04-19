@@ -2,9 +2,19 @@ const express = require("express");
 const { verifyUser, verifyUserRole } = require("./middleware/veryUser");
 const userRoutes = require("./routes/user.js");
 const postRoutes = require("./routes/post.js");
-const dotenv = require("dotenv");
+const tagRoutes = require("./routes/tag.js");
+const { config } = require("dotenv");
 const dbconnection = require("./config/connect.js");
+const multer = require("multer");
+const path = require("path");
+const cloudinary = require("cloudinary").v2;
 const app = express();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
 // mongodb connection
 // const dbConfig = async () => {
@@ -28,8 +38,30 @@ const app = express();
 
 // const User = mongoose.model("User", userSchema);
 app.use(express.json());
-dotenv.config();
+config();
 dbconnection();
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "uploads"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+    // cb(null, file.fieldname + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/upload", upload.single("file"), async (req, res) => {
+  // const result = await cloudinary.uploader.upload(req.file.path, {
+  //   folder: "expressAuth",
+  // });
+
+  res.json({
+    data: "result.secure_url",
+  });
+});
 
 app.get("/", async (req, res) => {
   try {
@@ -56,5 +88,6 @@ app.get("/add-to-cart", verifyUser, verifyUserRole, (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
+app.use("/tag", tagRoutes);
 
 app.listen(5000);
