@@ -4,8 +4,19 @@ meta {
   seq: 1
 }
 
-get {
-  url: 
-  body: none
+post {
+  url: {{baseUrl}}/post/new-post
+  body: multipartForm
   auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDM1NDZhM2FmNTk0NTQ2ZGFkMTI4YSIsImlhdCI6MTc0NTA0ODcyNywiZXhwIjoxNzQ1MDY2NzI3fQ.KzBROj9fErpyB1oppApMoo7syxiKkTx-as1x_-zYzdQ
+}
+
+body:multipart-form {
+  title: Latest Rreact JS Course 2024
+  description: Latest Rreact JS Course 2024
+  file: @file(C:\Users\CLEVER\Desktop\comments.PNG)
+  tags: ["680355b44a61114c7e7e69a9"]
 }

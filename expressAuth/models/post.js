@@ -25,6 +25,10 @@ const postSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
   },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const postModel = mongoose.model("posts", postSchema);

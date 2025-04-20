@@ -1,5 +1,10 @@
 const express = require("express");
-const { newPost, getPost } = require("../controllers/post");
+const {
+  newPost,
+  getPost,
+  allPostForGuest,
+  allPostForRegisterUser,
+} = require("../controllers/post");
 const { verifyUser } = require("../middleware/veryUser.js");
 const multer = require("multer");
 const path = require("path");
@@ -25,5 +30,7 @@ const upload = multer({ storage: storage });
 
 router.post("/new-post", verifyUser, upload.single("file"), newPost);
 router.get("/get-post", verifyUser, getPost);
+router.get("/get-post-for-guest", allPostForGuest);
+router.get("/get-post-for-register-user", verifyUser, allPostForRegisterUser);
 
 module.exports = router;
