@@ -1,9 +1,8 @@
 const express = require("express");
-const { createTag, allTags } = require("../controllers/tag.js");
 const { verifyUser } = require("../middleware/veryUser.js");
+const { createComment } = require("../controllers/comment.js");
 const router = express.Router();
 
-router.post("/create", verifyUser, createTag);
-router.get("/all-tags", allTags);
+router.post("/create-comment/:postId", verifyUser, createComment);
 
 module.exports = router;

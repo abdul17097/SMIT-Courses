@@ -4,8 +4,12 @@ meta {
   seq: 1
 }
 
-get {
-  url: http://localhost:5000/bookmark/toggle-bookmark
+post {
+  url: http://localhost:5000/bookmark/toggle-bookmark/6804a651512aeefd2edf32ef
   body: none
   auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDQ5ODZjNGQwN2M3NGRlMDlmNWM4YyIsImlhdCI6MTc0NTEzMTY3MSwiZXhwIjoxNzQ1MTQ5NjcxfQ.wO2TK6yim6nfTdi1ucO2cn3AmK0rF2AqI0h3C8NeWQk
 }

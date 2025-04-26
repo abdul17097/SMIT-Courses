@@ -1,5 +1,6 @@
 const { Tag } = require("../models/tag");
 const slugify = require("slugify");
+
 const createTag = async (req, res) => {
   try {
     const { name } = req.body;
@@ -29,6 +30,21 @@ const createTag = async (req, res) => {
   }
 };
 
+const allTags = async (req, res) => {
+  try {
+    const tags = await Tag.find();
+    res.status(200).json({
+      message: "All Tags",
+      data: tags,
+    });
+  } catch (error) {
+    res.status(200).json({
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createTag,
+  allTags,
 };

@@ -99,13 +99,15 @@ const allPostForGuest = async (req, res) => {
 
 const allPostForRegisterUser = async (req, res) => {
   try {
+    const { searchQuery } = req.query;
     const { id } = req.user;
     console.log(id);
 
-    const allPost = await postModel.aggregate([
+    const pipeline = [
       {
         $match: {
           // author: new mongoose.Types.ObjectId(id),
+          // $or: [{ title: { $regex: searchQuery, $options: "i" } }],
           isActive: true,
         },
       },
@@ -167,15 +169,117 @@ const allPostForRegisterUser = async (req, res) => {
         },
       },
       {
+        $lookup: {
+          from: "comments",
+          let: { postId: "$_id" },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $and: [
+                    { $eq: ["$post", "$$postId"] },
+                    { $eq: ["$user", new mongoose.Types.ObjectId(id)] },
+                  ],
+                },
+              },
+            },
+          ],
+          as: "CommentByUser",
+        },
+      },
+      {
         $addFields: {
           isBookMark: { $gt: [{ $size: "$bookmarkByUser" }, 0] },
           isLike: { $gt: [{ $size: "$likeByUser" }, 0] },
         },
       },
-    ]);
+    ];
+
+    if (searchQuery) {
+      pipeline.push({
+        $match: {
+          $or: [
+            {
+              title: { $regex: searchQuery, $options: "i" },
+              description: { $regex: searchQuery, $options: "i" },
+            },
+          ],
+        },
+      });
+    }
+
+    const allPost = await postModel.aggregate(pipeline);
     res.status(200).json({
       message: "All Post",
       data: allPost,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+      success: false,
+    });
+  }
+};
+
+const getPostBySlug = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const { slug } = req.params;
+    console.log(id);
+
+    // author: new mongoose.Types.ObjectId(id),
+    const allPostBySlug = await postModel.aggregate([
+      {
+        $match: {
+          slug: slug.toLowerCase(),
+          // author: new mongoose.Types.ObjectId(id),
+          isActive: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "author",
+          foreignField: "_id",
+          as: "userData",
+        },
+      },
+      {
+        $unwind: "$userData",
+      },
+      {
+        $lookup: {
+          from: "tags",
+          localField: "tags",
+          foreignField: "_id",
+          as: "tags",
+        },
+      },
+
+      // {
+      //   $lookup: {
+      //     from: "likes",
+      //     let: { postId: "$_id" },
+      //     pipeline: [
+      //       {
+      //         $match: {
+      //           $expr: {
+      //             $and: [
+      //               { $eq: ["$post", "$$postId"] },
+      //               { $eq: ["$user", new mongoose.Types.ObjectId(id)] },
+      //             ],
+      //           },
+      //         },
+      //       },
+      //     ],
+      //     as: "likepost",
+      //   },
+      // },
+    ]);
+
+    res.status(200).json({
+      message: "all Post",
+      data: allPostBySlug,
     });
   } catch (error) {
     res.status(500).json({
@@ -190,4 +294,5 @@ module.exports = {
   getPost,
   allPostForGuest,
   allPostForRegisterUser,
+  getPostBySlug,
 };

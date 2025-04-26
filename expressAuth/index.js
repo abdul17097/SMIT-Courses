@@ -5,6 +5,7 @@ const postRoutes = require("./routes/post.js");
 const tagRoutes = require("./routes/tag.js");
 const bookmarkRoutes = require("./routes/bookmark.js");
 const likeRoutes = require("./routes/like.js");
+const commentRoutes = require("./routes/comment.js");
 const { config } = require("dotenv");
 const dbconnection = require("./config/connect.js");
 const multer = require("multer");
@@ -93,5 +94,6 @@ app.use("/post", postRoutes);
 app.use("/tag", tagRoutes);
 app.use("/bookmark", bookmarkRoutes);
 app.use("/like", likeRoutes);
+app.use("/comment", commentRoutes);
 
 app.listen(5000);

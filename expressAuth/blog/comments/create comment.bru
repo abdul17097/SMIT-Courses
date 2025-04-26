@@ -1,19 +1,21 @@
 meta {
-  name: Post Register User
+  name: create comment
   type: http
-  seq: 3
+  seq: 1
 }
 
-get {
-  url: http://localhost:5000/post/get-post-for-register-user/?searchQuery=l
-  body: none
+post {
+  url: http://localhost:5000/comment/create-comment/6804a67a512aeefd2edf32f2
+  body: json
   auth: none
-}
-
-params:query {
-  searchQuery: l
 }
 
 headers {
   Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDM1NDZhM2FmNTk0NTQ2ZGFkMTI4YSIsImlhdCI6MTc0NTY0OTIxNSwiZXhwIjoxNzQ1NjY3MjE1fQ.pmcArf8Rtgv6PbM4T2lOtV-BxvcK57F1mxRD4LSwkS4
+}
+
+body:json {
+  {
+    "content": "Test Comment"
+  }
 }

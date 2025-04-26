@@ -4,6 +4,7 @@ const {
   getPost,
   allPostForGuest,
   allPostForRegisterUser,
+  getPostBySlug,
 } = require("../controllers/post");
 const { verifyUser } = require("../middleware/veryUser.js");
 const multer = require("multer");
@@ -32,5 +33,6 @@ router.post("/new-post", verifyUser, upload.single("file"), newPost);
 router.get("/get-post", verifyUser, getPost);
 router.get("/get-post-for-guest", allPostForGuest);
 router.get("/get-post-for-register-user", verifyUser, allPostForRegisterUser);
+router.get("/get-post-by-slug/:slug", verifyUser, getPostBySlug);
 
 module.exports = router;
