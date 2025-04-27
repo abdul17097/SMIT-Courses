@@ -1,0 +1,20 @@
+meta {
+  name: Update Post
+  type: http
+  seq: 7
+}
+
+put {
+  url: http://localhost:5000/post/update-post
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDQ5ODZjNGQwN2M3NGRlMDlmNWM4YyIsImlhdCI6MTc0NTc0MjM2MCwiZXhwIjoxNzQ1NzYwMzYwfQ.e98WjR2alpysysvpRxkY7k7sARuUj_rd-QkaUoUzDDc
+}
+
+body:multipart-form {
+  title: Hiking Adventures in the Peshawar
+  : 
+}

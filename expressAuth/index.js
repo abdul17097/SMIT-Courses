@@ -8,8 +8,7 @@ const likeRoutes = require("./routes/like.js");
 const commentRoutes = require("./routes/comment.js");
 const { config } = require("dotenv");
 const dbconnection = require("./config/connect.js");
-const multer = require("multer");
-const path = require("path");
+const cors = require("cors");
 const cloudinary = require("cloudinary").v2;
 const app = express();
 
@@ -18,7 +17,7 @@ const app = express();
 //   api_key: process.env.API_KEY,
 //   api_secret: process.env.API_SECRET,
 // });
-
+app.use(cors());
 // mongodb connection
 // const dbConfig = async () => {
 //   try {

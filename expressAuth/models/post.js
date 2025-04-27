@@ -27,6 +27,18 @@ const postSchema = new mongoose.Schema({
       ref: "comments",
     },
   ],
+  bookmarks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "bookmarks",
+    },
+  ],
+  likes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "likes",
+    },
+  ],
   author: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
