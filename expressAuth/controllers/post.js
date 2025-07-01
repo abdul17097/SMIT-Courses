@@ -79,18 +79,81 @@ const getPost = async (req, res) => {
 
 const allPostForGuest = async (req, res) => {
   try {
-    const allPost = await postModel.find();
-    if (allPost.length > 0) {
-      return res.status(200).json({
-        message: "All Post",
-        data: allPost,
-        success: true,
+    let { searchQuery, tag } = req.query;
+    console.log(searchQuery, tag);
+
+    const pipeline = [
+      {
+        $match: {
+          isActive: true,
+        },
+      },
+      {
+        $lookup: {
+          from: "tags",
+          localField: "tags",
+          foreignField: "_id",
+          as: "allTags",
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "author",
+          foreignField: "_id",
+          as: "userData",
+        },
+      },
+      {
+        $unwind: "$userData",
+      },
+      {
+        $lookup: {
+          from: "comments",
+          let: { postId: "$_id" },
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $and: [{ $eq: ["$post", "$$postId"] }],
+                },
+              },
+            },
+          ],
+          as: "CommentByUser",
+        },
+      },
+    ];
+
+    if (searchQuery) {
+      pipeline.push({
+        $match: {
+          $or: [
+            {
+              title: { $regex: searchQuery, $options: "i" },
+              description: { $regex: searchQuery, $options: "i" },
+            },
+          ],
+        },
       });
     }
-    res.status(404).json({
-      message: "Posts not Available",
+    if (tag) {
+      pipeline.push({
+        $match: {
+          $or: [
+            {
+              "allTags.slug": { $regex: tag, $options: "i" },
+            },
+          ],
+        },
+      });
+    }
+
+    const allPost = await postModel.aggregate(pipeline);
+    res.status(201).json({
+      message: "All Post",
       data: allPost,
-      success: false,
+      success: true,
     });
   } catch (error) {
     res.status(500).json({

@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: http://localhost:5000/post/get-post-for-guest
+  url: http://localhost:5000/post/get-post-for-guest?tag=machine-learning
   body: none
   auth: none
+}
+
+params:query {
+  tag: machine-learning
 }

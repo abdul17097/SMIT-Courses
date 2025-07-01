@@ -1,0 +1,20 @@
+meta {
+  name: checkout
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5000/checkout
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "items": [
+      { "name": "shoes", "price": 50, "quantity": 2 },
+      { "name": "hat", "price": 20, "quantity": 1 }
+    ]
+  }
+}

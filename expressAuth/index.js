@@ -6,18 +6,21 @@ const tagRoutes = require("./routes/tag.js");
 const bookmarkRoutes = require("./routes/bookmark.js");
 const likeRoutes = require("./routes/like.js");
 const commentRoutes = require("./routes/comment.js");
-const { config } = require("dotenv");
 const dbconnection = require("./config/connect.js");
 const cors = require("cors");
 const cloudinary = require("cloudinary").v2;
 const app = express();
-
+require("dotenv").config();
 // cloudinary.config({
 //   cloud_name: process.env.CLOUD_NAME,
 //   api_key: process.env.API_KEY,
 //   api_secret: process.env.API_SECRET,
 // });
-app.use(cors());
+app.use(
+  cors({
+    origin: "",
+  })
+);
 // mongodb connection
 // const dbConfig = async () => {
 //   try {
@@ -40,7 +43,6 @@ app.use(cors());
 
 // const User = mongoose.model("User", userSchema);
 app.use(express.json());
-config();
 dbconnection();
 
 // const storage = multer.diskStorage({

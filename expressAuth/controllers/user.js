@@ -74,6 +74,10 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   const userData = await userModel.findOne({ email });
+  console.log(userData);
+  if (!userData) {
+    return res.status(401).json({ message: "You need to firs Register" });
+  }
   const comparePassword = await bcrypt.compare(password, userData.password);
 
   if (!comparePassword) {

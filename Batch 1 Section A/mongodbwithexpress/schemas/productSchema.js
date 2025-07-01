@@ -22,6 +22,10 @@ const productSchema = mongoose.Schema(
       type: Number,
       default: 5,
     },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
   },
   {
     timestamps: true,

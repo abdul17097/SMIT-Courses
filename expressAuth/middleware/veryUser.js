@@ -6,7 +6,9 @@ const verifyUser = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    console.log(error.message);
+    res.status(404).json({
+      message: error.message,
+    });
   }
 };
 

@@ -8,7 +8,8 @@ import {
 import { verifyAdmin, verifyUser } from "../middleware/verifyUser.js";
 const routes = express.Router();
 
-routes.post("/new-product", verifyUser, verifyAdmin, createProduct);
+routes.post("/new-product", createProduct);
+// routes.post("/new-product", verifyUser, verifyAdmin, createProduct);
 routes.get("/all-products", verifyUser, allProducts);
 routes.put("/update-product/:productId", verifyUser, updateProduct);
 routes.delete("/delete-product/:productId", verifyUser, deleteProduct);

@@ -1,15 +1,19 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/ThemeContext";
+import { FaHome } from "react-icons/fa";
+import { AiOutlineProduct } from "react-icons/ai";
 export const Navbar = () => {
   const navlinks = [
     {
       url: "/",
       title: "Home",
+      icon: <FaHome />,
     },
     {
       url: "/products",
       title: "Products",
+      icon: <AiOutlineProduct className="text-[20px] md:text-[50px]" />,
     },
     {
       url: "/login",
@@ -40,7 +44,8 @@ export const Navbar = () => {
       >
         {navlinks.map((item, index) => {
           return (
-            <li className="px-2 py-1 rounded-lg hover:bg-green-400 hover:text-green-900">
+            <li className="px-2 py-1 rounded-lg hover:bg-green-400 hover:text-green-900 flex items-center gap-2">
+              <span>{item.icon}</span>
               <Link to={item.url}>{item.title}</Link>
             </li>
           );

@@ -12,8 +12,19 @@ const {
 const { verifyUser } = require("../middleware/veryUser.js");
 const multer = require("multer");
 const path = require("path");
+require("dotenv").config();
 const cloudinary = require("cloudinary").v2;
-cloudinary.config({});
+
+// cloudinary.config({
+//   cloud_name: "dusob1oit",
+//   api_key: "117563274639469",
+//   api_secret: "RfiQvZ283gFvZcYidJzVonsqEE8",
+// });
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 const router = express.Router();
 
 const storage = multer.diskStorage({

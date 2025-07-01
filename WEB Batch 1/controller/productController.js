@@ -6,7 +6,7 @@ export const createProduct = async (req, res) => {
     console.log(userId);
 
     const { title, description, price, image } = req.body;
-    if (!title || !description || !price || !image) {
+    if (!title || !description || !price) {
       return res.json({
         success: false,
         message: "All fields are required",

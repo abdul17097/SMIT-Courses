@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { HeroSection } from "../components/HeroSection";
+import { HeroSection } from "../components/heroSection/HeroSection";
 import { userContext } from "../context/TestContext";
 
 export const HomePage = () => {

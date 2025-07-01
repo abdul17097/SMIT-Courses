@@ -1,7 +1,7 @@
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 export const verifyUser = async (req, res, next) => {
   try {
-    if (!req.headers["authorization"]) {
+    if (!req.headers && !req.headers["authorization"]) {
       res.json({
         success: false,
         message: "Authorization token is missing",

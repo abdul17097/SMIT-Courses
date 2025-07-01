@@ -2,6 +2,7 @@ import { Product } from "../schemas/productSchema.js";
 
 export const newProduct = async (req, res) => {
   try {
+    const userId = req.userId;
     if (!req.body.title || !req.body.price) {
       return res.json({
         success: false,
@@ -13,6 +14,7 @@ export const newProduct = async (req, res) => {
       price: req.body.price,
       description: req.body.description,
       category: req.body.category,
+      user: userId,
     });
 
     res.json({

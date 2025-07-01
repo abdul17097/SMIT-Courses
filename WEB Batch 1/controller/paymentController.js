@@ -33,3 +33,19 @@ export const payment = async (req, res) => {
     });
   }
 };
+
+// payload
+// {
+//   "products": [
+//     {
+//       "name": "Guitar Strings",
+//       "unit_amount": 12.5,
+//       "quantity": 2
+//     },
+//     {
+//       "name": "Drum Sticks",
+//       "unit_amount": 9,
+//       "quantity": 1
+//     }
+//   ]
+// }
