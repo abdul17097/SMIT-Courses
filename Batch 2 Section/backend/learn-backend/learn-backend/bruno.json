@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "learn-backend",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
