@@ -22,3 +22,12 @@ const server = http.createServer((request, response) => {
 server.listen(3000, () => {
   console.log("Server running at http://localhost:3000/");
 });
+
+const userData = {
+  username: "test",
+  password: "test123",
+};
+
+// fetch("http://localhost:4000", {
+//   body: JSON.stringify(userData)
+// })
