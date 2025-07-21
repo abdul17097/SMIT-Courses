@@ -1,8 +1,14 @@
 const express = require("express");
-
+const bcrypt = require("bcryptjs");
+const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
 const app = express();
 
 app.use(express.json());
+app.use("/user", userRoutes);
+app.use("/product", productRoutes);
+// app.use("/product", productRoutes)
+
 app.get("/", (req, res) => {
   res.json({ message: "hello world" });
 
@@ -15,6 +21,41 @@ app.get("/user-details/:userId", (req, res) => {
   });
 });
 
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.json({ message: "please fill all fields" });
+  }
+
+  const hashpassword =
+    "$2b$10$75WFDs0e7I41Gst5YlHJPe187.2AzzH2bosYX51pckuqj5D6btz9q";
+
+  const comparePassword = await bcrypt.compare(password, hashpassword);
+
+  if (!comparePassword) {
+    return res.json({
+      message: "Invaild Credentials",
+    });
+  }
+
+  // const userData = {
+  //   username,
+  //   password: hashpassword,
+  //   gender: "male",
+  //   age: 34,
+  //   nationality: "pak"
+  // }
+
+  // const {password, ...rest } = userData;
+
+  res.json({
+    message: "User Login Successfully",
+    data: {
+      username,
+    },
+  });
+});
+
 app.get("/all-users", (req, res) => {
   const { limit, skip } = req.query;
   console.log(limit, skip);
@@ -24,11 +65,23 @@ app.get("/all-users", (req, res) => {
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
   console.log(req.body);
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res.json({
+      message: "please fill all fields",
+    });
+  }
+
+  const hashpassword = await bcrypt.hashSync(password);
 
   res.json({
     message: "User Added Successfully",
+    data: {
+      username,
+      password: hashpassword,
+    },
   });
 });
 
