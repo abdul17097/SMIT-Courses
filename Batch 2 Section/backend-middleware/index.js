@@ -15,17 +15,26 @@ app.get("/", (req, res, next) => {
     next(new Error(error));
   }
 });
-
-app.get("/user-profile", verifyToken, (req, res) => {
-  res.json(userDetails);
-});
-
 // Database
 const userDetails = {
   id: 134435,
   email: "test123@gmail.com",
   password: "test123",
 };
+
+app.get("/user-profile", verifyToken, (req, res) => {
+  console.log(req.user);
+  // const user = await User.findOne({
+  //   _id: req.user
+  // })
+  if (userDetails.id == req.user) {
+    return res.json(userDetails);
+  }
+  res.status(400).json({
+    message: "User not Found",
+    success: false,
+  });
+});
 
 // Login API
 app.post("/login", (req, res, next) => {
