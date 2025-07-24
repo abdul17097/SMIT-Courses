@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+  </head>
+  <body>
+    <h1>Student Addmission Form</h1>
+
+    <form action="" method="get">
+      <label for="username">UserName:</label><br />
+      <input
+        id="username"
+        size="50"
+        maxlength="10"
+        minlength="5"
+        name="username"
+        placeholder="Enter username"
+        required
+      />
+      <br />
+      <label for="password">Password:</label><br />
+      <input
+        id="password"
+        type="password"
+        name="password"
+        placeholder="Enter Your Password"
+        required
+      />
+      <br />
+
+      <label for="description">Description:</label> <br />
+      <textarea id="description" name="userDescription"></textarea>
+
+      <br /><br />
+      <label>Please select your genre</label><br />
+      <input type="radio" name="genre" value="rock" /> Rock
+      <input type="radio" name="genre" value="pop" /> Pop
+      <input type="radio" name="genre" value="jazz" checked="checked" /> Jazz
+
+      <br /><br />
+      <label>Please select your Country</label><br />
+      <input type="radio" name="country" value="pakistan" checked /> Pakistan
+      <input type="radio" name="country" value="dubai" /> Dubai
+      <input type="radio" name="country" value="new york" /> New York
+
+      <br /><br />
+      <label>Please select your favorite fruits </label>
+      <br />
+      <input type="checkbox" name="fruits" value="Mango" /> Mango
+      <input type="checkbox" name="fruits" value="peach" checked /> Peach
+      <input type="checkbox" name="fruits" value="banana" /> Banana
+      <input type="checkbox" name="fruits" value="grapes" /> Grapes
+
+      <br /><br />
+      <p>What device do you to like for listen?</p>
+      <select name="decvices">
+        <option value="iphone">Iphone</option>
+        <option value="ipad">Ipad</option>
+        <option value="computer">Computer</option>
+      </select>
+      <br /><br />
+      <p>What device do you to like for listen?</p>
+      <p>you can select Multiple Devices</p>
+      <select name="decvices" multiple="multiple">
+        <option value="iphone">Iphone</option>
+        <option value="ipad">Ipad</option>
+        <option value="computer">Computer</option>
+      </select>
+
+      <br /><br />
+      <label for="">Please Select you profile image</label><br />
+      <input type="file" name="profile image" />
+
+      <br /><br />
+      <input type="submit" name="Submit" value="Submit" />
+    </form>
+  </body>
+</html>
