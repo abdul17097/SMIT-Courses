@@ -5,12 +5,13 @@
   "scripts": {
     "test": "npm run dev",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "nodemon": "^3.1.10"
   }
 }
