@@ -2,6 +2,7 @@ import express from "express";
 import { config } from "dotenv";
 import { dbConnection } from "./config/connection.js";
 import { User } from "./model/user.js";
+import { users } from "./utils/data.js";
 
 const app = express();
 
@@ -109,6 +110,65 @@ app.get("/delete-user/:id", async (req, res) => {
       message: error.message || "Something Went wrong",
       success: false,
     });
+  }
+});
+
+// create bulk users
+app.get("/create-users", async (req, res) => {
+  try {
+    const createUsers = await User.insertMany(users);
+    res.json(createUsers);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+app.get("/test", async (req, res) => {
+  try {
+    const { country, age, skip, limit = 4 } = req.query;
+
+    // const findUserByCountry = await User.find({
+    //   country: {
+    //     $eq: country,
+    //   },
+    // });
+    // const findUserByAge = await User.find({
+    //   age: {
+    //     $lt: age,
+    //   },
+    // });
+    // const findUserByHobbies = await User.find({
+    //   hobbies: {
+    //     $in: ["swimming", "science"],
+    //   },
+    // });
+
+    // const findUsers = await User.find({
+    //   $and: [{ city: { $eq: "London" } }, { age: { $gt: 25 } }],
+    // });
+    // const findUsers = await User.find({
+    //   $or: [{ city: { $eq: "London" } }, { age: { $gt: 50 } }],
+    // });
+    // const findUsers = await User.find({
+    //   $nor: [{ city: { $eq: "London" } }, { age: { $gt: 50 } }],
+    // });
+    const findUsers = await User.find({
+      $or: [{ city: { $eq: "London" } }, { age: { $gt: 50 } }],
+    })
+      .skip(skip)
+      .limit(limit);
+    if (findUsers.length < 1) {
+      return res.json({
+        message: "Users does not Exist",
+      });
+    }
+    res.json({
+      data: findUsers,
+      size: findUsers.length,
+      message: "All Users",
+    });
+  } catch (error) {
+    console.log(error.message);
   }
 });
 app.listen(8000, () => {
