@@ -1,0 +1,26 @@
+* {
+  color: red;
+}
+
+/* Last Rules */
+
+/* p {
+  border: 1px solid black;
+}
+p {
+  border: 1px solid blue;
+} */
+
+/* SpecIfIcIty Rules*/
+
+p {
+  color: blue;
+}
+
+.des {
+  color: brown !important;
+}
+
+#des {
+  color: yellow;
+}

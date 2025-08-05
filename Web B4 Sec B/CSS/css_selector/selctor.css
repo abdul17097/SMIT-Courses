@@ -1,0 +1,53 @@
+* {
+  /* background-color: red; */
+  color: blue;
+  /* padding: 20px;
+  margin: 10px; */
+}
+
+.des {
+  color: green;
+}
+p {
+  color: red;
+}
+
+#container_1 {
+  border: 1px solid black;
+  padding: 20px;
+}
+#container_2 {
+  border: 1px solid black;
+}
+/* Child Selector */
+
+ul > li {
+  border: 1px solid brown;
+}
+
+div > div > div > p {
+  border: 1px solid green;
+  padding: 30px;
+}
+
+/* Decendent Selector */
+div p span {
+  border: 1px solid black;
+}
+
+/* adjacent SIBLIng 
+SeLector */
+.adj_sib_sele {
+  border: 1px solid black;
+}
+
+/* h1 + p {
+  border: 1px solid black;
+} */
+
+/* generaL SIBLIng 
+SeLector */
+
+h1 ~ p {
+  border: 1px solid black;
+}
