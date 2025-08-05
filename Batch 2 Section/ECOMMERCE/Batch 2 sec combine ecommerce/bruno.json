@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Batch 2 sec combine ecommerce",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
