@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Form</title>
+  </head>
+  <body>
+    <form action="" method="">
+      <label>Name*</label><br />
+      <input type="text" required />
+      <br />
+      <label for="email">Email*</label> <br />
+      <input
+        id="email"
+        required
+        type="email"
+        placeholder="Enter you name"
+      /><br />
+      <label for="">Password <span style="color: red">*</span></label> <br />
+      <input type="password" required /><br />
+      <label for="">Description</label><br />
+      <textarea name="" id=""></textarea><br />
+      <label for="">Gender*</label><br />
+      <input type="radio" name="gender" required /> Male
+      <input type="radio" name="gender" required /> Female
+      <br />
+      <label for="">Skills*</label><br />
+      <input type="checkbox" name="skill" value="frontend" /> Frontend
+      <input type="checkbox" name="skill" /> Backend
+      <input type="checkbox" name="skill" /> Full stack
+      <!-- Dropdown Element -->
+      <br /><br />
+      <label for="country">Country</label><br />
+      <select name="country" id="country">
+        <option disabled>Select country</option>
+        <option value="india" selected>India</option>
+        <option value="pakistan" selected>Pakistan</option>
+        <option value="dubai">Dubai</option>
+      </select>
+      <br /><br />
+      <label for="">Skills</label><br />
+      <select name="skill" multiple="multiple">
+        <option disabled>Select country</option>
+        <option value="reactjs" selected>ReactJS</option>
+        <option value="nodejs">Nodejs</option>
+        <option value="nextjs" selected>NextJS</option>
+      </select>
+      <br />
+      <label for="">Upload Profile Image</label><br />
+      <!-- <input type="file" style="display: none" /> -->
+      <br />
+      <input type="button" value="Login" /> <br />
+      <input
+        type="image"
+        width="200"
+        height="100"
+        src="data:image/jpeg;base64,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"
+      />
+      <br />
+      <input type="submit" value="Submit" />
+      <!-- button -->
+      <button>
+        <img
+          width="20"
+          height="20"
+          src="images/icons8-cart-50 (1).png"
+          alt=""
+        />Cart</button
+      ><br />
+      <input type="hidden" />
+    </form>
+    <!-- country = india -->
+  </body>
+</html>

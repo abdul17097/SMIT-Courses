@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+  </head>
+  <body>
+    <table border="1">
+      <!-- table rows -->
+      <!-- first row -->
+      <tr>
+        <th>Name</th>
+        <th>English</th>
+        <th>Math</th>
+        <th>Urdu</th>
+        <th>Physics</th>
+        <th>Computer</th>
+        <th>Chemistry</th>
+      </tr>
+      <!-- second row-->
+      <tr>
+        <td>Ikram</td>
+        <td>45</td>
+        <td>54</td>
+        <td>59</td>
+        <td>99</td>
+        <td>65</td>
+        <td>87</td>
+      </tr>
+      <!-- third row -->
+      <tr>
+        <td>Arif</td>
+        <td>59</td>
+        <td>54</td>
+        <td>87</td>
+        <td>99</td>
+        <td>65</td>
+        <td>45</td>
+      </tr>
+    </table>
+    <br /><br />
+    <!-- Time Table -->
+    <table border="1">
+      <!-- <tr>
+        <th>Days</th>
+        <th>9:00Am to 10:00Am</th>
+        <th>10:00Am to 11:00Am</th>
+        <th>11:00Am to 12:00Pm</th>
+        <th>12:00Pm to 01:00Pm</th>
+        <th>01:00Pm to 02:00Pm</th>
+      </tr> -->
+      <thead>
+        <th>Days</th>
+        <th>9:00Am to 10:00Am</th>
+        <th>10:00Am to 11:00Am</th>
+        <th>11:00Am to 12:00Pm</th>
+        <th>12:00Pm to 01:00Pm</th>
+        <th>01:00Pm to 02:00Pm</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Monday</th>
+          <td>English</td>
+          <td>Math</td>
+          <td>Break ✈</td>
+          <td colspan="2">Computer</td>
+          <!-- <td>Computer</td> -->
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+          <td colspan="2">English</td>
+          <!-- <td>Math</td> -->
+          <td>Break ✈</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+          <td rowspan="2">English</td>
+          <td>Math</td>
+          <td>Break ✈</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <th>Thirsday</th>
+          <!-- <td>English</td> -->
+          <td>Math</td>
+          <td>Break ✈</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <th>Friday</th>
+          <td>English</td>
+          <td>Math</td>
+          <td>Break ✈</td>
+          <td>Computer</td>
+        </tr>
+        <tr>
+          <th>Saturday</th>
+          <td>English</td>
+          <td>Math</td>
+          <td>Break ✈</td>
+          <td>Computer</td>
+          <td>Urdu</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6" style="text-align: center">hello world</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
