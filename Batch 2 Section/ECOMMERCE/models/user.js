@@ -21,8 +21,8 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: 6, // Minimum length for the password (should be hashed in real apps)
     },
+    role: { type: String, enum: ["customer", "admin"], default: "customer" },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt timestamps automatically
@@ -30,3 +30,5 @@ const userSchema = new mongoose.Schema(
 );
 
 export const User = mongoose.model("users", userSchema);
+
+// (function(){})()

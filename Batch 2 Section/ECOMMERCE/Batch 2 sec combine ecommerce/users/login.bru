@@ -1,10 +1,10 @@
 meta {
-  name: Register User
+  name: login
   type: http
-  seq: 1
+  seq: 2
 }
 
-get {
+post {
   url: http://localhost:3000/api/users
   body: json
   auth: none
@@ -12,7 +12,6 @@ get {
 
 body:json {
   {
-    "username": "test",
     "email": "test@gmail.com",
     "password": "test"
   }

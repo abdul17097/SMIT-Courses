@@ -19,11 +19,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       min: 0, // Price cannot be negative
     },
-    currency: {
-      type: String,
-      default: "USD",
-      trim: true,
-    },
+
     imageUrl: {
       type: String,
       default: "https://placehold.co/400x300/CCCCCC/000000?text=No+Image", // Default placeholder
@@ -34,13 +30,11 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: true,
-    },
+    stock: { type: Number, required: true },
   },
   {
     timestamps: true, // Adds createdAt and updatedAt timestamps automatically
   }
 );
+
+export const Product = mongoose.model("products", productSchema);
