@@ -1,0 +1,82 @@
+html {
+  font-size: 45px;
+}
+#rem-element {
+  font-size: 1rem;
+  line-height: 2rem;
+  word-spacing: 1rem;
+  letter-spacing: 0.2rem;
+}
+
+p {
+  font-size: 16px;
+}
+
+.em-parent {
+  font-size: 16px;
+}
+
+.em-child {
+  font-size: 3em;
+}
+
+.container {
+  width: 100%;
+  border: 1px solid black;
+  height: 100px;
+  padding: 2px;
+}
+
+.child {
+  width: 50%;
+  border: 2px solid black;
+  height: 100px;
+}
+
+.sub-child {
+  padding: 2px;
+  width: 100%;
+  border: 2px solid black;
+  height: 100px;
+}
+
+.container-2 {
+  padding: 2px;
+  width: 100%;
+  border: 2px solid black;
+  height: 100px;
+}
+
+h3 {
+  font-style: oblique;
+  text-transform: uppercase;
+  text-decoration: line-through;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-align {
+  text-align: justify;
+}
+
+.container_3 {
+  vertical-align: text-top;
+}
+
+img {
+  width: 50%;
+}
+
+.img-text {
+  /* vertical-align: middle; */
+}
+
+.text-indent {
+  text-indent: 50px;
+}
+
+blockquote {
+  text-shadow: -50px -50px 0px black;
+}
