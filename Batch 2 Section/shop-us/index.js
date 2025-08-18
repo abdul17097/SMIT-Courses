@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import { dbConnection } from "./config/connection.js";
 import { User } from "./model/user.js";
 import { users } from "./utils/data.js";
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -166,6 +167,43 @@ app.get("/test", async (req, res) => {
       data: findUsers,
       size: findUsers.length,
       message: "All Users",
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
+// Aggregation Framework
+app.get("/test-2/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const coverttoObjectId = new mongoose.Types.ObjectId(id);
+    console.log(typeof coverttoObjectId);
+
+    const findUser = await User.aggregate([
+      {
+        $match: {
+          _id: coverttoObjectId,
+          // country: "USA",
+        },
+        // $group: {
+        //   _id: "$users",
+        //   totalUsersAge: { $sum: "$age" },
+        // },
+      },
+      {
+        $project: {
+          name: 1,
+          email: 1,
+          city: 1,
+          hobbies: 1,
+          age: 1,
+        },
+      },
+    ]);
+
+    res.json({
+      data: findUser,
     });
   } catch (error) {
     console.log(error.message);
