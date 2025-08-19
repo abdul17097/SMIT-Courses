@@ -1,0 +1,32 @@
+.container {
+  border: 1px solid black;
+  width: 50%;
+  height: 10rem;
+}
+
+.box {
+  border: 1px solid black;
+  width: 50%;
+}
+
+.container_2 {
+  border: 1px solid black;
+  height: 5rem;
+  max-width: 1200px;
+  min-width: 700px;
+  height: 500px;
+  min-height: 300px;
+  max-height: 500px;
+}
+
+.sub_container {
+  border: 1px solid black;
+}
+
+.description {
+  border: 1px solid black;
+  width: 400px;
+  height: 100px;
+  overflow: scroll;
+  /* overflow: hidden; */
+}

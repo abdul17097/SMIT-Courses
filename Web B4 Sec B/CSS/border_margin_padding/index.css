@@ -1,0 +1,36 @@
+.container {
+  width: 500px;
+  height: 500px;
+  /* border-width: 1px;
+  border-style: dashed;
+  border-color: red; */
+  border: 5px solid blue;
+
+  /* padding-top: 10px;
+  padding-right: 30px;
+  padding-bottom: 40px;
+  padding-left: 20px; */
+
+  padding: 10px 30px 40px 80px;
+
+  overflow: scroll;
+  text-align: justify;
+}
+
+/* Equaliance Selector */
+div[id="firt_container"] {
+  /* margin-top: 50px;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  margin-left: 40px; */
+
+  /* margin: 50px 60px 30px 20px; */
+  /* margin: 10px 30px; */
+  margin: 10px 0 0 0;
+  /* margin: 10px; */
+}
+
+body {
+  /* border: 1px solid black; */
+  display: flex;
+}

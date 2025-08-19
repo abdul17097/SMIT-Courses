@@ -1,0 +1,10 @@
+.title {
+  border: 1px solid black;
+  display: inline-block;
+  width: 200px;
+}
+.desc {
+  border: 1px solid black;
+  width: 200px;
+  /* display: inline; */
+}

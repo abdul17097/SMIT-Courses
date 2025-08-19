@@ -4,11 +4,55 @@
   font-size: 45px;
 } */
 
-p {
+/* p {
   color: rgb(58, 64, 69);
   /* font-family: "Poppins", sans-serif, serif; */
-  /* font-weight: bolder; */
-  /* font-style: italic; */
-  font-size: 56px;
-  font-weight: 900;
+/* font-weight: bolder; */
+/* font-style: italic; */
+/* font-size: 56px; */
+/* font-weight: 900; */
+/* } */
+
+.container {
+  border: 1px solid red;
+}
+.container:hover {
+  padding: 10px;
+}
+.description::first-letter {
+  color: red;
+  font-size: 45px;
+}
+
+.description::first-line {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+a:link {
+  color: red;
+}
+
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: yellowgreen;
+}
+
+a:active {
+  color: rgb(233, 230, 10);
+}
+
+button:hover {
+  background-color: red;
+}
+
+input:focus {
+  outline: none;
+}
+
+button:active {
+  color: blue;
 }
