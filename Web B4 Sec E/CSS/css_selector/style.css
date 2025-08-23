@@ -1,0 +1,24 @@
+/* Typed Selector */
+h1,
+a,
+ul {
+  border: 1px solid black;
+  width: 500px;
+}
+
+/* Universal Selector */
+/* * {
+  border: 1px solid black;
+  width: 500px;
+  padding: 0;
+  margin: 0;
+} */
+
+/* class selector */
+.item {
+  color: red;
+}
+
+#second_item {
+  color: blue;
+}
