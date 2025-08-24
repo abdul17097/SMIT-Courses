@@ -22,3 +22,30 @@ ul {
 #second_item {
   color: blue;
 }
+
+/* child selector */
+div > p > span {
+  color: red;
+}
+
+/* Decendent Selector */
+
+p a {
+  color: green;
+}
+
+div p a span {
+  color: purple;
+}
+
+/* Adjecent sibling Selector */
+
+/* p + p {
+  color: orangered;
+} */
+
+/* General Selector */
+
+h1 ~ p {
+  color: blue;
+}

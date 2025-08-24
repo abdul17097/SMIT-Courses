@@ -1,0 +1,50 @@
+/* Last Rule */
+/* * {
+  color: red;
+} */
+
+h1 {
+  color: blue !important;
+}
+
+h1 {
+  color: green;
+}
+
+/* Specficity */
+
+/* .heading {
+  color: green;
+}
+
+#heading {
+  color: purple;
+} */
+
+/* Important */
+
+h1 {
+  color: blue !important;
+}
+
+h1 {
+  color: green;
+}
+
+/* Inheritance */
+.container {
+  border: 1px solid black;
+  color: orange;
+  width: 400px;
+  padding: 20px;
+}
+
+.container h2 {
+  border: 1px solid black;
+  padding: inherit;
+}
+
+.container p {
+  border: 1px solid black;
+  padding: inherit;
+}
