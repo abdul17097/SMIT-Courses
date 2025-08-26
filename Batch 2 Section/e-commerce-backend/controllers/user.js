@@ -1,6 +1,19 @@
 import { User } from "../models/user.js";
 import bcrypt from "bcryptjs";
+import { config } from "dotenv";
 import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
+
+config();
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.USER_NAME,
+    pass: process.env.APP_PASSWORD,
+  },
+});
+console.log(process.env.USER_NAME, process.env.APP_PASSWORD);
 
 export const registerUser = async (req, res) => {
   try {
@@ -61,6 +74,16 @@ export const login = async (req, res) => {
       },
       process.env.JWT_SECRET_KEY
     );
+
+    const info = await transporter.sendMail({
+      from: process.env.USER_NAME,
+      to: ["kiramat0323@gmail.com"],
+      subject: "Login Alert",
+      // text: "your account is logged in",
+      html: templete,
+    });
+
+    console.log(info);
 
     res.status(200).json({
       message: "User Login Successfully",

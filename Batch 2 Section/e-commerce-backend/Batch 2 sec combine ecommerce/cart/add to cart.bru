@@ -4,8 +4,19 @@ meta {
   seq: 1
 }
 
-get {
-  url: 
-  body: none
+post {
+  url: http://localhost:3000/api/cart/
+  body: json
   auth: none
+}
+
+headers {
+  Authorization: Barear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk5NzgyOTEyYzdmZjVkYmMzMDQwNWUiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTYwOTYwMTJ9.w64W5NeoUYixw3YXTg6PLtpfP6rNtwhSdj0XcQd6PXk
+}
+
+body:json {
+  {
+    "productId": "68a27f67c935817006a3c056",
+    "quantity": 1
+  }
 }

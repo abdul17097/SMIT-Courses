@@ -2,6 +2,7 @@ import express from "express";
 import {
   createProduct,
   deleteProduct,
+  getProducts,
   productDetails,
 } from "../controllers/product.js";
 import { authorize, verifyUser } from "../middleware/authMiddleware.js";
@@ -25,6 +26,7 @@ routes.get(
   productDetails
 );
 routes.delete("/:id", verifyUser, authorize(["admin"]), deleteProduct);
+routes.get("/", verifyUser, authorize(["admin", "customer"]), getProducts);
 
 // GET /api/products?search=iphone → search by keyword
 

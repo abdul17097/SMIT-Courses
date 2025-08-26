@@ -1,0 +1,26 @@
+meta {
+  name: all Products
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/api/products/?search=test&category=&minPrice=&maxPrice=&sortedBy=price&sortedOrder=&page=1&limit=4
+  body: none
+  auth: none
+}
+
+params:query {
+  search: test
+  category: 
+  minPrice: 
+  maxPrice: 
+  sortedBy: price
+  sortedOrder: 
+  page: 1
+  limit: 4
+}
+
+headers {
+  Authorization: Barear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk5NzgyOTEyYzdmZjVkYmMzMDQwNWUiLCJyb2xlIjoiY3VzdG9tZXIiLCJpYXQiOjE3NTYwOTYwMTJ9.w64W5NeoUYixw3YXTg6PLtpfP6rNtwhSdj0XcQd6PXk
+}

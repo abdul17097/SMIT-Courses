@@ -103,81 +103,97 @@ export const deleteProduct = async (req, res) => {
   }
 };
 
-// const getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
+  try {
+    const {
+      search,
+      category,
+      minPrice,
+      maxPrice,
+      sortedBy,
+      sortedOrder,
+      page = 1,
+      limit = 2,
+    } = req.query;
+
+    // const products = await Product.find();
+    const pipeline = [];
+
+    if (search) {
+      pipeline.push({
+        $match: {
+          $or: [
+            { title: { $regex: search, $options: "i" } },
+            { description: { $regex: search, $options: "i" } },
+          ],
+        },
+      });
+    }
+
+    if (category) {
+      pipeline.push({
+        $match: { category: category },
+      });
+    }
+
+    if (minPrice || maxPrice) {
+      pipeline.push({
+        $match: {
+          price: {
+            ...(minPrice ? { $gte: Number(minPrice) } : {}),
+            ...(maxPrice ? { $lte: Number(maxPrice) } : {}),
+          },
+        },
+      });
+    }
+
+    if (sortedBy) {
+      pipeline.push({
+        $sort: { [sortedBy]: sortedOrder === "desc" ? -1 : 1 },
+      });
+    }
+
+    const skip = (Number(page) - 1) * Number(limit);
+    pipeline.push({ $skip: skip });
+    pipeline.push({ $limit: Number(limit) });
+
+    const products = await Product.aggregate(pipeline);
+
+    res.json({
+      success: true,
+      products,
+    });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+// server.js
+// require('dotenv').config();
+// const express = require('express');
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// const app = express();
+
+// app.use(express.json()); // Middleware to parse JSON bodies
+
+// // Route to create a PaymentIntent
+// app.post('/create-payment-intent', async (req, res) => {
+//   const { amount } = req.body;
+
 //   try {
-//     const {
-//       search, // e.g. "iphone"
-//       category, // e.g. "Electronics"
-//       minPrice, // e.g. 50
-//       maxPrice, // e.g. 500
-//       sortBy, // e.g. "price"
-//       sortOrder, // "asc" or "desc"
-//       page = 1,
-//       limit = 10,
-//     } = req.query;
-
-//     const pipeline = [];
-
-//     // Search by title or description
-//     if (search) {
-//       pipeline.push({
-//         $match: {
-//           $or: [
-//             { title: { $regex: search, $options: "i" } },
-//             { description: { $regex: search, $options: "i" } },
-//           ],
-//         },
-//       });
-//     }
-
-//     // Filter by category
-//     if (category) {
-//       pipeline.push({
-//         $match: { category: category },
-//       });
-//     }
-
-//     // Filter by price range
-//     if (minPrice || maxPrice) {
-//       pipeline.push({
-//         $match: {
-//           price: {
-//             ...(minPrice ? { $gte: Number(minPrice) } : {}),
-//             ...(maxPrice ? { $lte: Number(maxPrice) } : {}),
-//           },
-//         },
-//       });
-//     }
-
-//     // Sorting
-//     if (sortBy) {
-//       pipeline.push({
-//         $sort: { [sortBy]: sortOrder === "desc" ? -1 : 1 },
-//       });
-//     } else {
-//       pipeline.push({ $sort: { createdAt: -1 } }); // Default: newest first
-//     }
-
-//     // Pagination
-//     const skip = (Number(page) - 1) * Number(limit);
-//     pipeline.push({ $skip: skip });
-//     pipeline.push({ $limit: Number(limit) });
-
-//     // Execute aggregation
-//     const products = await Product.aggregate(pipeline);
-
-//     //  Count total (without pagination)
-//     const total = await Product.countDocuments();
-
-//     res.json({
-//       success: true,
-//       total,
-//       page: Number(page),
-//       limit: Number(limit),
-//       products,
+//     const paymentIntent = await stripe.paymentIntents.create({
+//       amount: amount,
+//       currency: 'usd',
+//       // Other optional parameters like description, customer, etc.
 //     });
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ success: false, message: "Server error" });
+
+//     res.status(200).send({
+//       clientSecret: paymentIntent.client_secret,
+//     });
+//   } catch (error) {
+//     res.status(500).send({ error: error.message });
 //   }
-// };
+// });
+
+// const PORT = process.env.PORT || 3000;
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
