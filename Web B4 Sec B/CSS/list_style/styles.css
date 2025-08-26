@@ -1,0 +1,14 @@
+ul {
+  /* list-style-type: none; */
+  /* list-style-image: url("../images/icon.png"); */
+  /* list-style-position: inside; */
+  list-style: outside square;
+}
+
+ol {
+  /* list-style-type: none; */
+}
+
+li {
+  border: 1px solid black;
+}

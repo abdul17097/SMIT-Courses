@@ -1,0 +1,28 @@
+table {
+  border: 0.1px solid black;
+  width: 600px;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 10px 10px 10px grey;
+  background-color: linen;
+  /* border-spacing: 5px 5px; */
+  border-collapse: collapse;
+  empty-cells: hide;
+}
+
+th {
+  border-bottom: 2px solid black;
+  border-top: 2px solid rgb(161, 151, 151);
+  text-align: left;
+  padding: 5px 0px;
+  color: red;
+}
+
+td {
+  padding: 5px 0px;
+  border: 1px solid black;
+}
+
+.even {
+  background-color: rgb(212, 216, 218);
+}
