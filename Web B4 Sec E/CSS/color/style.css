@@ -1,0 +1,23 @@
+body {
+  background-color: red;
+}
+h1 {
+  /* color: blue; */
+  color: hwb(0 20% 56%);
+  background-color: #d9d9d9;
+}
+
+.container {
+  width: 300px;
+  border: 1px solid black;
+  /* color: aqua; */
+  color: #88f23d;
+  /* background-color: coral; */
+  /* background-color: rgb(46, 75, 34); */
+  background-color: hsla(0deg, 0%, 50%, 0);
+  /* background-color: red; */
+  /* color: hsla(0deg, 0%, 50%, 0); */
+}
+.container:hover {
+  opacity: 0.5;
+}
