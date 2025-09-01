@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 50%;
+  height: 20vh;
+  background-color: red;
+  position: relative;
+}
+.container2 {
+  width: 50%;
+  height: 20vh;
+  background-color: rgb(76, 44, 44);
+  position: absolute;
+}
+
+.child {
+  width: 30%;
+  height: 10vh;
+  background-color: blue;
+  position: relative;
+  /* bottom: -10px; */
+  top: 50px;
+  left: 900px;
+  /* left: 50%; */
+  /* right: -50px; */
+}

@@ -39,3 +39,8 @@ input:hover {
 input:focus {
   outline: none;
 }
+
+#color {
+  width: 10%;
+  padding: 0px;
+}

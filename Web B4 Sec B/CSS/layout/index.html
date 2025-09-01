@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div style="position: static; background: lightblue">Static</div>
+    <div style="position: relative; left: 30px; background: yellow">
+      Relative
+    </div>
+    <div style="position: absolute; top: 50px; left: 100px; background: orange">
+      Absolute
+    </div>
+    <div style="position: fixed; bottom: 0; right: 0; background: green">
+      Fixed
+    </div>
+    <div style="position: sticky; top: 0; background: pink">Sticky</div>
+  </body>
+</html>
+
+<!-- CSS Position Property
+
+The position property controls how an element is placed in the document.
+
+There are five position values:
+static
+relative
+absolute
+fixed
+sticky
+1. static
+The default position; elements are positioned according to the normal flow of the document.
+
+.box {
+  position: static;
+}
+
+
+2. relative
+The element stays in the normal flow, but you can move it relative to its original position using top, left, right, bottom.
+.box {
+  position: relative;
+  top: 20px;   /* moves down */
+  left: 30px;  /* moves right */
+}
+
+
+
+
+-->

@@ -4,10 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
-    <link rel="stylesheet" href="styles.css" />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
   </head>
+  <style>
+    fieldset {
+      width: 30%;
+      margin: auto;
+      border: 1px solid black;
+      padding: 20px;
+    }
+    label {
+      display: block;
+    }
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 6px 8px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      border: 1px solid gray;
+    }
+    legend {
+      border: 1px solid brown;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    #submit {
+      cursor: pointer;
+    }
+  </style>
   <body>
-    <form action="">
+    <!-- <form action="">
       <h1>User Form</h1>
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" /><br /><br />
@@ -31,6 +64,17 @@
       <input type="url" id="website" name="website" /><br /><br />
 
       <input type="submit" value="Submit" />
+    </form> -->
+
+    <form action="">
+      <fieldset>
+        <legend>Login Form</legend>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="login-email" />
+        <label for="password">Password</label>
+        <input type="password" id="login-password" name="login-password" />
+        <input id="submit" type="submit" value="Login" />
+      </fieldset>
     </form>
   </body>
 </html>
