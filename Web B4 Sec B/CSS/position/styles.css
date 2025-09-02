@@ -1,11 +1,12 @@
-body {
-  position: relative;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 .container {
   border: 1px solid black;
   margin-top: 100px;
-  position: relative;
+  /* position: relative; */
   height: 500px;
 }
 
@@ -14,14 +15,82 @@ body {
   height: 100px;
   border: 1px solid black;
   display: inline-block;
+  /* position: absolute; */
 }
 
 #center {
   /* position: relative; */
   /* bottom: 50px; */
   /* left: 50px; */
+  /* position: fixed; */
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
+  left: 0px;
+  /* left: 0px; */
+  /* bottom: 20px; */
   /* right: 20px; */
   background-color: red;
+}
+
+.box6 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: blue;
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  z-index: 10;
+}
+.box7 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: rgb(156, 156, 219);
+  position: absolute;
+  top: 0px;
+  left: 20px;
+  z-index: 9;
+}
+.box8 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: rgb(36, 36, 42);
+  position: absolute;
+  top: 0px;
+  left: 30px;
+  z-index: 8;
+}
+.box9 {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  background-color: rgb(40, 177, 91);
+  position: absolute;
+  top: 0px;
+  left: 40px;
+  z-index: 11;
+}
+ul {
+  position: sticky;
+  top: 50px;
+  left: 0px;
+  border: 1px solid black;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: gainsboro;
+}
+li {
+  /* display: inline-block; */
+  display: inline;
+  /* width: 100px; */
+  border: 1px solid black;
+}
+
+#home {
+  background-color: orange;
+  width: 100px;
+  display: xinline-block;
 }

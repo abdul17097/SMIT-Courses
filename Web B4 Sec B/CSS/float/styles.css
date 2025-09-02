@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+/* img {
+  float: left;
+}
+div {
+  float: right;
+  padding: 15px;
+}
+
+.div1 {
+  background: red;
+}
+
+.div2 {
+  background: yellow;
+}
+
+.div3 {
+  background: green;
+}
+
+.div-1 {
+  border: 1px solid black;
+  float: right;
+}
+.div-2 {
+  border: 1px solid black;
+  clear: both;
+}
+.div-3 {
+  border: 1px solid black;
+  float: right;
+} */
+
+img {
+  float: right;
+  padding: 15px;
+  border: 1px solid black;
+  margin-right: 5px;
+}
+p {
+  /* float: left; */
+}
+
+.container {
+  border: 1px solid black;
+}
+.description {
+  border: 1px solid black;
+  width: 24%;
+  float: right;
+}
+/* .des1 {
+  float: right;
+}
+.des2 {
+  float: right;
+}
+.des3 {
+  float: right;
+}
+.des4 {
+  float: right;
+} */
+
+ul {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+  border: 1px solid black;
+  padding: 20px;
+}
+li {
+  display: inline-block;
+}
+
+.left {
+  height: 500px;
+  width: 25%;
+  border: 1px solid black;
+  float: left;
+}
+.body {
+  height: 500px;
+  width: 50%;
+  float: left;
+  border: 1px solid black;
+}
+.right {
+  height: 500px;
+  width: 24%;
+  float: left;
+  border: 1px solid black;
+}
+.footer {
+  border: 1px solid black;
+  height: 50px;
+  clear: left;
+}
