@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Merriweather", serif;
+}
+
+.banner {
+  height: 800px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.15) 100%
+    ),
+    url("/src/assets/banner1.jpg") lightgray 50% / cover no-repeat;
+  background-position: 10% 25%;
+}
+
+.shop-banner {
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.25) 100%
+    ),
+    url("/src/assets/shopbanner1.png") lightgray 3.589px 1.817px / 100% 197.462%
+      no-repeat;
+}
+
+/* Add these styles to your CSS file */
+.sidebar-enter {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.sidebar-enter-active {
+  transform: translateX(0);
+}
+.sidebar-exit {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.sidebar-exit-active {
+  transform: translateX(-100%);
+}
+
+
+.singleOrder-table td{
+  text-align: left;
+}
+
+.singleOrder-table th{
+  text-align: left;
+}
