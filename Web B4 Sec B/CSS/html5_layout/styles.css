@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+article {
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+article:hover {
+  background-color: aqua;
+}

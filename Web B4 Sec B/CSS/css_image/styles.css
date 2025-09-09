@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* p {
+  height: 300px;
+  border: 2px solid red;
+  background-image: url("../images/icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: top 100px left 50px;
+  background-attachment: fixed;
+} */
+
+img {
+  /* border: 1px solid black; */
+  margin: auto;
+  display: block;
+}
+
+p {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 20px;
+  text-align: justify;
+  background-image: url("../images/sunset-7133867_1280.jpg");
+  /* background-image: url("../images/icon.png"); */
+  background-repeat: no-repeat;
+  /* background-repeat: repeat-y; */
+  /* background-attachment: fixed; */
+  /* background-position: right 50% top 40px; */
+  /* background: #ffff url("../images/sunset-7133867_1280.jpg") no-repeat scroll
+    center center; */
+  color: wheat;
+  /* background-image: linear-gradient(
+    to bottom,
+    red,
+    orange,
+    blue,
+    green,
+    yellow
+  ); */
+}
+p:hover {
+  opacity: 0.5;
+}
+
+.para {
+  text-indent: 70px;
+}
+
+a.button {
+  height: 36px;
+  background-image: url("../images/icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right 20px center;
+  /* text-indent: -9999px; */
+  display: inline-block;
+  border: 1px solid black;
+}
+a#add-to-basket {
+  width: 174px;
+}
+/* a#add-to-basket:hover {
+  background-position: 0px -40px;
+} */
+
+.submit {
+  display: flex;
+  justify-content: space-between;
+  width: 120px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 3px 2px 3px 5px;
+}
+
+.submit img {
+  width: 20px;
+  height: 20px;
+}
