@@ -75,3 +75,36 @@ span {
   /* border: 1px solid black; */
   text-shadow: -10px -10px 3px red;
 }
+
+.last_section::first-letter {
+  color: red;
+  font-size: 24px;
+}
+
+.second::first-line {
+  font-style: italic;
+  color: blue;
+}
+
+.link_1:link {
+  color: red;
+}
+
+.link_1:visited {
+  color: green;
+}
+
+.link_1:active {
+  color: gray;
+}
+.link_1:hover {
+  border: 1px solid red;
+  box-shadow: 1px 1px 5px yellowgreen;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input:focus {
+  padding: 10px;
+  outline: none;
+}

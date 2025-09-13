@@ -1,0 +1,35 @@
+/* p {
+  color: red;
+} */
+
+/* Existence Selector */
+/* p[class] {
+  color: rgb(26, 26, 228);
+} */
+
+/* Eqaulity Selector */
+/* p[id="description"] {
+  color: rgb(165, 221, 165);
+} */
+
+/* Space-separated (Word) Selector */
+/* h1[class~="world"] {
+  color: yellow;
+} */
+
+/* prefix selector */
+
+/* h1[class^="h"] {
+  color: gainsboro;
+} */
+
+/* Lorem ipsum dolor sit amet */
+/* Substring Selector */
+/* h1[class*="h"] {
+  color: brown;
+} */
+
+/* Suffix Selector */
+h1[class$="k"] {
+  color: burlywood;
+}

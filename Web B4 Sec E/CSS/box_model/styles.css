@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.description {
+  /* background-color: rgb(216, 59, 59); */
+  /* color: white; */
+  text-align: justify;
+  border: 3px solid black;
+  padding: 10px;
+  margin: 10px;
+  /* width: 100%; */
+  max-width: 1000px;
+  /* min-width: 500px; */
+}
