@@ -1,0 +1,37 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* .header {
+  margin: auto;
+  width: fit-content;
+  border: 1px solid black;
+} */
+a {
+  text-decoration: none;
+  border: 1px solid black;
+  width: 100px;
+  display: inline-block;
+}
+.nav_1 {
+  /* display: none; */
+  /* visibility: hidden; */
+  opacity: 0.5;
+}
+
+p {
+  border: 1px solid red;
+  width: 300px;
+  /* display: inline; */
+}
+
+.card {
+  border: 1px solid black;
+  width: 500px;
+  margin: 0px auto 0px;
+  /* text-align: center; */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 50px black;
+}
