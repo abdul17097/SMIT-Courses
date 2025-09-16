@@ -1,0 +1,15 @@
+.grid_container {
+  height: 550px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: 2;
+  /* column-gap: 20px; */
+  row-gap: 20px;
+}
+
+.grid_item {
+  border: 1px solid black;
+  height: 100px;
+  /* width: 100px; */
+}

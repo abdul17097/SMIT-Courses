@@ -1,0 +1,63 @@
+.container {
+  border: 1px solid black;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  /* start | center | end | space-between | space-around | space-envenly */
+  /* justify-content: space-evenly; */
+  /* start | center | end | space-between */
+  /* align-items: center; */
+  gap: 10px;
+}
+
+.item {
+  width: 150px;
+  height: 80px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_2 {
+  border: 1px solid black;
+  display: flex;
+  height: 500px;
+  gap: 10px;
+  /* flex-wrap: wrap; */
+  /* use this if we have more then one row */
+  /* align-content: center; */
+  /* use this if we have single row */
+  /* align-items: center; */
+}
+.contianer_2_item {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.three {
+  /* align-self: center; */
+  order: 1;
+  /* flex-grow: 1; */
+  flex-shrink: 0;
+}
+.six {
+  order: 2;
+  /* flex-grow: 2; */
+}
+
+.seven {
+  order: 2;
+  /* flex-grow: 3; */
+}
+
+.nine {
+  order: 1;
+}
