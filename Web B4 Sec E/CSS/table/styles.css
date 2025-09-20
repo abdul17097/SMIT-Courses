@@ -1,0 +1,40 @@
+table,
+th,
+td {
+  /* border: 1px solid red; */
+  /* border-collapse: collapse; */
+  padding: 5px 10px;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: bold;
+  border-spacing: 2px 5px;
+}
+
+/* table {
+    border-radius: 10px;
+    } */
+
+td:hover {
+  border-radius: 10px;
+  background-color: lightcoral;
+}
+
+.even {
+  /* background-color: aqua; */
+}
+
+th,
+td {
+  empty-cells: show;
+  border: 1px solid red;
+  text-align: center;
+}
+
+.container {
+  font-size: 20px;
+  border: 10px solid rebeccapurple;
+}
+
+p {
+  border: inherit;
+}
