@@ -1,0 +1,29 @@
+.box_1 {
+  position: static;
+  top: 50px;
+  left: 100px;
+  background-color: red;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.box_2 {
+  /* position: relative;
+  right: 0px;
+  bottom: 50px; */
+  background-color: green;
+}
+
+.box_3 {
+  background-color: blue;
+  position: absolute;
+  top: 50px;
+  /* right: 50px; */
+}
+.box_4 {
+  background-color: gray;
+}

@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  position: sticky;
+  top: 0px;
+  left: 10px;
+  background-color: black;
+  color: wheat;
+}
+nav {
+  width: fit-content;
+  margin: auto;
+  border-bottom: 1px solid black;
+}
+
+nav ul li {
+  /* border: 1px solid black; */
+  display: inline-block;
+  margin: 0 20px;
+  padding: 3px 6px;
+}
+.movie {
+  position: relative;
+  left: 0;
+}
+
+.movie:hover .nested-list {
+  border: 1px solid black;
+  transform: scale(1);
+  transform-origin: top;
+}
+
+.nested-list li {
+  display: block;
+  border: 1px solid black;
+  width: 80px;
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.nested-list {
+  position: absolute;
+  left: 0;
+  transform: scale(0);
+}
