@@ -8,16 +8,60 @@
   </head>
   <body>
     <div class="grid_container">
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
-      <div class="grid_item"></div>
+      <div class="grid_item header"></div>
+      <div class="grid_item left-sidebar"></div>
+      <div class="grid_item body">
+        <div class="content">
+        </div>
+        <div class="content center-item">
+        </div>
+        <div class="content">
+        </div>
+      </div>
+      <div class="grid_item right-sidebar">asdfa</div>
+      <div class="grid_item footer">asdk</div>
     </div>
   </body>
 </html>
+
+
+<!-- fr (Fractional Unit)
+
+fr means a fraction of the available free space in the grid.
+
+The browser divides the extra space into fractions and assigns it. -->
+
+<!-- Property Meaning (Simple) Example
+display: grid; Turns element into grid display: grid;
+
+grid-template-columns Defines number & size of columns grid-template-columns: 100px 1fr 2fr;
+
+grid-template-rows Defines number & size of rows grid-template-rows: 100px auto;
+
+gap Space between rows & columns gap: 20px;
+
+row-gap Space between rows row-gap: 10px;
+
+column-gap Space between columns column-gap: 15px;
+
+justify-items Align items horizontally (inside each cell) start | center | end | stretch
+
+align-items Align items vertically (inside each cell) start | center | end | stretch
+
+place-items Shortcut → align-items + justify-items place-items: center;
+
+justify-content Moves the whole grid horizontally inside container start | center | end | space-between | space-aroundalign-content Moves the whole grid vertically inside container same values as justify-content
+
+■ 2. Grid Item Properties (Children)
+Property Meaning (Simple) Example
+
+grid-column How many columns an item spans grid-column: 1 / 3;
+
+grid-row How many rows an item spans grid-row: 2 / 4;
+
+grid-area Shorthand for row & column position grid-area: 1 / 2 / 3 / 4;
+
+justify-self Aligns single item horizontally justify-self: center;
+
+align-self Aligns single item vertically align-self: end;
+
