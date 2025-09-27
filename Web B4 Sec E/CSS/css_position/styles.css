@@ -1,7 +1,18 @@
+.container {
+  padding: 10px;
+  border: 1px solid black;
+  /* margin: 50px; */
+  position: relative;
+  height: 400px;
+}
+body {
+  padding: 50px;
+}
 .box_1 {
-  position: static;
-  top: 50px;
-  left: 100px;
+  position: fixed;
+  bottom: 50px;
+  border-radius: 50%;
+  right: 50px;
   background-color: red;
 }
 
@@ -9,21 +20,55 @@
   width: 100px;
   height: 100px;
   border: 1px solid black;
+  display: inline-block;
 }
 
 .box_2 {
-  /* position: relative;
-  right: 0px;
-  bottom: 50px; */
+  /* position: relative; */
+  /* top: 20px; */
+  /* left: 100px; */
+  /* bottom: 50px; */
   background-color: green;
+  /* position: absolute; */
 }
 
 .box_3 {
   background-color: blue;
-  position: absolute;
-  top: 50px;
+  position: relative;
+  z-index: 2;
+  /* top: 50px; */
   /* right: 50px; */
 }
 .box_4 {
   background-color: gray;
+}
+
+.container_2 {
+  border: 1px solid black;
+  width: 1000px;
+  height: 500px;
+  position: relative;
+  background-image: url("../images/dolomites-5076487_1280.jpg");
+}
+
+.des {
+  position: absolute;
+  width: 300px;
+  color: white;
+  top: 40%;
+  left: 40%;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  border: 1px solid black;
+  list-style: none;
+  padding: 10px 10px;
+  background-color: blue;
+  color: wheat;
+}
+.header li {
+  display: inline-block;
 }

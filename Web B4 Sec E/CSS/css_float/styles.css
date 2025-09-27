@@ -1,0 +1,25 @@
+img {
+  width: 400px;
+  height: 400px;
+  float: right;
+}
+
+.des_1 {
+  background-color: lightblue;
+  float: left;
+  width: 200px;
+  /* height: 100px; */
+}
+.des_2 {
+  background-color: lightgreen;
+  float: right;
+  width: 200px;
+  /* height: 100px; */
+}
+.des_3 {
+  background-color: lightcoral;
+  /* float: left; */
+  /* width: 200px; */
+  height: 50px;
+  clear: right;
+}
