@@ -1,0 +1,32 @@
+.container {
+  width: 1000px;
+  height: 500px;
+  border: 1px solid black;
+  background-image: url("../images/download\ \(1\).jfif");
+  background-repeat: repeat-y;
+  background-position: top right;
+  /* background-size: cover; */
+  background-attachment: scroll;
+}
+button {
+  width: 200px;
+  text-align: left;
+  padding-left: 10px;
+  height: 50px;
+  background-color: #9763f6;
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-image: url("../images/icons8-cart-50.png");
+  background-repeat: no-repeat;
+  background-position: right 30px center;
+}
+
+.container_2 {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  background-image: linear-gradient(#2a7b9b, #362657, #eddd53);
+}
