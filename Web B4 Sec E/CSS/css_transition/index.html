@@ -17,19 +17,31 @@
       transform: scale(1);
       transform: translateX(0px);
       /* transition-property: width, height, transform; */
-      transition: transform;
+      /* transition: transform; */
       transition-duration: 4s;
       /* transition-timing-function: ease; */
       transition-timing-function: ease-out;
       /* transition-timing-function: ease-in-out; */
     }
-    div:hover {
+    /* div:hover {
       /* transform: rotate(90deg);
       transform: scale(1.5); */
-      transform: translateX(400px);
+    /* transform: translateX(400px); */
+    /* } */
+    .container_2 {
+      width: 200px;
+      height: 200px;
+      background-color: rgb(75, 85, 88);
+      transition: all 2s ease-in-out;
+    }
+    .container_2:hover {
+      width: 400px;
+      height: 400px;
+      background-color: rgb(34, 197, 94);
     }
   </style>
   <body>
     <div class="container"></div>
+    <div class="container_2"></div>
   </body>
 </html>

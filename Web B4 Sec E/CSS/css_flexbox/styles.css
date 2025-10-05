@@ -1,0 +1,22 @@
+.container {
+  width: 700px;
+  height: 400px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  /* flex-direction: column-reverse; */
+  /* flex-direction: row-reverse; */
+  /* flex-wrap: wrap; */
+  /* justify-content: start; */
+  /* justify-content: end; */
+  /* justify-content: center; */
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  border: 2px solid red;
+}
