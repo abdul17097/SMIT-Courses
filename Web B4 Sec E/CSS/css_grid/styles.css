@@ -1,0 +1,37 @@
+.grid_container {
+  border: 1px solid black;
+  width: 70%;
+  height: 500px;
+  display: grid;
+  /* grid-template-columns: 200px 150px 1fr; */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; */
+  /* grid-template-columns: repeat(7, 1fr); */
+  /* grid-template-columns: repeat(3, 1fr) 200px; */
+  /* grid-template-columns: 150px repeat(3, 1fr) 200px; */
+  /* grid-template-columns: 1fr 50px repeat(3, 1fr) 200px; */
+  /* grid-template-columns: repeat(2, 1fr) 50px repeat(2, 1fr); */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  /* justify-content: center; */
+  /* justify-content: start; */
+  /* justify-content: end; */
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+  /* align-content: start; */
+  /* align-content: center; */
+  /* align-content: end; */
+  /* place-content: center; */
+}
+
+.grid_item {
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+}
+
+.item10 {
+  /* align-self: end | start | center; */
+  /* align-self: center; */
+  /* justify-self: center; */
+}
