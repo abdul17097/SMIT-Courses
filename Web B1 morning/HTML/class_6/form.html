@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- minlenght: minimum length -->
+    <!-- maxlenght: miximum length -->
+    <h1>HTML FORM</h1>
+    <form action="" method="post">
+      <label for="name">Name:</label><br />
+      <input
+        id="name"
+        required
+        minlength="5"
+        maxlength="8"
+        placeholder="Enter your name..."
+        type="text"
+      />
+      <br /><br />
+      <label for="email">Email:</label><br />
+      <input id="email" placeholder="Enter your email..." type="email" />
+      <br /><br />
+      <label>Password:</label><br />
+      <input
+        minlength="4"
+        maxlength="8"
+        placeholder="Enter your passowrd..."
+        type="password"
+      />
+      <br /><br />
+      <label>Gender</label><br />
+      <input type="radio" name="gender" value="male" /> Male
+      <input type="radio" name="gender" value="female" /> Female
+
+      <br /><br />
+      <label>Languages</label>
+      <br />
+      <input type="radio" name="language" value="English" /> English <br />
+      <input type="checkbox" name="language" value="Urdu" /> Urdu <br />
+      <input type="checkbox" name="language" value="Arabic" /> Arabic <br />
+      <input type="checkbox" name="language" value="other" /> other <br />
+      <input type="color" name="" id="" />
+      <input type="date" name="" id="" />
+      <label for="">Age:</label>
+      <input type="number" min="18" max="25" name="" id="" />
+      <br /><br />
+      <label for="">Cover Letter</label><br />
+      <textarea
+        placeholder="lkasjdflkj"
+        name="cover letter"
+        placeholder="Write your cover letter here..."
+        id=""
+        rows="10"
+        cols="60"
+      ></textarea>
+      <br /><br />
+      <label for="">Country</label><br />
+      <select name="country" multiple id="">
+        <option value="Pakistan">Pakistan</option>
+        <option selected value="Dubai">Dubai</option>
+        <option value="Turkey">Turkey</option>
+        <option selected value="China">China</option>
+      </select>
+
+      <!-- resume: resume.pdf -->
+      <!-- accept: .pdf | image/* | text/plain -->
+      <input type="file" accept="text/plain" name="resume" id="" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
+
+<!-- key: value -->
+<!-- gender=female -->
