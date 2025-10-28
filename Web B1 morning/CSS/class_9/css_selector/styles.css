@@ -1,0 +1,115 @@
+
+/* type selecotor */
+h1{
+    color: green
+}
+
+/* div{
+    width: 50%;
+    border: 1px solid black;
+    color: red;
+} */
+/* universal selector */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* last rule */
+.note{
+    border: 1px solid red;
+}
+
+.container{
+    border: 1px solid yellowgreen;
+}
+
+/* id selector */
+#child_1{
+    color: brown;
+}
+
+/* class selector */
+.child{
+    color: chocolate;
+}
+
+
+/* child selector */
+
+.section_1{
+    border: 1px solid red;
+}
+
+/* .section_1>p{
+    color: gray;
+} */
+
+/* section>p{
+    color: green;
+} */
+
+/* section>div{
+    color: blue;
+} */
+
+/* deScendant SeLector */
+
+/* .section_1 div{
+    color: brown;
+} */
+
+/* adjacent SIBLIng 
+SeLector */
+
+/* p + h2{
+    color: red;
+} */
+
+/* generaL SIBLIng 
+SeLector */
+
+/* p ~ h2{
+    color: red;
+
+} */
+
+
+/* .section_1, .section_2{
+    color: blueviolet;
+} */
+
+
+/* last rule */
+/* p{
+    background-color: red;
+}
+
+p{
+    background-color: blue;
+} */
+
+/* SpecIfIcIty */
+*{
+    color: pink;
+}
+
+/* #para{
+    color: brown;
+}
+
+p{
+    color: red;
+}
+
+.description{
+    color: green;
+}
+
+p{
+    color: blue;
+} */
+
+
