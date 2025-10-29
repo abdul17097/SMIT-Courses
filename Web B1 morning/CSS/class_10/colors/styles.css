@@ -1,0 +1,16 @@
+.container{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    /* Hexa-decimal code|color */
+    /* background-color: #58A5C7; */
+    /* rgb: red-green-blue */
+    /* background-color: rgb( 23 , 100, 90); */
+    /* rgba : red-green-blue-alpha */
+    /* background-color: rgba(23 , 100, 90, .3); */
+    
+    /* opacity: 1; */
+    
+    /* hsl(hue, saturation, lightness) */
+    /* background-color: hsl(120, 100%, 40%); */
+}
