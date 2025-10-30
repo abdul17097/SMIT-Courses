@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+      a:link {
+  color: gray;
+}
+
+a:hover::after {
+  content: " 🔗";
+}
+a:visited {
+  color: green;
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+a:active {
+  color: orange;
+}
+div[class~="highlight"] {
+  background: gold;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}
+p[lang|="en"] {
+  color: green;
+}
+a[href*="youtube"] {
+  color: red;
+}
+a[href^="https"] {
+  color: yellowgreen;
+}
+    </style>
+    <a href="">link</a>
+    <a href="/sd">link 2</a>
+    <div class="note highlight box"></div>
+    <p lang="en-hello-world">This is English text.</p>
+    <!-- <a href="https://www.youtube.com">YouTube Link</a> -->
+    <a href="https">google</a>
+</body>
+</html>

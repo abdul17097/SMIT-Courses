@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 20px;
+}
+
+
+body{
+    /* font-size: 20pt; */
+    font-size: 16px;
+}
+
+/* p{
+    font-size: .5em;
+} */
+
+p{
+    /* font-size: 2rem; */
+    /* font-size: 2em; */
+    font-size: 2em;
+}
+
+
+.container{
+    width: 100%;
+    height: 200px;
+    background-color: red;
+}
+
+.child{
+    width: 20%;
+    height: 50%;
+    background-color: yellow;
+}
+
+.main{
+    border: 1px solid black;
+    height: 50vh;
+    width: 100vw;
+}
