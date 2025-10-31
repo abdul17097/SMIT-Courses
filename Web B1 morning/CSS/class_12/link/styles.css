@@ -1,0 +1,44 @@
+/* .link_1:link{
+    color: red;
+} */
+
+/* .link_1:active{
+    color: brown;
+} */
+
+.link_1:visited{
+    color: chartreuse;
+}
+.link_2:visited{
+    color: rgb(32, 159, 218);
+}
+.link_4:active{
+    color: rgb(210, 145, 25);
+}
+.link_2:hover{
+    color: rgb(22, 142, 98);
+}
+
+a{
+    text-decoration: none;
+}
+
+.link_5:hover{
+    color: rgb(87, 85, 87);
+}
+.link_5:active{
+    background-color: red;
+}
+.link_5:visited{
+    background-color: rgb(103, 77, 77);
+
+}
+
+input{
+    /* border: none; */
+}
+
+input:focus{
+    /* border: none; */
+    outline: red solid .5px;
+}
