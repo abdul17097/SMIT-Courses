@@ -1,0 +1,38 @@
+/* Existance Selector */
+/* h1[class][id]{
+    color: blue;
+} */
+
+/* p[class][id]{
+    background-color: aqua;
+}    */
+
+/* Equality Selector */
+/* p[class="para"]{
+    font-size: 20px;
+} */
+
+/* space selector */
+/* p[class~="para"]{
+    color: rgb(11, 234, 11);
+} */
+
+/* prefix selector */
+
+/* p[class^="par"]{
+    font-weight: bold;
+} */
+
+/* suffix selector */
+/* p[class$="sc"]{
+    font-style: italic;
+} */
+
+/* substring selector */
+/* input[type*="ex"]{
+    border-radius: 50px;
+    } */
+    
+/* input[class*="tex"]{
+    border-radius: 50px;    
+} */
