@@ -1,0 +1,30 @@
+.link{
+    border: 1px solid #000;
+    width: 50px;
+    padding:5px ;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.link:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.section{
+    border: 1px solid #000;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.container{
+    border: 10px solid #000;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+}
