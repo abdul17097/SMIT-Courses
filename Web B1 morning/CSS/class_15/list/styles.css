@@ -1,0 +1,30 @@
+ul{
+    /* list-style-type: square; */
+    /* list-style-type: circle; */
+    list-style-type: disc; /* default */
+    /* background-color: lightgray; */
+    /* list-style-position: inside; */
+    list-style-position: outside; /* default */
+    margin: 0px;
+    /* list-style-image: url('../../images/arrow-up.png'); */
+    /* list-style: list-style-position list-style-type */
+    list-style: outside circle;
+}
+
+ul li{
+    background-color: orange;
+}
+
+ul li::before{
+    /* content: url('../../images/arrow-up.png'); */
+    /* width: 10px;
+    height: 10px; */
+    /* margin-top: 50px; */
+    border: 1px solid black;
+}
+ol{
+    /* list-style-type:lower-alpha;
+    list-style-type:upper-alpha;
+    list-style-type:upper-roman; */
+    list-style-type:lower-roman;
+}
