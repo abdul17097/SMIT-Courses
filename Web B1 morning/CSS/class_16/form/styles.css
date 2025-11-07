@@ -1,0 +1,121 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input[type="text"],[type="password"],[type="email"]{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: red;
+}
+
+
+
+input:focus{
+    outline: none;
+}
+
+label{
+    color: blue;
+} */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* input[type="text"],[type="password"],[type="email"],[type="submit"]{
+    padding: 5px 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+
+
+input[type="checkbox"]{
+    margin-bottom: 15px;
+}
+
+input:focus{
+    outline: none;
+}
+
+input[type="submit"]{
+    background-color: rgb(24, 146, 73);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+
+} */
+/* input[type="submit"]:hover{
+    background-color: rgb(18, 99, 50);
+    box-shadow: 5px 5px 5px #ccc;
+}
+p{
+    text-align: center;
+}
+
+form{
+    border: 1px solid #ccc;
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px 15px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #ccc;
+
+    
+} */
+
+fieldset{
+    border: 1px solid #ccc;
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+    padding: 30px 15px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #ccc;
+}
+legend{
+    font-weight: bold;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input{
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+input[type="submit"]{
+    background-color: rgb(24, 146, 73);
+    color: #fff;
+    border: none;
+    /* cursor: pointer; */
+    /* width: fit-content;   */
+
+}
+input[type="submit"]:hover{
+    background-color: rgb(18, 99, 50);
+    box-shadow: 5px 5px 5px #ccc;
+    /* cursor: pointer; */
+    /* cursor: wait; */
+    /* cursor: help; */
+    /* cursor: text; */
+    /* cursor: move; */
+    /* cursor: crosshair; */
+    /* cursor: default; */
+    /* cursor: auto; */
+    cursor: url("../../images/arrow-up.png"), auto;
+
+}

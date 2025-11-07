@@ -1,0 +1,25 @@
+.container{
+    width: 27%;
+    height: 500px;
+    border: 1px solid black;
+    /* background-image: url("../../images/monastery-9939590_1280.jpg"); */
+     /* default value * /
+    /* background-repeat: repeat; */
+    /* background-repeat: no-repeat; */
+    /* background-repeat: repeat-x; */
+    /* background-repeat: repeat-y; */
+    /* background-position: left; */
+    /* background-size: contain; */
+    /* background-size: cover; */
+    /* background-position: right center; */
+    /* background-position: left 300px bottom ; */
+    /* background-attachment: scroll ; */
+    /* background-attachment: fixed ; */
+    /* Background Gradient Color */
+    /* background-image: linear-gradient(to top, red, green, yellow, blue); */
+     background: linear-gradient(to right, #2c3e50, #3498db);
+     color: wheat;
+     /* opacity: .2; */
+     /* filter: blur(.5); */
+
+}
