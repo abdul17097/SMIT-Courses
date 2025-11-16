@@ -104,23 +104,39 @@ let kuchbi = "";
 kuchbi = "asdfasdf"
 console.log(typeof kuchbi);
 
-let student_details = [
-    {
-        id: Symbol("id"),
+// let student_details = [
+//     {
+//         id: Symbol("id"),
 
-    },
-    {
-        id: Symbol("id")
+//     },
+//     {
+//         id: Symbol("id")
 
-    },
-    {
-        id: Symbol("id")
+//     },
+//     {
+//         id: Symbol("id")
 
-    }
-]
+//     }
+// ]
 
-console.log(student_details);
+// console.log(student_details);
 
 
+
+
+let symbol_1 = Symbol();
+let symbol_2 = Symbol();
+console.log( symbol_1);
+console.log( symbol_2);
+
+let check = symbol_1 == symbol_2;
+console.log(check);
+
+let description_1 = "Lorem ipsum \"dolor sit amet consectetur adipisicing elit.";
+let description_2 = "Lorem ipsum \"dolor sit amet consectetur adipisicing elit.";
+console.log(description_1 + description_2);
+
+let name = "test 123";
+console.log("your name is " + name);
 
 
