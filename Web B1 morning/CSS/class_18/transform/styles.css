@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: bisque;
+  /* transform: translateX(-10px); */
+  /* transform: translateY(-10px); */
+  /* transform: translate(10px, -30px); */
+}
+
+.container_2 {
+  /* transform: scaleX(0.5); */
+  /* transform: scaleX(3); */
+  /* transform: scaleY(3); */
+  /* transform: scale(3, 2); */
+  color: wheat;
+  width: 200px;
+  height: 200px;
+  /* margin: auto; */
+  background-color: rgb(95, 73, 46);
+}
+
+.container_2:hover {
+  /* transform: rotate(90deg); */
+  transform: skewY(45deg);
+}

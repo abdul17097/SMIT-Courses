@@ -2,35 +2,35 @@
 /* value: relative | absolute | sticky | fixed | static */
 /* top | bottom  | left | right */
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-body{
-    /* padding-top: 50px; */
-}
-
-.box{
-    width: 200px;
-    height: 200px;
-    border: 1px solid;
-    display: inline-block;
+body {
+  /* padding-top: 50px; */
 }
 
-.container{
-    border: 2px solid;
-    height: 500px;
-    margin: 10px 0 0 10px;
-    position: relative;
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid;
+  display: inline-block;
 }
-.box_1{
-    /* position: relative;
+
+.container {
+  border: 2px solid;
+  height: 500px;
+  margin: 10px 0 0 10px;
+  position: relative;
+}
+.box_1 {
+  /* position: relative;
     top: 10px;
     left: 10px; */
-    /* bottom: 10px;
+  /* bottom: 10px;
     right: 10px; */
-    background-color: bisque;
+  background-color: bisque;
 }
 
 /* .box_4{
@@ -42,62 +42,46 @@ body{
     background-color: aqua;
 } */
 
-.whatsapp{
-    width: 100px;
-    height: 100px;
-    border: 1px solid;
-    font-size: 24px;
-    font-weight: bold;
-    box-shadow: 5px 5px 5px black;
-    border-radius: 50%;
-    background-color: lightgreen;
-    color: white;
-    text-align: center;
-    padding-top: 40px;
-    position: fixed;
-    right: 50px;
-    bottom: 50px;
+.whatsapp {
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 5px 5px 5px black;
+  border-radius: 50%;
+  background-color: lightgreen;
+  color: white;
+  text-align: center;
+  padding-top: 40px;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
 }
 
-ul{
-    border: 1px solid;
-    width: 100%;
-    padding: 20px 10px;
-    background-color: black;
-    color: white;
-    position: absolute;
-    right: 0;
+ul {
+  border: 1px solid;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  right: 0;
 }
-header{
-    position: sticky;
-    top: 50px;
-    /* z-index: 1; */
-    /* top: 0; */
+header {
+  position: sticky;
+  top: 50px;
+  /* z-index: 1; */
+  /* top: 0; */
 }
-li{
-    display: inline-block;
+li {
+  display: inline-block;
 }
-a{
-    color: white;
-}
-
-nav{
-    border: 1px solid blue;
-    position: relative;
+a {
+  color: white;
 }
 
-
-
-
-
-.container_1{
-    border: 1px solid;
-    height: 500px;
-    width: 100%;
-
-}
-.bbox{
-    border: 1px solid;
-    width: 100px;
-    height: 100px;
+nav {
+  border: 1px solid blue;
+  position: relative;
 }

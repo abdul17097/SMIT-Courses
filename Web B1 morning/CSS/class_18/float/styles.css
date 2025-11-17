@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  border-bottom: 1px solid;
+  padding: 20px 30px;
+}
+
+nav > a {
+  width: 100px;
+  height: 30px;
+  border: 1px solid;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+main {
+  height: 90vh;
+  width: 100%;
+}
+
+aside {
+  border-right: 1px solid;
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+
+main > div {
+  /* width: 80%; */
+  height: 100%;
+  padding: 20px;
+  /* float: right; */
+  border: 1px solid red;
+}
+
+footer {
+  border: 1px solid;
+}
+
+img {
+  /* float: right; */
+  float: left;
+  margin-right: 20px;
+}
+
+.first {
+  width: 20%;
+  background-color: red;
+  height: 100px;
+  float: left;
+}
+.second {
+  width: 60%;
+  background-color: green;
+  height: 100px;
+  float: left;
+}
+.third {
+  width: 20%;
+  background-color: blue;
+  height: 100px;
+  float: right;
+}
+.fourth {
+  width: 100%;
+  background-color: gold;
+  height: 100px;
+  clear: both;
+}
