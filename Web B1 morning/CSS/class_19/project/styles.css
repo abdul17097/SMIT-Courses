@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header {
+  border-bottom: 2px solid black;
+  /* background-color: black; */
+  /* color: white; */
+  padding: 30px 40px;
+}
+
+main {
+  width: 100%;
+  height: 80vh;
+}
+
+.left {
+  width: 20%;
+  /* border-right: 2px solid red; */
+  height: 100%;
+  float: left;
+  background-color: aqua;
+}
+
+.body {
+  width: 60%;
+  background-color: aliceblue;
+  height: 100%;
+  border: 2px solid;
+  float: left;
+}
+
+.right {
+  width: 20%;
+  /* border-left: 2px solid red; */
+  height: 100%;
+  background-color: aqua;
+  float: left;
+}
+
+footer {
+  width: 100%;
+  border: 2px solid;
+  padding: 30px 40px;
+}
