@@ -1,0 +1,37 @@
+body {
+  background-color: red;
+}
+
+/* large screen */
+@media screen and (min-width: 1400px) {
+  body {
+    background-color: blue;
+  }
+}
+/* laptop */
+@media screen and (min-width: 1024px) and (max-width: 1400px) {
+  body {
+    background-color: blueviolet;
+  }
+}
+
+/* small laptop */
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    background-color: pink;
+  }
+}
+/* tablet */
+@media screen and (min-width: 600px) and (max-width: 767px) {
+  body {
+    background-color: green;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 599px) {
+  body {
+    background-color: aqua;
+  }
+}
