@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 40vh;
+        display: flex;
+      }
+      .left {
+        width: 20%;
+        height: 100%;
+
+        background-color: red;
+      }
+      .right {
+        height: 100%;
+        width: 20%;
+        background-color: green;
+      }
+      .body {
+        height: 100%;
+        width: 60%;
+        background-color: gray;
+      }
+      @media screen and (min-width: 600px) and (max-width: 768px) {
+        .left {
+          width: 50%;
+        }
+        .right {
+          width: 50%;
+          float: left;
+        }
+        .body {
+          clear: both;
+          width: 100%;
+          order: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left"></div>
+      <div class="body"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>
