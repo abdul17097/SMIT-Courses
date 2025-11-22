@@ -9,7 +9,7 @@
 // console.log(typeof names[5]);
 // console.log(studentName[5]);
 
-const fruits = ["banana", "apple", "orange", "mango", true, 123];
+// const fruits = ["banana", "apple", "orange", "mango", true, 123];
 
 // console.log("Fruits:" + fruits);
 // fruits[1] = "peach";
@@ -67,7 +67,33 @@ console.log("Array Methods");
 // fruits.slice(1,4):
 // 1 is inculeded
 // 4 is excluded
-console.log(fruits);
+// console.log(fruits);
 
+// console.log(c);
+// var c;
+// c = 11;
+// console.log(c);
+
+// let a = 10;
+// let b = a; // store value
+// b = 12;
+// console.log(a);
+// console.log(b);
+
+// const list_1 = [1, 4, 6, 4];
+// const list_2 = list_1;
+// list_2[1] = 3;
+// console.log(list_1);
+
+// console.log(list_1);
+
+// Splice Method
 // console.log(fruits.sort());
-console.log(fruits.reverse());
+// console.log(fruits.reverse());
+const fruits = ["banana", "apple", "orange", "mango", true, 123];
+// console.log(fruits.length);
+
+// fruits[1] = "kuch bi";
+// fruits.splice(start, deletecount, end)
+fruits.splice(3, 2, "kuch bi");
+console.log(fruits);
