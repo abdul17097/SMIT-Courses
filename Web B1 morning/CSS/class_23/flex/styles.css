@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  height: 50vh;
+  width: 100vw;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  background-color: #f0f0f0;
+}
+
+.child {
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-size: 1.5rem;
+  height: 100px;
+  flex-basis: 100px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.child_2 {
+  /* flex-shrink: 0; */
+  /* order: 1; */
+  flex-grow: 1;
+}
+.child_3 {
+  flex-grow: 3;
+  /* order: 2; */
+}
