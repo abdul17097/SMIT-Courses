@@ -1,0 +1,212 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.topsection {
+  background-image: url("images/topbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* backdrop-filter: blur(10px); */
+}
+
+/* Header Section Start */
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 1px solid; */
+  /* background-color: black; */
+  color: wheat;
+  padding: 7px 0;
+}
+
+.navitems ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.toggle {
+  display: none;
+}
+.navitems > ul > li > a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+.rightButtons {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.rightButtons img {
+  /* border: 1px solid white; */
+  height: 30px;
+  width: 30px;
+}
+.rightButtons button {
+  padding: 7px 15px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+/* Header Section End */
+/* Hero Section start */
+.hero {
+  height: 500px;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+}
+.hero > h1 {
+  text-transform: uppercase;
+}
+.hero > p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.hero > button {
+  background-color: white;
+  padding: 10px 20px;
+  text-transform: capitalize;
+}
+/* Hero Section End */
+
+/* Blog section start */
+.blogs {
+  margin-bottom: 100px;
+}
+.bloglist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 50px 60px;
+}
+
+.blogcard {
+  /* max-width: 30%; */
+  /* border: 1px solid; */
+  transition: transform 1s;
+}
+.blogcard:hover {
+  transform: scale(1.02);
+}
+
+.cardheader {
+  position: relative;
+}
+.cardgroupbtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+.gallaryicon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.cardgroupbtn button {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+}
+.cardheader > img {
+  width: 100%;
+}
+
+.cardbody {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.cardbody > h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+.userdetail > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.userdetail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Blog section end */
+/* TravalBanner section start */
+.travalbanner {
+  background-image: url("images/topbg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin: 50px 50px;
+}
+.badge {
+  display: block;
+  padding: 10px 14px;
+  backdrop-filter: blur(10);
+}
+.mobilenav {
+  display: none;
+}
+
+/* TravalBanner section end */
+
+@media screen and (max-width: 600px) {
+  .header {
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: relative;
+  }
+  .toggle {
+    display: flex;
+  }
+  .navitems {
+    display: none;
+  }
+
+  .bloglist {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .logo > img {
+    width: 50%;
+    height: 30px;
+  }
+  #toogle {
+    display: none;
+  }
+  .mobilenav {
+    position: absolute;
+    width: 100%;
+    gap: 10px;
+    /* display: flex; */
+    flex-direction: column;
+    background-color: wheat;
+    top: 50px;
+  }
+
+  #toogle:checked + label + ul {
+    display: flex;
+  }
+}
