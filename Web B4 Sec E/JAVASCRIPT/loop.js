@@ -137,16 +137,47 @@
 // for (key in object) {
 //     // code block
 // }
-const person = {
-  name: "John",
-  age: 30,
-  city: "New York",
-};
+// const person = {
+//   name: "John",
+//   age: 30,
+//   city: "New York",
+// };
 
 // console.log(person.name);
 
-for (let key in person) {
-  console.log(key + ": " + person[key]);
-}
+// for (let key in person) {
+//   console.log(key + ": " + person[key]);
+// }
 
 // console.log(name + ":" + perseon[name]);
+
+// for of loop
+const colors = ["red", "green", "blue"];
+const numbers = [1, 2, 3, 4, 5];
+
+let sum = 0;
+// sum = 1
+// sum = 3
+// sum = 5
+// sum = 9
+// sum = 14
+
+for (let number of numbers) {
+  // sum = 0 + 1
+  // sum = 1 + 2
+  // sum = 3 + 3
+  // sum = 6 + 4
+  // sum = 10 + 5
+  sum = sum + number;
+}
+
+console.log(sum);
+
+// for (let color of colors) {
+//   console.log("color: " + color);
+// }
+
+let name = "John";
+for (let char of name) {
+  console.log(char);
+}
