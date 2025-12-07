@@ -114,5 +114,8 @@ class Car {
 // min + Math.floor(Math.random() * (max - min + 1))
 // FORMULA 4: Random integer from 0 to n (0 inclusive, n exclusive)
 // Math.floor(Math.random() * n)
-console.log(Math.random());
-console.log(Math.floor(Math.random() * 10));
+// console.log(Math.random());
+// console.log(Math.floor(Math.random() * 10));
+
+// 10 to 20
+// console.log(Math.floor(10 + Math.random() * (20 - 10)));
