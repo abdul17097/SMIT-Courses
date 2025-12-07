@@ -101,6 +101,18 @@ class Car {
 // carObject.carModel();
 
 // Math.random()
+// =========================================
+// FORMULAS: Random numbers from a specific range
+// =========================================
 
+// FORMULA 1: Random float in range [min, max)
+// min + Math.random() * (max - min)
+
+// FORMULA 2: Random integer in range [min, max) (max exclusive)
+// Math.floor(min + Math.random() * (max - min))
+// FORMULA 3: Random integer in range [min, max] (both inclusive)
+// min + Math.floor(Math.random() * (max - min + 1))
+// FORMULA 4: Random integer from 0 to n (0 inclusive, n exclusive)
+// Math.floor(Math.random() * n)
 console.log(Math.random());
 console.log(Math.floor(Math.random() * 10));
