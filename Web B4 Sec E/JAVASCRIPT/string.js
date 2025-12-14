@@ -47,4 +47,16 @@ let fullName = firstName.concat(lastName);
 // console.log(newText);
 
 let text = "The rain in SPAIN stays mainly in the plain";
-console.log(text.match("ain"));
+// console.log(text.match("ain"));
+
+// let array1 = text.split("").reverse();
+// let finalReverseString = array1.join("");
+// console.log(finalReverseString);
+let array2 = ["hello", "world"];
+console.log(array2);
+
+console.log(array2.join(" "));
+// abdul@gmail.com
+let email = "abdul@gmail.com";
+let userName = email.split("@");
+console.log(userName[0]);
