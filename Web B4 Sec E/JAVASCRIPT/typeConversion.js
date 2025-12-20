@@ -17,3 +17,11 @@ console.log(typeof d);
 let DateInNum = Number(d);
 console.log(typeof DateInNum);
 console.log(DateInNum);
+
+let a = -1;
+console.log(typeof a);
+console.log(Boolean(a));
+
+let b = false;
+console.log(typeof b);
+console.log(Number(b));

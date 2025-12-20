@@ -9,7 +9,7 @@ console.log(hours, ":", min, ":", second);
 let date = currentDate.getDate();
 let year = currentDate.getFullYear();
 let month = currentDate.getMonth();
-// console.log(day, year, month + 1);
+console.log(day, year, month + 1);
 // Templete Literal
 console.log(`${date}-${month + 1}-${year}`);
 
