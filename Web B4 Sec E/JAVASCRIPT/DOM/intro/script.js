@@ -22,5 +22,11 @@
 // para[1].style.color = "red";
 // console.log(para[1]);
 
-let para = document.querySelectorAll("p[id]");
-console.log(para[0]);
+// let para = document.querySelectorAll("p[id]");
+// console.log(para[0]);
+
+let para = document.getElementById("para");
+// console.dir(para.className);
+// console.log(para.innerHTML);
+// console.log(para.innerText);
+console.log(para.textContent);
