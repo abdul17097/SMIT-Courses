@@ -6,8 +6,23 @@
     <title>Document</title>
     <script async src="script.js"></script>
   </head>
+  <style>
+    .show {
+      display: block;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
   <body>
     <!-- <div onclick="alert('lkasjdfl')">Don't touch me!</div> -->
-    <div onclick="displayMessage()">Don't touch me!</div>
+    <!-- <div onclick="displayMessage()">Don't touch me!</div> -->
+    <!-- <div id="divElement"  onclick="applyBackgroundColor(this)">
+      Apply BG color
+    </div> -->
+
+    <p id="paraId" class="para hide">Lorem ipsum dolor sit amet.</p>
+
+    <button onclick="toggle()">Toogle</button>
   </body>
 </html>
