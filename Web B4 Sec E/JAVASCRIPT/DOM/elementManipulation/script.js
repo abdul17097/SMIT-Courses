@@ -37,3 +37,28 @@ document.getElementById("addItemBtn").addEventListener("click", () => {
     document.getElementById("error").style.display = "block";
   }
 });
+
+let paraent1 = document.getElementById("paraent1");
+let newPara = document.createElement("p");
+let textNode = document.createTextNode("This is new Para");
+newPara.appendChild(textNode);
+
+let para3 = document.getElementById("para3");
+
+// creating new Element
+paraent1.insertBefore(newPara, para3);
+// paraent1.appendChild(newPara);
+
+// Remove child
+// paraent1.removeChild(para3);
+
+// Replace child
+// paraent1.replaceChild(newPara, para3);
+
+// const para = document.createElement("p");
+// const node = document.createTextNode("This is new.");
+// para.appendChild(node);
+
+// const parent = document.getElementById("div1");
+// const child = document.getElementById("p1");
+// parent.replaceChild(para, child);
