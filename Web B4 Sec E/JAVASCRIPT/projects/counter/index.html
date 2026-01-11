@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Counter App UI</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .counter-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        padding: 40px 50px;
+        width: 320px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .title {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+      }
+
+      .counter-value {
+        font-size: 64px;
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.25);
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        background: rgba(255, 255, 255, 0.4);
+        transform: translateY(-3px);
+      }
+
+      .btn:active {
+        transform: scale(0.95);
+      }
+    </style>
+    <script async src="script.js"></script>
+  </head>
+  <body>
+    <div class="counter-card">
+      <div class="title">Counter App</div>
+      <div class="counter-value" id="count">0</div>
+      <div class="buttons">
+        <button id="decrement" class="btn">−</button>
+        <button id="increment" class="btn">+</button>
+      </div>
+    </div>
+  </body>
+</html>
