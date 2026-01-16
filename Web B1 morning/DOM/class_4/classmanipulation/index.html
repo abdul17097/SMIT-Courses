@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" async></script>
+    <style>
+      .container {
+        width: 200px;
+        height: 200px;
+        background-color: lightgray;
+      }
+      .box {
+        width: 400px;
+        height: 400px;
+        background-color: lightblue;
+      }
+      .box2 {
+        border: 5px solid red;
+      }
+      .block {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        /* display: none; */
+      }
+
+      .dark-mode {
+        background-color: black;
+        color: white;
+      }
+      .light-mode {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body class="light-mode">
+    <div id="parentEle" class="container box2"></div>
+    <button onclick="addClass()">Add Box Class</button>
+    <button onclick="removeClass()">Remove Box Class</button>
+
+    <div id="toggle" class="block"></div>
+    <button onclick="toggleClass()">Toggle</button>
+
+    <button id="changeModeBtn" onclick="changeMode()">Dark Mode</button>
+  </body>
+</html>
