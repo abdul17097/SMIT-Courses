@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script async src="script.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #todoContainer {
+        margin: auto;
+        width: 400px;
+        padding: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid;
+        box-shadow: 2px 2px 10px black;
+      }
+      #todoList {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        list-style: none;
+      }
+      .listItem {
+        border: 1px solid;
+        padding: 5px 10px;
+        border-radius: 10px;
+        width: 100%;
+      }
+      .inputSection {
+        display: flex;
+        border: 1px solid;
+        width: 100%;
+        border-radius: 10px;
+      }
+      .inputSection input {
+        width: 80%;
+        padding: 5px;
+        /* border: none; */
+
+        border-radius: 5px 0px 0px 5px;
+      }
+      .inputSection button {
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="todoContainer">
+      <h1>Todo List</h1>
+      <div class="inputSection">
+        <input id="inputField" type="text" />
+        <button onclick="addItem()">Add Item</button>
+      </div>
+      <ul id="todoList">
+        <li class="listItem">asdf</li>
+        <li class="listItem">asdf</li>
+        <li class="listItem">asdf</li>
+      </ul>
+    </div>
+  </body>
+</html>

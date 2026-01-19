@@ -22,7 +22,7 @@ let changeModeBtn = document.getElementById("changeModeBtn");
 function changeMode() {
   let body = document.body;
   let isLight = body.classList.contains("light-mode");
-  if (isLight == true) {
+  if (isLight) {
     changeModeBtn.innerText = "Light Mode";
     body.classList.add("dark-mode");
     body.classList.remove("light-mode");
