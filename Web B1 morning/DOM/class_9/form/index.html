@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Admission Form</title>
+    <script src="script.js" async></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../images/icons8-facebook-50.png"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-container {
+        background: #fff;
+        padding: 30px;
+        width: 420px;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      label {
+        font-weight: 500;
+        display: block;
+        margin-top: 12px;
+        color: #444;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #667eea;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      .gender {
+        display: flex;
+        gap: 15px;
+        margin-top: 8px;
+      }
+
+      .gender input {
+        width: auto;
+      }
+
+      .checkbox {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+      }
+
+      .checkbox input {
+        width: auto;
+        margin-right: 10px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        background: #667eea;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #5a67d8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Student Admission Form</h2>
+
+      <form id="admissionForm">
+        <label>First Name</label>
+        <input type="text" name="fname" />
+
+        <label>Phone Number</label>
+        <input type="tel" name="phone" />
+
+        <label>Age</label>
+        <input type="number" name="age" />
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob" />
+
+        <label>Profile Image</label>
+        <input type="file" name="profile" accept="image/*" />
+
+        <label>Gender</label>
+        <div class="gender">
+          <label><input type="radio" name="gender" /> Male</label>
+          <label><input type="radio" name="gender" /> Female</label>
+          <label><input type="radio" name="gender" /> Other</label>
+        </div>
+
+        <label>Address</label>
+        <textarea name="address" rows="3"></textarea>
+
+        <label>Upload CV</label>
+        <input type="file" name="cv" />
+
+        <label>City</label>
+        <select name="city">
+          <option>Select City</option>
+          <option>New York</option>
+          <option>London</option>
+          <option>Delhi</option>
+          <option>Sydney</option>
+        </select>
+
+        <div class="checkbox">
+          <input type="checkbox" name="confirmation" />
+          <span>I hereby confirm that the above information is correct</span>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
