@@ -21,11 +21,18 @@
 //     console.log(err);
 //   });
 
-fetch("https://fakestoreapi.com/products")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.log("error hai bhai", err);
-  });
+// fetch("https://fakestoreapi.com/products")
+//   .then((res) => res.json())
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log("error hai bhai", err);
+//   });
+
+async function getData() {
+  let response = await fetch("https://fakestoreapi.com/products");
+  let data = await response.json();
+  console.log(data);
+}
+getData();
