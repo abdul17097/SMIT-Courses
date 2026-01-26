@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Listing</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" async></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">
+        <img src="https://via.placeholder.com/40" alt="Logo" />
+        <span>MyShop</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="add-product-btn">+ Add Product</button>
+
+        <div class="cart">
+          🛒
+          <span class="cart-count">3</span>
+        </div>
+      </div>
+    </header>
+    <div class="form-container">
+      <h2>Add Product</h2>
+      <form id="product_form">
+        <label>Image URL</label>
+        <input type="text" name="product_url" placeholder="Paste image URL" />
+
+        <label>Product Title</label>
+        <input name="title" type="text" placeholder="Enter product title" />
+
+        <label>Description</label>
+        <textarea
+          name="desc"
+          placeholder="Enter product description"
+        ></textarea>
+
+        <label>Price</label>
+        <input name="price" type="number" placeholder="Enter price" />
+
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+    <h1>Our Products</h1>
+
+    <div id="product_list" class="product-container"></div>
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay" id="cartModal">
+      <div class="cart-modal">
+        <div class="cart-header">
+          <h2>Your Cart</h2>
+          <button class="close-btn" onclick="toggleCart()">✖</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+          <!-- Cart Item -->
+          <div class="cart-item" data-price="29.99">
+            <img src="https://via.placeholder.com/80" alt="Product" />
+            <div class="item-details">
+              <h4>Product One</h4>
+              <p>$29.99</p>
+              <div class="quantity-control">
+                <button onclick="decrement(this)">−</button>
+                <span class="qty">1</span>
+                <button onclick="increment(this)">+</button>
+              </div>
+            </div>
+            <button class="remove-btn" onclick="removeItem(this)">
+              Remove
+            </button>
+          </div>
+
+          <div class="cart-item" data-price="39.99">
+            <img src="https://via.placeholder.com/80" alt="Product" />
+            <div class="item-details">
+              <h4>Product Two</h4>
+              <p>$39.99</p>
+              <div class="quantity-control">
+                <button onclick="decrement(this)">−</button>
+                <span class="qty">1</span>
+                <button onclick="increment(this)">+</button>
+              </div>
+            </div>
+            <button class="remove-btn" onclick="removeItem(this)">
+              Remove
+            </button>
+          </div>
+        </div>
+
+        <div class="cart-footer">
+          <h3>Total: $<span id="cartTotal">69.98</span></h3>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
