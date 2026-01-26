@@ -2,7 +2,7 @@ let cityInput = document.getElementById("city-input");
 
 async function getWeather() {
   let response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=af9e17959ccd65ee0ea00d9fae75dd18&units=metric`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=api_key&units=metric`,
   );
 
   let data = await response.json();
