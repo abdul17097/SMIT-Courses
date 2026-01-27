@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="script.js" async></script>
+    <style>
+      .notify {
+        border-left: 2px solid gold;
+        padding: 10px 30px;
+        border-radius: 10px;
+        display: none;
+        box-shadow: 1px 1px 5px gray;
+        width: fit-content;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="showNotification()">Show Notification</button>
+    <div id="notify" class="notify">
+      <span style="cursor: pointer" onclick="removeNotification()">❌</span>
+      Break kebad Juldi aya kare!
+    </div>
+    <div id="clock" class="clock"></div>
+    <button id="stopAlert" onclick="stopAlert()">Stop Alert</button>
+    <button id="stopTime" onclick="stopTime()">Stop Time</button>
+  </body>
+</html>
