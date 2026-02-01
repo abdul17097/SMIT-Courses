@@ -1,4 +1,6 @@
 let a: number = 5;
+
+a = true;
 console.log(a);
 
 let test: string = "Test Name";
@@ -29,4 +31,5 @@ let abc: any = "asdklfj";
 // console.log(userDetails.name);
 
 let cba: number;
+
 export {};
