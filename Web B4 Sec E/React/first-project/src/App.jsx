@@ -3,6 +3,7 @@ import { Counter } from "./components/Counter";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   const user = {
@@ -19,7 +20,8 @@ const App = () => {
 
       <div>hello world</div>
       <Footer /> */}
-      <Counter />
+      {/* <Counter /> */}
+      <Navbar />
     </div>
   );
 };
