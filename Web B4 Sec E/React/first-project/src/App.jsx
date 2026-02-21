@@ -4,6 +4,8 @@ import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import UserForm from "./components/UserForm";
+import Users from "./components/Users";
 
 const App = () => {
   const user = {
@@ -21,7 +23,9 @@ const App = () => {
       <div>hello world</div>
       <Footer /> */}
       {/* <Counter /> */}
-      <Navbar />
+      {/* <Navbar /> */}
+      <Users />
+      {/* <UserForm /> */}
     </div>
   );
 };
