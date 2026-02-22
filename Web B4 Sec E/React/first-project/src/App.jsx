@@ -1,9 +1,12 @@
+import AdvancedForm from "./components/AdvancedForm";
 import Category from "./components/Category";
 import { Counter } from "./components/Counter";
 import Footer from "./components/Footer";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero";
+import IntermadiateForm from "./components/IntermadiateForm";
 import Navbar from "./components/Navbar";
+import ProductForm from "./components/ProductForm";
 import UserForm from "./components/UserForm";
 import Users from "./components/Users";
 
@@ -24,8 +27,11 @@ const App = () => {
       <Footer /> */}
       {/* <Counter /> */}
       {/* <Navbar /> */}
-      <Users />
+      {/* <Users /> */}
       {/* <UserForm /> */}
+      {/* <ProductForm /> */}
+      {/* <IntermadiateForm /> */}
+      <AdvancedForm />
     </div>
   );
 };
