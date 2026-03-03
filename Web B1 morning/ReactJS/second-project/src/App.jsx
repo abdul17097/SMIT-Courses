@@ -3,7 +3,9 @@ import Counter from "./components/Counter";
 import DashboardLayout from "./components/DashboardLayout";
 import DisplayName from "./components/DisplayName";
 import ProductDetial from "./components/ProductDetial";
+import Products from "./components/Products";
 import UserDetail from "./components/UserDetail";
+import Users from "./components/Users";
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
     //   <UserDetail />
     // </div>
     <div className="">
-      <Counter />
+      {/* <Counter /> */}
+      {/* <Users /> */}
+      <Products />
     </div>
   );
 }
