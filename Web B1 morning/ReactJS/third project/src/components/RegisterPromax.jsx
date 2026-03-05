@@ -10,7 +10,10 @@ const RegisterPromax = () => {
 
   let handleSignup = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    if (formData.name.length > 0) {
+      console.log(formData);
+    }
   };
 
   let handleChange = (e) => {
