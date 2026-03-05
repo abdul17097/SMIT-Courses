@@ -3,6 +3,10 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Search from "./components/Search";
+import Todo from "./components/Todo";
+import LoginForm from "./components/LoginForm";
+import LoginPro from "./components/LoginPro";
+import RegisterPromax from "./components/RegisterPromax";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,7 +27,11 @@ function App() {
       {/* <h2>Count: {count}</h2> */}
       {/* <button onClick={() => setCount(count + 1)}>Increment</button> */}
       {/* <button onClick={() => handleIncByFive(5)}>Increment by 5</button> */}
-      <Search />
+      {/* <Search /> */}
+      {/* <Todo /> */}
+      {/* <LoginForm /> */}
+      {/* <LoginPro /> */}
+      <RegisterPromax />
     </>
   );
 }
