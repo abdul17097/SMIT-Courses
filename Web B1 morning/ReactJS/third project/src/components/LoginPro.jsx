@@ -5,6 +5,7 @@ const LoginPro = () => {
     email: "",
     password: "",
   });
+
   let handleSignup = (e) => {
     e.preventDefault();
     console.log(formData);

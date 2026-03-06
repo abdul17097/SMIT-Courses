@@ -7,6 +7,8 @@ import Todo from "./components/Todo";
 import LoginForm from "./components/LoginForm";
 import LoginPro from "./components/LoginPro";
 import RegisterPromax from "./components/RegisterPromax";
+import Signup from "./components/Signup";
+import SignupPro from "./components/SignupPro";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,7 +33,9 @@ function App() {
       {/* <Todo /> */}
       {/* <LoginForm /> */}
       {/* <LoginPro /> */}
-      <RegisterPromax />
+      {/* <RegisterPromax /> */}
+      {/* <Signup /> */}
+      <SignupPro />
     </>
   );
 }
