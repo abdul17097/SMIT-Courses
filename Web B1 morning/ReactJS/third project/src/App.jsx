@@ -9,6 +9,8 @@ import LoginPro from "./components/LoginPro";
 import RegisterPromax from "./components/RegisterPromax";
 import Signup from "./components/Signup";
 import SignupPro from "./components/SignupPro";
+import EmployeeRegisterForm from "./components/EmployeeRegisterForm";
+import EmployeeRegisterFormPro from "./components/EmployeeRegisterFormPro";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,7 +37,9 @@ function App() {
       {/* <LoginPro /> */}
       {/* <RegisterPromax /> */}
       {/* <Signup /> */}
-      <SignupPro />
+      {/* <SignupPro /> */}
+      {/* <EmployeeRegisterForm /> */}
+      <EmployeeRegisterFormPro />
     </>
   );
 }
