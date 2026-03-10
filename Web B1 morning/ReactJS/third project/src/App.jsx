@@ -11,6 +11,7 @@ import Signup from "./components/Signup";
 import SignupPro from "./components/SignupPro";
 import EmployeeRegisterForm from "./components/EmployeeRegisterForm";
 import EmployeeRegisterFormPro from "./components/EmployeeRegisterFormPro";
+import Books from "./components/Books";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -39,7 +40,8 @@ function App() {
       {/* <Signup /> */}
       {/* <SignupPro /> */}
       {/* <EmployeeRegisterForm /> */}
-      <EmployeeRegisterFormPro />
+      {/* <EmployeeRegisterFormPro /> */}
+      <Books />
     </>
   );
 }
