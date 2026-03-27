@@ -3,50 +3,62 @@ import "./App.css";
 import FirstForm from "./components/FirstForm";
 import SecondForm from "./components/SecondForm";
 import ThirdForm from "./components/ThirdForm";
+import Post from "./components/Post";
+import SearchInput from "./components/SearchInput";
+import SearchButton from "./components/SearchButton";
 
 function App() {
-  const [names, setNames] = useState(["Alice", "Bob", "Charlie"]);
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      title: "title 1",
-      description: "description 1",
-      stock: 0,
-    },
-    {
-      id: 2,
-      title: "title 2",
-      description: "description 2",
-      stock: 3,
-    },
-    {
-      id: 3,
-      title: "title 3",
-      description: "description 3",
-      stock: 2,
-    },
-    {
-      id: 4,
-      title: "title 4",
-      description: "description 4",
-      stock: 0,
-    },
-    {
-      id: 5,
-      title: "title 5",
-      description: "description 5",
-      stock: 1,
-    },
-  ]);
+  const [searchQuery, setSearchQuery] = useState("");
+  // const [names, setNames] = useState(["Alice", "Bob", "Charlie"]);
+  // const [products, setProducts] = useState([
+  //   {
+  //     id: 1,
+  //     title: "title 1",
+  //     description: "description 1",
+  //     stock: 0,
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "title 2",
+  //     description: "description 2",
+  //     stock: 3,
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "title 3",
+  //     description: "description 3",
+  //     stock: 2,
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "title 4",
+  //     description: "description 4",
+  //     stock: 0,
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "title 5",
+  //     description: "description 5",
+  //     stock: 1,
+  //   },
+  // ]);
 
-  let filterProduct = products.filter(({ stock }) => stock > 0);
-  console.log(filterProduct);
+  // let filterProduct = products.filter(({ stock }) => stock > 0);
+  // console.log(filterProduct);
+
+  function showOutput() {
+    console.log(searchQuery);
+    console.log("searchQuery");
+  }
 
   return (
     <>
+      <SearchInput setSearchQuery={setSearchQuery} />
+      <SearchButton handleSearch={showOutput} />
+      {/* <Post /> */}
       {/* <FirstForm /> */}
       {/* <SecondForm /> */}
-      <ThirdForm />
+      {/* <ThirdForm /> */}
       {/* <h2>All Students</h2>
       <ul>
         {names.map((item, index) => {
@@ -54,7 +66,7 @@ function App() {
         })}
       </ul> */}
 
-      <h3>Products</h3>
+      {/* <h3>Products</h3> */}
       {/* <ol className="flex flex-col gap-5">
         {products.map(({ title, description, stock }) => (
           <li className="border ">
