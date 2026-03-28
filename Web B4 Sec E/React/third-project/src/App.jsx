@@ -10,6 +10,8 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import Product from "./pages/Product";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +25,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/products" element={<Product />} />
+        <Route path="/product-details/:id" element={<ProductDetails />} />
       </Routes>
     </React.Fragment>
   );

@@ -19,4 +19,9 @@ export const links = [
     link: "/projects",
     navTitle: "Projects",
   },
+  {
+    id: 5,
+    link: "/products",
+    navTitle: "Products",
+  },
 ];
