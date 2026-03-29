@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { links } from "../constants/navlinks";
+import { ProductContext } from "../contexts/ProductContext";
 
 const Navabar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { setCount, count } = useContext(ProductContext);
   return (
     <nav className="flex justify-between items-center py-2 px-2 lg:px-5 border-b">
       {/* Desktop */}
@@ -50,6 +52,7 @@ const Navabar = () => {
       >
         Contact Us
       </NavLink>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
       {/* Mobile */}
       <ul
         className={`${isMenuOpen ? "flex" : "hidden"} flex-col w-[60%] lg:hidden fixed bg-white border top-0 left-0 h-screen gap-3 font-semibold z-20`}
