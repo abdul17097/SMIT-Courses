@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import "./App.css";
 import DashboardLayout from "./components/DashboardLayout";
 import { Route, Routes } from "react-router-dom";
@@ -11,13 +11,36 @@ import Exports from "./pages/Exports";
 import Settings from "./pages/Settings";
 import UserDetail from "./pages/UserDetail";
 import NotFound from "./pages/NotFound";
+import Child from "./components/Child";
+import Counter from "./components/Counter";
 
 function App() {
   const [count, setCount] = useState(0);
+  const [name, setName] = useState("khalid");
+
+  const updatedCount = useMemo(() => {
+    console.log("UpdatedCount");
+
+    return count * 2;
+  }, [count]);
+
+  const handleClick = useCallback(() => {
+    console.log("Button Clicked");
+  }, [name]);
 
   return (
     <div className="">
-      <Routes>
+      <Counter />
+      {/* <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <br />
+      <button>Double Count {updatedCount}</button> */}
+
+      {/* <Child name={name} /> */}
+      {/* <Child handleClick={handleClick} /> */}
+      <br />
+      {/* <button onClick={() => setName("Alice")}>Change Name {name}</button> */}
+      {/* <Routes>
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/reports" element={<Reports />} />
@@ -29,7 +52,7 @@ function App() {
           <Route path="/user-details/:id" element={<UserDetail />} />
         </Route>
         <Route path="*" element={<NotFound />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
