@@ -13,6 +13,8 @@ import UserDetail from "./pages/UserDetail";
 import NotFound from "./pages/NotFound";
 import Child from "./components/Child";
 import Counter from "./components/Counter";
+import InputField from "./components/InputField";
+import DropZone from "./components/DropZone";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,7 +32,9 @@ function App() {
 
   return (
     <div className="">
-      <Counter />
+      <DropZone />
+      {/* <InputField /> */}
+      {/* <Counter /> */}
       {/* <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
       <br />
