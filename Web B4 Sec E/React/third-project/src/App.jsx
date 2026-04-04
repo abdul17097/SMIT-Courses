@@ -12,6 +12,8 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
 import ProductDetails from "./pages/ProductDetails";
+import Parent from "./components/Parent";
+import CounterReducer from "./components/CounterReducer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -19,7 +21,9 @@ function App() {
   return (
     <React.Fragment>
       <Navabar />
-      <Routes>
+      {/* <Parent /> */}
+      <CounterReducer />
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
@@ -27,7 +31,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/products" element={<Product />} />
         <Route path="/product-details/:id" element={<ProductDetails />} />
-      </Routes>
+      </Routes> */}
     </React.Fragment>
   );
 }
