@@ -12,6 +12,8 @@ const Parent = () => {
     return result;
   }, [count]);
 
+  setCount(count + 1);
+
   return (
     <div>
       <h2>Count: {count}</h2>

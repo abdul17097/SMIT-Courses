@@ -1,8 +1,10 @@
-import React, { useReducer } from "react";
+import React from "react";
 
 const initialState = {
   count: 0,
   name: "John Doe",
+  products: [],
+  isLogin: false,
 };
 
 // action {
@@ -27,22 +29,31 @@ const reducer = (state, action) => {
         ...state,
         count: state.count + action.payload,
       };
+    case "updateName":
+      return {
+        ...state,
+        name: action.payload,
+        isLogin: true,
+      };
   }
 };
 
 const CounterReducer = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, initialState);
   return (
     <div>
       <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
       <button onClick={() => dispatch({ type: "decrement" })}>Decrement</button>
       <button
-        onClick={() => dispatch({ type: "incrementByAmount", payload: 10 })}
+        onClick={() => dispatch({ type: "incrementByAmount", payload: 11 })}
       >
         incrementByAmount By 10
       </button>
       <p>Count: {state.count}</p>
       <p>Name: {state.name}</p>
+      <button onClick={() => dispatch({ type: "updateName", payload: "Jane" })}>
+        Update Name
+      </button>
     </div>
   );
 };
