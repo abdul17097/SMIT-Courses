@@ -6,12 +6,10 @@ const Counter = () => {
   const dispatch = useDispatch();
   console.log(countValue);
 
-  return (
-    <div>
-      <h2>Counter: {countValue.value}</h2>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-    </div>
-  );
+  return <div>
+    <h2>Counter: {countValue.value}</h2>
+    <button onClick={()=> dispatch(increment())}>Increment</button>
+  </div>;
 };
 
 export default Counter;
