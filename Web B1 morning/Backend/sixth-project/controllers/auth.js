@@ -76,14 +76,20 @@ export const login = async (req, res) => {
     });
   }
 
-  const token = jwt.sign(findUser, "asdfjlkasdjf;lkajsd;lfkjoqiuropiqwerhj", {
-    expiresIn: "1s",
-  });
+  const { id, ...rest } = findUser;
+  const token = jwt.sign(
+    { _id: id, role: "admin" },
+    "asdfjlkasdjf;lkajsd;lfkjoqiuropiqwerhj",
+    {
+      expiresIn: "15m",
+    },
+  );
 
   // Success case
   return res.status(200).json({
     message: "User Login Successfully!",
     success: true,
+
     data: { ...findUser, token },
   });
 };
