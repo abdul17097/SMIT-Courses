@@ -5,7 +5,7 @@ const users = [
     id: 1,
     name: "test",
     email: "test@gmail.com",
-    password: "$2b$10$yvQFJdsusjFuJCVz6LdKlOyXPDXjia4bHowQ7IZrmh6Nrsq2NNTK2",
+    password: "$2b$10$oDu03me.aB5F4vPVfoan1u6AavaZQllwkqgtKZ7gR06t/8XqVRYtK",
   },
 ];
 
@@ -27,11 +27,11 @@ export const signup = async (req, res) => {
     });
   } else {
     const hashPassword = await bcrypt.hash(password, 10);
-    const comparePassword = await bcrypt.compare(
-      password,
-      "$2b$10$yvQFJdsusjFuJCVz6LdKlOyXPDXjia4bHowQ7IZrmh6Nrsq2NNTK2",
-    );
-    console.log("comparePassword ", comparePassword);
+    // const comparePassword = await bcrypt.compare(
+    //   password,
+    //   "$2b$10$yvQFJdsusjFuJCVz6LdKlOyXPDXjia4bHowQ7IZrmh6Nrsq2NNTK2",
+    // );
+    // console.log("comparePassword ", comparePassword);
 
     console.log(hashPassword);
 
@@ -66,6 +66,8 @@ export const login = async (req, res) => {
     });
   }
 
+  console.log(password, findUser);
+
   // Compare password
   const comparedPassword = await bcrypt.compare(password, findUser.password);
 
@@ -79,17 +81,30 @@ export const login = async (req, res) => {
   const { id, ...rest } = findUser;
   const token = jwt.sign(
     { _id: id, role: "admin" },
-    "asdfjlkasdjf;lkajsd;lfkjoqiuropiqwerhj",
+    process.env.JWT_SECRET_KEY,
     {
       expiresIn: "15m",
     },
   );
 
-  // Success case
-  return res.status(200).json({
-    message: "User Login Successfully!",
-    success: true,
+  res
+    .cookie("token", token, {
+      httpOnly: true,
+      secure: false, // Set to true in production with HTTPS
+      sameSite: "strict",
+      maxAge: 15 * 60 * 1000, // 15 minutes
+    })
+    .status(200)
+    .json({
+      message: "User Login Successfully!",
+      success: true,
+      data: { ...findUser, token },
+    });
 
-    data: { ...findUser, token },
-  });
+  // Success case
+  // return res.status(200).json({
+  //   message: "User Login Successfully!",
+  //   success: true,
+  //   data: { ...findUser, token },
+  // });
 };

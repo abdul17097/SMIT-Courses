@@ -1,4 +1,5 @@
 export const profile = (req, res) => {
+  res.user;
   res.status(200).json({
     message: "user Profile Data",
     success: true,

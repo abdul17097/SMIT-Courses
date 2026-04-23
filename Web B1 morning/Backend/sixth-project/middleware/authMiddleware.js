@@ -1,7 +1,9 @@
 import jwt from "jsonwebtoken";
 
 export const auth = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
+  // const token = req.headers.authorization.split(" ")[1];
+  const token = req.cookies.token;
+  console.log(token);
 
   if (!token) {
     return res.status(403).json({
@@ -10,7 +12,7 @@ export const auth = (req, res, next) => {
     });
   }
 
-  const decoded = jwt.verify(token, "asdfjlkasdjf;lkajsd;lfkjoqiuropiqwerhj");
+  const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
   //   user.find({_id: decoded.id})
 
