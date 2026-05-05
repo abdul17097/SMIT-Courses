@@ -16,6 +16,9 @@ export const postSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    coverImage: {
+      type: String,
+    },
     category: [
       {
         type: String,

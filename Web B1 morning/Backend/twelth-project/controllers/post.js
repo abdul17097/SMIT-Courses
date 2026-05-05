@@ -1,8 +1,24 @@
 import mongoose from "mongoose";
 import { Post } from "../modals/post.js";
+import { uploader } from "../config/cloudinary.js";
+
+const uploadCloudinary = async (buffer) => {
+  return new Promise((resolve, reject) => {
+    const stream = uploader.upload_stream((error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+    stream.end(buffer);
+  });
+};
 
 export const createPost = async (req, res) => {
   try {
+    const coverImage = req.file;
+
     const userId = req.userId;
     const { title, content, category } = req.body;
     const isExist = await Post.findOne({ title: title });
@@ -13,11 +29,14 @@ export const createPost = async (req, res) => {
       });
     }
 
+    const result = await uploadCloudinary(req.file.buffer);
+
     const newPost = new Post({
       title,
       content,
       category,
       author: userId,
+      coverImage: result.secure_url,
     });
 
     await newPost.save();
@@ -28,6 +47,8 @@ export const createPost = async (req, res) => {
       data: newPost,
     });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       message: error.message,
       success: false,
