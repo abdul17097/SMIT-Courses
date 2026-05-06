@@ -19,6 +19,12 @@ export const postSchema = new mongoose.Schema(
     coverImage: {
       type: String,
     },
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
     category: [
       {
         type: String,

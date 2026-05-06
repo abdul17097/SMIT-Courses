@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import { Post } from "../modals/post.js";
-import { uploader } from "../config/cloudinary.js";
+import { cloudinary } from "../config/cloudinary.js";
 
 const uploadCloudinary = async (buffer) => {
   return new Promise((resolve, reject) => {
-    const stream = uploader.upload_stream((error, result) => {
+    const stream = cloudinary.uploader.upload_stream((error, result) => {
       if (error) {
         reject(error);
       } else {
@@ -30,16 +30,19 @@ export const createPost = async (req, res) => {
     }
 
     const result = await uploadCloudinary(req.file.buffer);
+    const categoryValues = Array.isArray(category)
+      ? category
+      : String(category)
+          .split(",")
+          .map((cat) => cat.trim())
+          .filter(Boolean);
 
-    const newPost = new Post({
+    const newPost = await Post.create({
       title,
       content,
-      category,
       author: userId,
       coverImage: result.secure_url,
     });
-
-    await newPost.save();
 
     res.status(201).json({
       message: "Post Created Successfully!",
@@ -47,10 +50,10 @@ export const createPost = async (req, res) => {
       data: newPost,
     });
   } catch (error) {
-    console.log(error);
+    console.error("createPost error:", error);
 
     res.status(500).json({
-      message: error.message,
+      message: error.message || "Unable to create post.",
       success: false,
     });
   }
@@ -102,3 +105,118 @@ export const allPost = async (req, res) => {
     });
   }
 };
+
+// like post
+export const likePost = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const { postId } = req.params;
+
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+        success: false,
+      });
+    }
+
+    if (post.likes.includes(userId)) {
+      return res.status(400).json({
+        message: "You have already liked this post",
+        success: false,
+      });
+    }
+
+    post.likes.push(userId);
+    await post.save();
+
+    res.status(200).json({
+      message: "Post liked successfully",
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// comment post
+export const commentPost = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const { postId } = req.params;
+    const { content } = req.body;
+
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+        success: false,
+      });
+    }
+
+    const comment = await Comment.create({
+      content,
+      author: userId,
+      post: postId,
+    });
+
+    res.status(201).json({
+      message: "Comment added successfully",
+      success: true,
+      data: comment,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+// export const allPost = async (req, res) => {
+//   try {
+//     const userId = req.userId;
+
+//     const posts = await Post.aggregate([
+//       {
+//         $match: {
+//           author: new mongoose.Types.ObjectId(userId),
+//         },
+//       },
+//       {
+//         $lookup: {
+//           from: "users",
+//           localField: "author",
+//           foreignField: "_id",
+//           as: "authorDetails",
+//         },
+//       },
+//       {
+//         $unwind: "$authorDetails",
+//       },
+//       {
+//         $project: {
+//           title: 1,
+//           content: 1,
+//           category: 1,
+//           coverImage: 1,
+//           author: "$authorDetails.name",
+//         },
+//       },
+//     ]);
+
+//     res.status(200).json({
+//       message: "All Posts",
+//       data: posts,
+//       success: true,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       success: false,
+//       message: error.message,
+//     });
+//   }
+// };
