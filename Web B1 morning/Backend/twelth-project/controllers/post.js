@@ -30,17 +30,12 @@ export const createPost = async (req, res) => {
     }
 
     const result = await uploadCloudinary(req.file.buffer);
-    const categoryValues = Array.isArray(category)
-      ? category
-      : String(category)
-          .split(",")
-          .map((cat) => cat.trim())
-          .filter(Boolean);
 
     const newPost = await Post.create({
       title,
       content,
       author: userId,
+      category,
       coverImage: result.secure_url,
     });
 
@@ -62,19 +57,51 @@ export const createPost = async (req, res) => {
 export const getSinglePost = async (req, res) => {
   try {
     const { postId } = req.params;
-    const isExistPost = await Post.findById(postId).populate(
-      "author",
-      "name email",
-    );
-    if (!isExistPost) {
-      return res.status(404).json({
-        message: "Post Not Exist",
-        success: false,
-      });
-    }
 
+    const post = await Post.aggregate([
+      {
+        $match: {
+          _id: new mongoose.Types.ObjectId(postId),
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "author",
+          foreignField: "_id",
+          as: "authorDetails",
+        },
+      },
+      {
+        $unwind: "$authorDetails",
+      },
+      {
+        $project: {
+          title: 1,
+          content: 1,
+          category: 1,
+          coverImage: 1,
+          author: "$authorDetails.name",
+        },
+      },
+    ]);
+    // const isExistPost = await Post.findById(postId).populate(
+    //   "author",
+    //   "name email",
+    // );
+    // if (!isExistPost) {
+    //   return res.status(404).json({
+    //     message: "Post Not Exist",
+    //     success: false,
+    //   });
+    // }
+
+    // res.status(200).json({
+    //   data: isExistPost,
+    //   success: true,
+    // });
     res.status(200).json({
-      data: isExistPost,
+      data: post,
       success: true,
     });
   } catch (error) {
@@ -85,13 +112,58 @@ export const getSinglePost = async (req, res) => {
   }
 };
 
-export const allPost = async (req, res) => {
+export const allPostByUser = async (req, res) => {
   try {
-    const userId = req.userId;
+    const { search, category } = req.query;
 
-    const posts = await Post.find({
-      author: new mongoose.Types.ObjectId(userId),
-    }).populate("author");
+    const posts = await Post.aggregate([
+      {
+        $match: {
+          $and: [
+            search ? { title: { $regex: search, $options: "i" } } : {},
+            category ? { category: category } : {},
+          ],
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "author",
+          foreignField: "_id",
+          as: "authorDetails",
+        },
+      },
+
+      {
+        $unwind: "$authorDetails",
+      },
+      {
+        $addFields: {
+          likesCount: {
+            $size: { $ifNull: ["$likes", []] },
+          },
+        },
+      },
+
+      {
+        $project: {
+          title: 1,
+          content: 1,
+          category: 1,
+          coverImage: 1,
+          likesCount: 1,
+          author: {
+            name: "$authorDetails.name",
+            email: "$authorDetails.email",
+          },
+          createdAt: 1,
+        },
+      },
+    ]);
+
+    // const posts = await Post.find({
+    //   author: new mongoose.Types.ObjectId(userId),
+    // }).populate("author");
 
     res.status(200).json({
       message: "All Posts",
@@ -121,9 +193,11 @@ export const likePost = async (req, res) => {
     }
 
     if (post.likes.includes(userId)) {
-      return res.status(400).json({
-        message: "You have already liked this post",
-        success: false,
+      post.likes = post.likes.filter((id) => id.toString() !== userId);
+      await post.save();
+      return res.status(200).json({
+        message: "Post unliked successfully",
+        success: true,
       });
     }
 
@@ -176,47 +250,47 @@ export const commentPost = async (req, res) => {
   }
 };
 
-// export const allPost = async (req, res) => {
-//   try {
-//     const userId = req.userId;
+export const allPost = async (req, res) => {
+  try {
+    const userId = req.userId;
 
-//     const posts = await Post.aggregate([
-//       {
-//         $match: {
-//           author: new mongoose.Types.ObjectId(userId),
-//         },
-//       },
-//       {
-//         $lookup: {
-//           from: "users",
-//           localField: "author",
-//           foreignField: "_id",
-//           as: "authorDetails",
-//         },
-//       },
-//       {
-//         $unwind: "$authorDetails",
-//       },
-//       {
-//         $project: {
-//           title: 1,
-//           content: 1,
-//           category: 1,
-//           coverImage: 1,
-//           author: "$authorDetails.name",
-//         },
-//       },
-//     ]);
+    const posts = await Post.aggregate([
+      {
+        $match: {
+          author: new mongoose.Types.ObjectId(userId),
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "author",
+          foreignField: "_id",
+          as: "authorDetails",
+        },
+      },
+      {
+        $unwind: "$authorDetails",
+      },
+      {
+        $project: {
+          title: 1,
+          content: 1,
+          category: 1,
+          coverImage: 1,
+          author: "$authorDetails.name",
+        },
+      },
+    ]);
 
-//     res.status(200).json({
-//       message: "All Posts",
-//       data: posts,
-//       success: true,
-//     });
-//   } catch (error) {
-//     res.status(500).json({
-//       success: false,
-//       message: error.message,
-//     });
-//   }
-// };
+    res.status(200).json({
+      message: "All Posts",
+      data: posts,
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

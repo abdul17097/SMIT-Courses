@@ -25,11 +25,9 @@ export const postSchema = new mongoose.Schema(
         ref: "User",
       },
     ],
-    category: [
-      {
-        type: String,
-      },
-    ],
+    category: {
+      type: String,
+    },
   },
   { timestamps: true },
 );
