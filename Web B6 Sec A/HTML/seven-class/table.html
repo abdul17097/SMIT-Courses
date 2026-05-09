@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <!-- th: table heading -->
+    <!-- tr: table row -->
+    <!-- td: table data -->
+    <h1>HTML Table</h1>
+    <!-- <table>
+      <thead>
+        <th>Company Name</th>
+        <th>contact</th>
+        <th>Country</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Facebook</td>
+          <td>Test Contact</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Google</td>
+          <td>Google Contact</td>
+          <td>US</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+    <!-- <table style="border: 1px solid black">
+      <caption>
+        Student Record Table
+      </caption>
+      <thead>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Age</th>
+        <th>Contact</th>
+      </thead>
+      <tr>
+        <td>Test 1</td>
+        <td>10<sup>th</sup></td>
+        <td>18</td>
+        <td>+924567890</td>
+      </tr>
+      <tr>
+        <td>Test 1</td>
+        <td>10<sup>th</sup></td>
+        <td>18</td>
+        <td>+924567890</td>
+      </tr>
+      <tr>
+        <td>Test 1</td>
+        <td>10<sup>th</sup></td>
+        <td>18</td>
+        <td>+924567890</td>
+      </tr>
+      <tr>
+        <td>Test 1</td>
+        <td>10<sup>th</sup></td>
+        <td>18</td>
+        <td>+924567890</td>
+      </tr>
+      <tr>
+        <td>Test 1</td>
+        <td>10<sup>th</sup></td>
+        <td>18</td>
+        <td>+924567890</td>
+      </tr>
+    </table> -->
+
+    <table border="1">
+      <thead>
+        <th>Days</th>
+        <th>8:00 to 9:00</th>
+        <th>9:00 to 10:00</th>
+        <th>10:00 to 11:00</th>
+        <th>11:00 to 12:00</th>
+        <th>12:00 to 1:00</th>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Monday</th>
+          <td>English</td>
+          <td colspan="2" style="text-align: center">Maths</td>
+          <!-- <td>Bio</td> -->
+          <td rowspan="4" style="text-align: center">Break</td>
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <th>Tuesday</th>
+          <td rowspan="4" style="text-align: center">Maths</td>
+          <td>English</td>
+          <td>Urdu</td>
+          <!-- <td>Break</td> -->
+          <td>Bio</td>
+        </tr>
+        <tr>
+          <th>Wednesday</th>
+          <!-- <td>Maths</td> -->
+          <td>Urdu</td>
+          <td>Bio</td>
+          <!-- <td>Break</td> -->
+          <td>English</td>
+        </tr>
+        <tr>
+          <th>Thursday</th>
+          <!-- <td>Maths</td> -->
+          <td>English</td>
+          <td>Bio</td>
+          <!-- <td>Break</td> -->
+          <td>Urdu</td>
+        </tr>
+        <tr>
+          <th>Friday</th>
+          <!-- <td>Maths</td> -->
+          <td>English</td>
+          <td>Urdu</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
