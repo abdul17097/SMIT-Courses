@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML FORMs</title>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Username:</label>
+      <input type="text" readonly value="testt" /><br />
+      <label for="">Email:</label>
+      <input type="email" />
+      <br />
+      <label for="">Password</label>
+      <input type="password" minlength="2" maxlength="8" required />
+      <br />
+      <label for="">Gender:</label><br />
+      <input name="gender" value="male" type="radio" /> male
+      <input name="gender" value="female" type="radio" /> female
+      <br />
+
+      <label for="">Languages:</label><br />
+      <input type="checkbox" id="english" />
+      <label for="english">English</label> <input type="checkbox" /> Turkish
+      <input type="checkbox" /> Phosto
+
+      <br />
+      <input type="button" value="test" />
+      <input type="reset" />
+      <button>test2</button>
+      <br />
+      <label for="">Countries:</label>
+      <select name="country" id="">
+        <option value="pak">Pakistan</option>
+        <option value="Ind">India</option>
+        <option value="D">Dubai</option>
+        <option value="uk">UK</option>
+        <option value="us">US</option>
+      </select>
+      <br />
+      <select name="country/city" id="">
+        <optgroup label="Pakistan">
+          <option value="pak/punjab">Peshawar</option>
+          <option value="">Mardan</option>
+          <option value="">Islamabad</option>
+        </optgroup>
+        <optgroup label="India">
+          <option value="">Peshawar</option>
+          <option value="">Mardan</option>
+          <option value="">Islamabad</option>
+        </optgroup>
+      </select>
+      <br />
+      <label for="cars">Choose a car:</label>
+      <select name="cars" id="cars">
+        <optgroup label="Swedish Cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+        </optgroup>
+        <optgroup label="German Cars">
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </optgroup>
+      </select>
+      <input type="date" />
+      <input type="datetime-local" />
+      <input type="color" />
+      <input type="month" />
+      <input type="number" />
+      <input type="range" />
+      <input type="search" />
+      <input type="tel" />
+      <input type="week" />
+
+      <br />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
