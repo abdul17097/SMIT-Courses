@@ -49,6 +49,31 @@ const products = [
   },
 ];
 
+const authMiddleware = (req, res, next) => {
+  const token = req.headers?.authorization?.split(" ")[1];
+
+  if (!token) {
+    return res.status(401).json({
+      message: "UnAthorized",
+      success: false,
+    });
+  }
+
+  const decoded = jwt.verify(
+    token,
+    "234567890asdfgui9uygfdqwefghj0oiuhgfwerghjiuhgfasdfghjk",
+  );
+
+  next();
+  console.log(decoded);
+};
+
+app.get("/profile", authMiddleware, (req, res) => {
+  res.status(200).json({
+    data: userData,
+  });
+});
+
 app.get("/products", (req, res) => {
   res.send(products);
 });
@@ -68,6 +93,9 @@ app.post("/signup", async (req, res) => {
     const hashpassword = await bcrypt.hash(data.password, 10);
     console.log(hashpassword);
 
+    // db query
+    // create new user
+
     res.status(201).json({
       message: "You have Register Successfully!",
       success: true,
@@ -81,8 +109,11 @@ app.post("/signup", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    // find user based on email
+
+    // user exist then
     const comparedPassword = await bcrypt.compare(password, userData.password);
-    if (email !== userData.email && !comparedPassword) {
+    if (email !== userData.email || !comparedPassword) {
       return res.status(404).json({
         message: "Invalid Credentials",
         success: false,
