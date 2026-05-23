@@ -3,11 +3,75 @@ import productRoutes from "./routes/product.js";
 import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
 import { config } from "dotenv";
+import nodemailer from "nodemailer";
+import multer from "multer";
+import path from "path";
 
 config();
 const app = express();
 
 app.use(express.json());
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.USER_EMAIL,
+    pass: process.env.APP_PASSWORD,
+  },
+});
+
+const mailOptions = {
+  from: process.env.USER_EMAIL,
+  to: "muhammadnomank12@gmail.com",
+  subject: "Test Subject",
+  text: "Test Email",
+};
+
+app.get("/", (req, res) => {
+  try {
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        return res.status(500).json({
+          message: error.message,
+          success: false,
+        });
+      } else {
+        return res.status(200).json({
+          message: "Sent Email!",
+          success: true,
+        });
+      }
+    });
+  } catch (error) {
+    res.json({
+      message: error.message,
+      success: false,
+    });
+  }
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(
+      null,
+      file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname),
+    );
+  },
+});
+
+const upload = multer({
+  storage,
+});
+
+app.post("/uploadFile", upload.single("coverImage"), (req, res) => {
+  const file = req.file;
+  const body = req.body;
+  console.log(file, body);
+});
 
 app.use("/api/v1", productRoutes);
 app.use("/api/v1", userRoutes);
