@@ -75,3 +75,21 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const profile = async (req, res) => {
+  const userId = req.user;
+
+  try {
+    const user = await User.findById(userId);
+    res.status(200).json({
+      message: "Profile",
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message || "Internal Server Error",
+      success: false,
+    });
+  }
+};
