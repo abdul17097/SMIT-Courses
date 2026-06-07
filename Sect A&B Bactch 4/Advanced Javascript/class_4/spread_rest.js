@@ -61,6 +61,10 @@ const { password, ...rest } = {
   profile_img: "http:localhost:5099/profileImage",
 };
 
+const frontedData = {
+  fist: "test",
+};
+
 const numbers = [3, 5, 6, 7];
 const new_nums = [...numbers, 4];
 const updateUserDetail = {
@@ -74,7 +78,7 @@ const updateUserDetail = {
   },
 };
 
-// enhance object literal
+//
 // const frontedData = { email, gender, profile_img, name };
 
 // updateUserDetail.displayName();

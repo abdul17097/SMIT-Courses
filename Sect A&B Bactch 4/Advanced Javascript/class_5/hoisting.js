@@ -31,11 +31,11 @@
 //   console.log("Hello Test!");
 // };
 
-function test123() {
-  console.log("test123!");
-}
+// function test123() {
+//   console.log("test123!");
+// }
 
-window.test123();
+// window.test123();
 
-let a = 10;
-console.log(window.a);
+// let a = 10;
+// console.log(window.a);
