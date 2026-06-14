@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* Universal Selector */
+    * {
+      /* color: red; */
+      /* border: 1px solid; */
+      padding: 10px;
+    }
+    /* Type Selector */
+    h2 {
+      color: blue;
+    }
+    /* p {
+      color: purple;
+    } */
+
+    /* class selector */
+    /* .para {
+      font-size: 20px;
+      color: black;
+    } */
+
+    /* Id selector */
+    /* #paraId {
+      color: cadetblue;
+    } */
+
+    /* Child Selector */
+    /* li > a {
+      color: yellow;
+    } */
+    /* ul > li {
+      color: yellowgreen;
+    } */
+
+    /* div > p {
+      color: yellowgreen;
+    } */
+
+    /* Decendant Selector */
+    /* div p {
+      color: black;
+    } */
+
+    ul li {
+      color: yellowgreen;
+    }
+
+    /* Adjecent Sibling Selector */
+    /* div + form {
+      color: green;
+    } */
+
+    /* General Sibling Selector */
+    div ~ p {
+      color: green;
+    }
+  </style>
+  <body>
+    <div>
+      <p class="para" id="paraId">Lorem ipsum dolor sit.</p>
+      <div>
+        <p class="para" id="paraId">Lorem ipsum dolor sit.</p>
+      </div>
+      <div>
+        <h2>Lorem.</h2>
+      </div>
+    </div>
+    <form action="">
+      <label class="lab" for="">Name:</label>
+      <br />
+      <input type="text" />
+    </form>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi corrupti
+      ullam totam voluptatibus, id doloribus dicta? Magni vel quasi aliquam
+      enim. Amet facere a, adipisci quaerat neque architecto expedita alias.
+    </p>
+
+    <ul>
+      <li><a href="">home</a></li>
+      <li><a href="">home</a></li>
+      <ol>
+        <li><a href="">home</a></li>
+      </ol>
+    </ul>
+  </body>
+</html>
