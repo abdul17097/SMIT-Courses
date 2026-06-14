@@ -1,5 +1,6 @@
 import { Blog } from "../modals/blog.js";
 import { User } from "../modals/user.js";
+import { createSlug } from "../utils/createSlug.js";
 
 export const createBlog = async (req, res) => {
   try {
@@ -13,7 +14,7 @@ export const createBlog = async (req, res) => {
       });
     }
 
-    let slug = title.toLowerCase().replace(/ /g, "-");
+    let slug = createSlug(title);
     const findBlog = await Blog.findOne({ slug: slug });
 
     if (findBlog) {
@@ -100,6 +101,91 @@ export const deleteBlog = async (req, res) => {
       success: true,
     });
   } catch (error) {
-    es.status(500).json({ message: error.message, success: false });
+    res.status(500).json({ message: error.message, success: false });
+  }
+};
+
+export const updateBlog = async (req, res) => {
+  try {
+    const userId = req.user;
+    const { blogId } = req.params;
+    const { title, content, blogImage } = req.body;
+
+    const findBlog = await Blog.find({ _id: blogId, user: userId });
+
+    if (!findBlog) {
+      return res.status(404).json({
+        message: "Blog not Found!",
+        success: false,
+      });
+    }
+    let slug = createSlug(title) || findBlog.slug;
+
+    const updatedBlog = await Blog.findOneAndUpdate(
+      {
+        _id: blogId,
+      },
+      {
+        $set: {
+          title: title || findBlog.title,
+          slug,
+          content: content || findBlog.content,
+          blogImage: blogImage || findBlog.blogImage,
+        },
+      },
+      {
+        new: true,
+      },
+    );
+
+    res.status(200).json({
+      message: "Blog Updated Successfully!",
+      data: updatedBlog,
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message, success: false });
+  }
+};
+
+export const getBlogDetails = async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const findBlog = await Blog.findById(blogId);
+
+    if (!findBlog) {
+      return res.status(404).json({
+        message: "Blog Not Found!",
+        success: false,
+      });
+    }
+
+    res.status(200).json({
+      message: "Blog Detials",
+      success: true,
+      data: findBlog,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message, success: false });
+  }
+};
+export const getBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find();
+
+    if (blogs.length < 1) {
+      return res.status(404).json({
+        message: "Blogs Not Found!",
+        success: false,
+      });
+    }
+
+    res.status(200).json({
+      message: "All Blogs",
+      success: true,
+      data: blogs,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message, success: false });
   }
 };
