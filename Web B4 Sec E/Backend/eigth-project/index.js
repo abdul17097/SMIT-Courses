@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import { connectDB } from "./config/dbConnection.js";
 import authRoutes from "./routes/auth.js";
 import blogRoutes from "./routes/blog.js";
+import userRoutes from "./routes/user.js";
 
 config();
 connectDB();
@@ -13,6 +14,7 @@ app.use(express.json());
 // http://localhost:5000/api/login
 app.use("/api/auth", authRoutes);
 app.use("/api/blog", blogRoutes);
+app.use("/api/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
