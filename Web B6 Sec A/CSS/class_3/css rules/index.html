@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Rules</title>
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* Last Rules */
+      /* h1 {
+        color: red;
+      }
+      h1 {
+        color: blue;
+      }
+      h1 {
+        color: yellow;
+      } */
+
+      /* Specificity Rules */
+      /* h1 {
+        color: gray !important;
+      } */
+      /* #title {
+        color: green;
+      } */
+
+      /* .heading {
+        color: bisque;
+      } */
+      /* Inheritated */
+      .parent {
+        color: red;
+        font-size: 20px;
+        border: 1px solid red;
+      }
+      p {
+        color: blue;
+        border: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="heading" id="title">CSS Rules</h1>
+    <div class="parent">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <div class="">Lorem, ipsum.</div>
+    </div>
+  </body>
+</html>
