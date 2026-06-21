@@ -1,0 +1,25 @@
+.contianer {
+  /* background-color: rgba(135, 47, 47, 0.1); */
+  width: 2000px;
+  height: 1500px;
+  /* color: rgb(47, 10, 10); */
+  /* opacity: 0.1; */
+  /* background-image: url("../../images/logo.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
+  /* background-size: cover; */
+  /* background-size: contain; */
+  /* background-size: auto; */
+  border: 1px solid black;
+  /* background-position: center center; */
+  /* background-position: top left; */
+  /* background-position: top right; */
+  /* background-position: bottom right; */
+  /* background-position: bottom left; */
+  /* background-position: 40% 10%; */
+  background: red no-repeat fixed 40% 10% url("../../images/logo.png");
+}
+
+/* .text-container {
+  background-color: rgba(238, 247, 247, 0);
+} */
