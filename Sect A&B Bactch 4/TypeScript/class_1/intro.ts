@@ -16,4 +16,6 @@ let c: number = 10;
 // Type 'string' is not assignable to type 'number'.
 // c = ""
 
+
+
 export {};
