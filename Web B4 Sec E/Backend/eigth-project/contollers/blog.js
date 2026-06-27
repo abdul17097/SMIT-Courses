@@ -1,11 +1,27 @@
+import { cloudinary } from "../config/cloudinary.js";
 import { Blog } from "../modals/blog.js";
 import { User } from "../modals/user.js";
 import { createSlug } from "../utils/createSlug.js";
 
+const uploadCloudinary = async (buffer) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream((error, result) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(result);
+      }
+    });
+    stream.end(buffer);
+  });
+};
+
 export const createBlog = async (req, res) => {
   try {
     const userId = req.user;
-    const { title, content, blogImage } = req.body;
+    const { title, content } = req.body;
+    const coverImage = req.file;
+    console.log(coverImage);
 
     if (!title || !content) {
       return res.status(400).json({
@@ -24,11 +40,12 @@ export const createBlog = async (req, res) => {
       });
     }
 
+    const result = await uploadCloudinary(req.file.buffer);
     const newBlog = await Blog.create({
       title,
       slug,
       content,
-      blogImage,
+      blogImage: result.secure_url,
       user: userId,
     });
     res.status(201).json({

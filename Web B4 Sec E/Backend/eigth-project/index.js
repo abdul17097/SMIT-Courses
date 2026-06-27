@@ -4,9 +4,11 @@ import { connectDB } from "./config/dbConnection.js";
 import authRoutes from "./routes/auth.js";
 import blogRoutes from "./routes/blog.js";
 import userRoutes from "./routes/user.js";
+import { cloudinaryConfig } from "./config/cloudinary.js";
 
 config();
 connectDB();
+cloudinaryConfig();
 const app = express();
 app.use(express.json());
 
