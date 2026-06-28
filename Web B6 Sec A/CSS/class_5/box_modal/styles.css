@@ -61,10 +61,3 @@
   max-width: 500px;
   min-width: 100px;
 }
-
-.child {
-  border: 1px solid black;
-  height: 50px;
-  max-height: 50px;
-  min-height: 30px;
-}
