@@ -21,7 +21,6 @@ export const createBlog = async (req, res) => {
     const userId = req.user;
     const { title, content } = req.body;
     const coverImage = req.file;
-    console.log(coverImage);
 
     if (!title || !content) {
       return res.status(400).json({
