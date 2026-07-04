@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Links In CSS</title>
+    <style>
+      /* Links: it have three state */
+      /* link, visited, active */
+      /* default link color: blue */
+      /* default visited link color: purple */
+      /* default active link color: red */
+
+      .google:link {
+        color: red;
+        text-decoration: none;
+        border: 1px solid;
+        padding: 3px;
+        box-shadow: 1px 1px 5px;
+      }
+
+      .facebook:link {
+        color: rgb(9, 9, 9);
+        text-decoration: none;
+      }
+      .facebook:active {
+        color: brown;
+      }
+      .linkdin:visited {
+        color: blueviolet;
+        box-shadow: 1px 1px 5px;
+        border-radius: 10px;
+      }
+
+      .google:hover {
+        /* text-shadow: 5px 5px 5px; */
+        /* text-decoration: underline; */
+        box-shadow: none;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="google" href="https://www.google.com/" target="_blank">Goolge</a>
+    <a class="facebook" href="https://www.facebook.com/" target="_blank"
+      >Facebook</a
+    >
+    <a class="linkdin" href="https://www.linkedin.com/" target="_blank"
+      >Linkdin</a
+    >
+  </body>
+</html>

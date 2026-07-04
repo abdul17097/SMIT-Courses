@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Units</title>
+    <style>
+      /* Units in CSS */
+      /* Two types of unists */
+      /* Absolute: px, cm etc (Independant | Fixed)*/
+      /* Relative: rem, em, %, viewport: vw, vh (Dependantant)*/
+
+      /* rem: root element (work with root element(html)) */
+      /* 1rem: 16px (default) */
+      /* em: element (work with parent) */
+      .container {
+        border: 1px solid black;
+        /* height: 400px; */
+        height: 50vh;
+        /* Fixed Width */
+        /* width: 500px; */
+        /* Relative Units */
+        /* width: 30%; */
+        /* width: 30vw; */
+        /* font-size: 22px; */
+      }
+
+      html {
+        font-size: 20px;
+      }
+      .para {
+        /* font-size: 1.5rem; */
+        /* font-size: 2rem; */
+        /* font-size: 1.5em; */
+        font-size: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="para">Lorem ipsum dolor sit amet.</p>
+    </div>
+  </body>
+</html>
