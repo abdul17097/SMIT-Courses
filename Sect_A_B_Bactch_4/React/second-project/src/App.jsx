@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Theme from "./components/Theme";
 import DashboardLayout from "./components/DashboardLayout";
 import Experiment from "./components/Experiment";
+import MultipleState from "./components/MultipleState";
+import ListKeys from "./components/ListKeys";
+import ConditionalStatement from "./components/ConditionalStatement";
+import BasicForm from "./components/forms/BasicForm";
+import ProForm from "./components/forms/ProForm";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -260,7 +265,13 @@ const App = () => {
     //     </p>
     //   </div>
     // </DashboardLayout>
-    <Experiment />
+    // <Experiment />
+    // <MultipleState />
+    // <ListKeys />
+    // <ConditionalStatement />
+    // Forms
+    // <BasicForm />
+    <ProForm />
   );
 };
 
