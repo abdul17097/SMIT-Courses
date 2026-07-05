@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Playwrite+GB+J:ital,wght@0,100..400;1,100..400&display=swap");
+
+.para {
+  font-size: 20px;
+  color: blueviolet;
+  /* font-family: "Gill Sans", "Gill Sans MT"; */
+  /* font-family: Poppins; */
+  /* font-family: Roboto; */
+  font-family: "Playwrite GB J";
+  font-style: italic;
+  font-weight: 400;
+}
