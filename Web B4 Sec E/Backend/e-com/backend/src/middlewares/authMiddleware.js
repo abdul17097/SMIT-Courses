@@ -1,16 +1,38 @@
 import jwt from "jsonwebtoken";
+import { AppError } from "../utils/appError.js";
 
 export const authMiddleware = async (req, res, next) => {
   try {
-    const token = req?.cookies?.token;
-    if (!token) {
-      throw new Error("No token provided");
-    }
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const token = req.cookies?.token;
 
-    // Add token verification logic here
+    if (!token) {
+      return next(
+        new AppError(
+          "Access denied. No authentication token provided. Please log in.",
+          401,
+        ),
+      );
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
     next();
   } catch (error) {
-    throw new Error(error.message);
+    next(error);
+  }
+};
+
+export const checkRole = (roles) => {
+  try {
+    return (req, res, next) => {
+      if (!roles.includes(req.user.role)) {
+        return next(
+          new AppError("Access denied. Insufficient permissions.", 403),
+        );
+      }
+      next();
+    };
+  } catch (error) {
+    next(error);
   }
 };

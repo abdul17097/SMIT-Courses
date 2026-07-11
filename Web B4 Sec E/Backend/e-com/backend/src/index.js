@@ -1,4 +1,5 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import allRoutes from "./routes/index.js";
 import { dbConnection } from "./config/dbConnection.js";
@@ -8,7 +9,9 @@ config();
 const app = express();
 
 dbConnection();
+
 app.use(express.json());
+app.use(cookieParser());
 
 app.use("/api", allRoutes);
 
