@@ -7,6 +7,8 @@ import ListKeys from "./components/ListKeys";
 import ConditionalStatement from "./components/ConditionalStatement";
 import BasicForm from "./components/forms/BasicForm";
 import ProForm from "./components/forms/ProForm";
+import Promix from "./components/forms/Promix";
+import Posts from "./components/Posts";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -271,7 +273,9 @@ const App = () => {
     // <ConditionalStatement />
     // Forms
     // <BasicForm />
-    <ProForm />
+    // <ProForm />
+    // <Promix />
+    <Posts />
   );
 };
 
