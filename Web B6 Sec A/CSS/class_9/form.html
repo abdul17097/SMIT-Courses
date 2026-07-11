@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <style>
+      form {
+        width: 30%;
+        height: 34vh;
+        border: 1px solid;
+        /* margin: auto; */
+        margin: 17vh auto;
+        padding: 40px 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px;
+      }
+
+      .input {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid gray;
+      }
+      .input:focus {
+        outline: none;
+      }
+      label {
+        display: block;
+        margin-bottom: 3px;
+      }
+      .group {
+        margin-bottom: 20px;
+      }
+      h1 {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+      }
+      #login {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        border: 1px solid gray;
+        cursor: pointer;
+        background-color: lightgreen;
+        color: green;
+      }
+      #login:hover {
+        background-color: green;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="">
+      <h1>Login Form</h1>
+      <div class="group">
+        <label for="">Email:</label>
+        <input class="input" type="text" placeholder="enter you email..." />
+      </div>
+      <div class="group">
+        <label for="">Password:</label>
+        <input class="input" type="password" />
+      </div>
+      <input
+        type="submit"
+        id="login"
+        value="Login asdkfjasdfkj;laskfjls flkja "
+      />
+    </form>
+  </body>
+</html>
