@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute Selector</title>
+    <style>
+      /* Existance */
+      div[id] {
+        color: red;
+      }
+
+      div[style] {
+        color: blue;
+      }
+      /* space */
+      div[class~="para"] {
+        border: 1px solid;
+      }
+
+      /* Prefix  */
+      div[class^="h"] {
+        border: 1px solid;
+      }
+      /* Suffix */
+      div[class$="2"] {
+        border: 1px solid black;
+        color: yellow;
+      }
+      /* substring */
+      div[class*="desc"] {
+        border: 1px solid black;
+        color: green;
+      }
+      /* Equality */
+      input[type="text"] {
+        border: 5px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <input type="submit" />
+    <input type="password" />
+    <input type="email" />
+    <div class="para1">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+      itaque fugit ipsam minima esse veniam! Accusamus, expedita beatae sunt
+      velit dicta voluptatem recusandae veritatis sit illum tenetur facere
+      maiores provident.z
+    </div>
+    <div id="" class="para desc detail">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+      itaque fugit ipsam minima esse veniam! Accusamus, expedita beatae sunt
+      velit dicta voluptatem recusandae veritatis sit illum tenetur facere
+      maiores provident.z
+    </div>
+    <div class="hello para2" style="">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+      itaque fugit ipsam minima esse veniam! Accusamus, expedita beatae sunt
+      velit dicta voluptatem recusandae veritatis sit illum tenetur facere
+      maiores provident.z
+    </div>
+  </body>
+</html>

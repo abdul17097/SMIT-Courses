@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+
+    <style>
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        border: 3px solid;
+      }
+      select {
+        padding: 10px;
+      }
+      textarea {
+        width: 300px;
+        height: 300px;
+        /* resize: horizontal; */
+        /* resize: vertical; */
+        /* resize: both; */
+        /* resize: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FORM</h1>
+    <form action="">
+      <div class="group">
+        <label for="">Name:</label>
+        <input type="text" placeholder="enter you name..." />
+      </div>
+      <div class="group">
+        <label for="">Email:</label>
+        <input type="email" placeholder="enter you email..." />
+      </div>
+      <div class="group">
+        <label for="">Password:</label>
+        <input type="password" placeholder="...." />
+      </div>
+      <div class="group">
+        <label for="">Gender:</label>
+        <input type="radio" name="gender" />Male
+        <input type="radio" name="gender" />Female
+      </div>
+      <div class="group">
+        <label for="">Select Class:</label>
+        <select name="" id="">
+          <option value="">first</option>
+          <option value="">second</option>
+          <option value="">third</option>
+          <option value="">fourth</option>
+        </select>
+      </div>
+      <div class="group">
+        <textarea
+          name=""
+          maxlength="10"
+          id=""
+          placeholder="detail..."
+        ></textarea>
+      </div>
+    </form>
+  </body>
+</html>
