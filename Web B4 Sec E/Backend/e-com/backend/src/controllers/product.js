@@ -1,4 +1,5 @@
 import { Product } from "../modals/product.js";
+import { AppError } from "../utils/appError.js";
 
 export const createProduct = async (req, res, next) => {
   try {
@@ -75,6 +76,47 @@ export const updateProduct = async (req, res, next) => {
     res.status(200).json({
       success: true,
       data: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteProduct = async (req, res, next) => {
+  try {
+    const { productId } = req.params;
+    const { id, role } = req.user;
+
+    const findProduct = await Product.findById(productId);
+    if (!findProduct) {
+      return next(new AppError("Product Not Found", 404));
+    }
+
+    const deleted = await Product.deleteOne({ _id: productId });
+    console.log(deleted);
+
+    return res.status(200).json({
+      message: "Product Delted Successfully!",
+      success: true,
+      data: deleted,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const productDetails = async (req, res, next) => {
+  try {
+    const { productId } = req.params;
+    const findProduct = await Product.findById(productId);
+    if (!findProduct) {
+      return next(new AppError("Product Not Found", 404));
+    }
+
+    res.status(200).json({
+      message: "Product Details",
+      success: true,
+      data: findProduct,
     });
   } catch (error) {
     next(error);

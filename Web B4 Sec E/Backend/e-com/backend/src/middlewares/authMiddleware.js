@@ -6,12 +6,7 @@ export const authMiddleware = async (req, res, next) => {
     const token = req.cookies?.token;
 
     if (!token) {
-      return next(
-        new AppError(
-          "Access denied. No authentication token provided. Please log in.",
-          401,
-        ),
-      );
+      return next(new AppError("Please log in.", 401));
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);

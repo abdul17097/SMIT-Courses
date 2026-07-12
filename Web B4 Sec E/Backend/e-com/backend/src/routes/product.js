@@ -1,7 +1,9 @@
 import { Router } from "express";
 import {
   createProduct,
+  deleteProduct,
   getAllProducts,
+  productDetails,
   updateProduct,
 } from "../controllers/product.js";
 import { authMiddleware, checkRole } from "../middlewares/authMiddleware.js";
@@ -22,6 +24,13 @@ router.put(
   checkRole(["SELLER", "ADMIN"]),
   updateProduct,
 );
+router.delete(
+  "/:productId",
+  authMiddleware,
+  checkRole(["SELLER", "ADMIN"]),
+  deleteProduct,
+);
+router.get("/:productId", productDetails);
 
 // for admin only
 
