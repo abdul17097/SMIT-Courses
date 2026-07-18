@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinks } from "../constants/navLinks";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  const handleTheme = () => {
+    setTheme("dark");
+  };
+  console.log(theme);
 
   return (
     <nav className="border py-5 px-10">
@@ -15,6 +22,12 @@ const Navbar = () => {
             </li>
           );
         })} */}
+        <button
+          onClick={handleTheme}
+          className="border cursor-pointer p-3 rounded-2xl"
+        >
+          Theme
+        </button>
         {navLinks.map(({ link, id, title }) => (
           <li key={id}>
             <Link

@@ -8,19 +8,22 @@ import Favorite from "./pages/Favorite";
 import Navbar from "./components/Navbar";
 import NotFound from "./pages/NotFound";
 import BlogDetials from "./pages/BlogDetials";
+import AdminDashboard from "./components/layouts/AdminDashboard";
 
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blog />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/favorite" element={<Favorite />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/blogDetails/:id" element={<BlogDetials />} />
+        <Route path="/" element={<AdminDashboard />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/favorite" element={<Favorite />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/blogDetails/:id" element={<BlogDetials />} />
+        </Route>
       </Routes>
     </>
   );
