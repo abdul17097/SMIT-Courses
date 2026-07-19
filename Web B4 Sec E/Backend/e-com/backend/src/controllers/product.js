@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Product } from "../modals/product.js";
 import { AppError } from "../utils/appError.js";
 
@@ -29,13 +30,65 @@ export const createProduct = async (req, res, next) => {
 };
 
 export const getAllProducts = async (req, res, next) => {
+  const { limit = 10, skip, category, price = "high" } = req.query;
   const { role } = req.user;
   try {
     let products;
     if (role === "SELLER") {
-      products = await Product.find({ seller: req.user.id });
+      // products = await Product.find({ seller: req.user.id });
+      let pipeline = [
+        {
+          $match: {
+            seller: new mongoose.Types.ObjectId(req.user.id),
+          },
+        },
+      ];
+
+      if (category) {
+        pipeline.push({
+          $match: {
+            category,
+          },
+        });
+      }
+      if (price) {
+        pipeline.push({
+          $sort: {
+            price: price === "high" ? -1 : 1,
+          },
+        });
+      }
+      products = await Product.aggregate([
+        ...pipeline,
+
+        {
+          $skip: Number(skip),
+        },
+        {
+          $limit: Number(limit),
+        },
+      ]);
     } else if (role === "BUYER" || role === "ADMIN") {
-      products = await Product.find();
+      // products = await Product.find();
+      let pipeline = [];
+
+      if (category) {
+        pipeline.push({
+          $match: {
+            category,
+          },
+        });
+      }
+
+      products = await Product.aggregate([
+        ...pipeline,
+        {
+          $skip: Number(skip),
+        },
+        {
+          $limit: Number(limit),
+        },
+      ]);
     } else {
       return next(new AppError("Unauthorized access", 403));
     }
