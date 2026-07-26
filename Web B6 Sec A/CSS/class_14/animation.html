@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        /* animation-name: identifier; */
+        animation-name: changeColor;
+        animation-duration: 4s;
+        /* animation-iteration-count: initial; */
+        /* animation-delay: 3s; */
+      }
+      .container:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes changeColor {
+        0% {
+          transform: translateX(0px);
+        }
+        5% {
+          background-color: blue;
+        }
+        10% {
+          background-color: red;
+        }
+        50% {
+          border-radius: 50%;
+        }
+        100% {
+          transform: translateX(500px);
+          background-color: blueviolet;
+        }
+      }
+
+      /* @keyframes identifier {
+        from {
+            transform: translateX(0px);
+        }
+        to {
+          transform: translateX(500px);
+          border-radius: 50%;
+          }
+      } */
+      .loading {
+        width: 50px;
+        height: 50px;
+        border-top: 2px solid blue;
+        /* background-color: antiquewhite; */
+        margin: auto;
+        border-radius: 50%;
+        animation-name: loading;
+        animation-duration: 1s;
+        /* animation-iteration-count: infinite; */
+        /* animation-direction: reverse; */
+        /* animation-direction: alternate; */
+        /* animation-direction: alternate-reverse; */
+        /* animation-fill-mode: both; */
+        /* animation-fill-mode: both; */
+        animation-timing-function: linear;
+        box-shadow: 2px 2px 5px blue;
+      }
+
+      /* @keyframes loading {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      } */
+      .bounce {
+        border: 1px solid;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        animation-name: bounce;
+        animation-duration: 1s;
+        border-radius: 50%;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-direction: alternate-reverse;
+      }
+
+      @keyframes bounce {
+        100% {
+          transform: translateY(300px);
+        }
+
+        0% {
+          transform: translateY(0px);
+        }
+      }
+      .squeremove {
+        border: 1px solid;
+        width: 100px;
+        height: 100px;
+
+        animation-name: squeremove;
+        animation-duration: 4s;
+        position: relative;
+        /* animation-direction: alternate; */
+      }
+      @keyframes squeremove {
+        0% {
+          top: 0;
+          left: 0;
+        }
+        25% {
+          top: 0;
+          left: 500px;
+          border-radius: 50%;
+        }
+        50% {
+          left: 500px;
+          top: 500px;
+        }
+        75% {
+          left: 0;
+          top: 500px;
+          border-radius: 50%;
+        }
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div class="bounce"></div> -->
+    <!-- <div class="container"></div> -->
+    <!-- <div class="loading"></div> -->
+    <div class="squeremove"></div>
+  </body>
+</html>
