@@ -19,18 +19,32 @@ export const getCartProducts = async (req, res, next) => {
           user: new mongoose.Types.ObjectId(id),
         },
       },
+      {
+        $unwind: "$items",
+      },
 
       {
         $lookup: {
           from: "products",
           localField: "items.product",
           foreignField: "_id",
-          as: "proudctDetail",
+          as: "product",
         },
       },
       {
+        $unwind: "$product",
+      },
+      {
         $project: {
-          proudctDetail: 1,
+          _id: 0,
+          quantity: "$items.quantity",
+          name: "$product.name",
+          description: "$product.description",
+          price: "$product.price",
+          category: "$product.category",
+          subtotal: {
+            $multiply: ["$items.quantity", "$product.price"],
+          },
         },
       },
     ]);
@@ -125,6 +139,33 @@ export const clearCart = async (req, res, next) => {
 
     res.status(200).json({
       message: "Cleared Cart",
+      success: true,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteCartItem = async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const { productId } = req.params;
+
+    const findCart = await Cart.findOne({ user: id });
+    if (!findCart) {
+      return next(new AppError("Cart Not Found", 404));
+    }
+
+    const findProduct = findCart.items.find(
+      (item) => item.product == productId,
+    );
+
+    findCart.items = findCart.items.filter((item) => item.product != productId);
+
+    await findCart.save();
+
+    res.status(200).json({
+      message: "Product Delted Successfullly",
       success: true,
     });
   } catch (error) {

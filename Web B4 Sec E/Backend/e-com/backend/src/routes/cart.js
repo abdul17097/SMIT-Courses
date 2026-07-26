@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { addToCart, clearCart, getCartProducts } from "../controllers/cart.js";
+import {
+  addToCart,
+  clearCart,
+  deleteCartItem,
+  getCartProducts,
+} from "../controllers/cart.js";
 import { authMiddleware, checkRole } from "../middlewares/authMiddleware.js";
 
 const routes = Router();
@@ -17,5 +22,11 @@ routes.get(
   getCartProducts,
 );
 routes.delete("/", authMiddleware, checkRole(["BUYER", "SELLER"]), clearCart);
+routes.delete(
+  "/:productId",
+  authMiddleware,
+  checkRole(["BUYER", "SELLER"]),
+  deleteCartItem,
+);
 
 export default routes;
