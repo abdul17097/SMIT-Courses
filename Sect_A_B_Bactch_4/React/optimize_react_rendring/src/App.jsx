@@ -8,6 +8,12 @@ import ProductList from "./components/ProductList";
 import ChildComponent from "./components/ChildComponent";
 import LandingPage from "./components/LandingPage";
 import { useTheme } from "./hooks/useTheme";
+import { Button } from "./components/ui/button";
+import { FAQ } from "./components/FAQ";
+import { ProductCard } from "./components/ProductCard";
+import { StudentsChart } from "./components/StudentsChart";
+import DashboardLayout from "./components/layouts/DashboardLayout";
+import { motion } from "motion/react";
 
 function App() {
   const { theme, setTheme } = useTheme();
@@ -20,6 +26,25 @@ function App() {
 
   return (
     <>
+      <Button className={"bg-amber-700"} onClick={() => setCount(count + 1)}>
+        Click ME
+      </Button>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, rotate: 360 }}
+        transition={{ duration: 1, repeat: Infinity }}
+        // whileHover={{ scale: 1.2, rotate: 360 }}
+        className="border py-5 w-fit px-5 m-auto"
+      >
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque,
+        obcaecati!
+      </motion.p>
+
+      {/* <DashboardLayout /> */}
+      {/* <FAQ />
+      <ProductCard />
+      <StudentsChart /> */}
       {/* Lifting state up */}
       {/* <SearchInput setSearch={setSearch} search={search} />
       <ProductList search={search} /> */}
@@ -35,7 +60,7 @@ function App() {
         <ChildComponent handleCount={handleCount} />
       </div> */}
 
-      <LandingPage />
+      {/* <LandingPage /> */}
     </>
   );
 }
