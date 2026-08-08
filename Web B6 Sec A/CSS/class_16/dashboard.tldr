@@ -218,7 +218,7 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:Z-9_D3vJd2jg7iCYUBpSm"
+				"shape:L5xmtHFJqDkHdJIPVqLQH"
 			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
@@ -564,7 +564,7 @@
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
@@ -685,7 +685,7 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 502.3999938964844,
+			"x": 491.3999938964844,
 			"y": 207.1999969482422,
 			"rotation": 0,
 			"isLocked": false,
@@ -694,8 +694,8 @@
 			"id": "shape:L5xmtHFJqDkHdJIPVqLQH",
 			"type": "geo",
 			"props": {
-				"w": 143.39999389648438,
-				"h": 80.80000305175781,
+				"w": 166.80001831054688,
+				"h": 88.80000305175781,
 				"geo": "rectangle",
 				"dash": "draw",
 				"growY": 0,
@@ -733,8 +733,8 @@
 			"id": "shape:-SRfV3iDWc2ZMDNHQ0eRZ",
 			"type": "geo",
 			"props": {
-				"w": 143.39999389648438,
-				"h": 80.80000305175781,
+				"w": 190.80001831054688,
+				"h": 86.40000915527344,
 				"geo": "rectangle",
 				"dash": "draw",
 				"growY": 0,
