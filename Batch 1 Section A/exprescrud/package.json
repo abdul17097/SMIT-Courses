@@ -12,7 +12,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
-    "mongoose": "^8.8.0",
+    "mongoose": "^8.9.5",
     "nodemon": "^3.1.7"
   }
 }
