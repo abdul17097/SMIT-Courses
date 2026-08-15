@@ -1,0 +1,15 @@
+export const APP_ROUTES = {
+  HOME: "/",
+  LOGIN: "/login",
+  SIGNUP: "/signup",
+  PRODUCTS: "/products",
+  PRODUCT_DETAILS: "/products/:id",
+  CART: "/cart",
+  CHECKOUT: "/checkout",
+  ORDERS: "/orders",
+  ORDER_DETAILS: "/orders/:id",
+  PROFILE: "/profile",
+  SELLER_DASHBOARD: "/seller",
+  ADMIN_DASHBOARD: "/admin",
+  NOT_FOUND: "*",
+};
