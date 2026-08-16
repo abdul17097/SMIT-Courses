@@ -10,7 +10,11 @@ export const getCartProducts = async (req, res, next) => {
     const findCart = await Cart.findOne({ user: id });
 
     if (!findCart) {
-      return next(new AppError("Cart Not Found", 404));
+      return res.status(200).json({
+        message: "All Cart Products",
+        success: true,
+        data: [],
+      });
     }
 
     const products = await Cart.aggregate([
@@ -37,6 +41,7 @@ export const getCartProducts = async (req, res, next) => {
       {
         $project: {
           _id: 0,
+          productId: "$product._id",
           quantity: "$items.quantity",
           name: "$product.name",
           description: "$product.description",
@@ -47,9 +52,6 @@ export const getCartProducts = async (req, res, next) => {
           },
         },
       },
-      {
-        
-      }
     ]);
     res.status(200).json({
       message: "All Cart Products",

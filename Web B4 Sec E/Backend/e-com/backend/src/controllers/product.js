@@ -31,11 +31,13 @@ export const createProduct = async (req, res, next) => {
 
 export const getAllProducts = async (req, res, next) => {
   const { limit = 10, skip, category, price = "high" } = req.query;
-  const { role } = req.user;
+  const userRole = req.user?.role || "GUEST";
+  const skipNum = skip ? Number(skip) : 0;
+  const limitNum = limit ? Number(limit) : 10;
+
   try {
     let products;
-    if (role === "SELLER") {
-      // products = await Product.find({ seller: req.user.id });
+    if (userRole === "SELLER" && req.user?.id) {
       let pipeline = [
         {
           $match: {
@@ -60,16 +62,14 @@ export const getAllProducts = async (req, res, next) => {
       }
       products = await Product.aggregate([
         ...pipeline,
-
         {
-          $skip: Number(skip),
+          $skip: skipNum,
         },
         {
-          $limit: Number(limit),
+          $limit: limitNum,
         },
       ]);
-    } else if (role === "BUYER" || role === "ADMIN") {
-      // products = await Product.find();
+    } else {
       let pipeline = [];
 
       if (category) {
@@ -79,19 +79,25 @@ export const getAllProducts = async (req, res, next) => {
           },
         });
       }
+      if (price) {
+        pipeline.push({
+          $sort: {
+            price: price === "high" ? -1 : 1,
+          },
+        });
+      }
 
       products = await Product.aggregate([
         ...pipeline,
         {
-          $skip: Number(skip),
+          $skip: skipNum,
         },
         {
-          $limit: Number(limit),
+          $limit: limitNum,
         },
       ]);
-    } else {
-      return next(new AppError("Unauthorized access", 403));
     }
+
     res.status(200).json({
       success: true,
       data: products,

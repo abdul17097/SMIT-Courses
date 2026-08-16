@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useState, useMemo } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Filter,
@@ -8,7 +8,6 @@ import {
   SlidersHorizontal,
   ChevronLeft,
   ChevronRight,
-  RefreshCcw,
 } from "lucide-react";
 import { toast } from "react-toastify";
 import Container from "../../components/common/Container";
@@ -21,10 +20,11 @@ import ErrorState from "../../components/common/ErrorState";
 import ProductCard from "../../components/products/ProductCard";
 import ProductCardSkeleton from "../../components/products/ProductCardSkeleton";
 import Drawer from "../../components/common/Drawer";
+import { APP_ROUTES } from "../../constants/appRoutes";
 import { fetchProductsAsync } from "../../store/slices/productSlice";
+import { addToCartAsync } from "../../store/slices/cartSlice";
 
-const CATEGORY_OPTIONS = [
-  "All Categories",
+const DEFAULT_CATEGORIES = [
   "Electronics",
   "Fashion",
   "Home & Living",
@@ -41,17 +41,18 @@ const SORT_OPTIONS = [
 export const ProductListingPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { products, loading, error } = useSelector((state) => state.product);
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // Filter state
+  // Filter state from URL params
   const searchQueryParam = searchParams.get("q") || "";
   const categoryParam = searchParams.get("category") || "";
   const priceSortParam = searchParams.get("price") || "high";
   const pageParam = parseInt(searchParams.get("page") || "1", 10);
 
-  const limit = 8;
+  const limit = 12;
   const skip = (pageParam - 1) * limit;
 
   const [searchQuery, setSearchQuery] = useState(searchQueryParam);
@@ -59,46 +60,68 @@ export const ProductListingPage = () => {
   const [sortOrder, setSortOrder] = useState(priceSortParam);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
-  useEffect(() => {
-    const params = {
-      limit,
-      skip,
-      price: sortOrder,
-    };
-    if (selectedCategory && selectedCategory !== "All Categories") {
-      params.category = selectedCategory;
-    }
-    dispatch(fetchProductsAsync(params));
-  }, [dispatch, skip, limit, selectedCategory, sortOrder]);
+  // Dynamically extract real categories from backend products
+  const categoryOptions = useMemo(() => {
+    const backendCategories = products.map((p) => p.category).filter(Boolean);
+    const combined = Array.from(new Set([...backendCategories, ...DEFAULT_CATEGORIES]));
+    return ["All Categories", ...combined];
+  }, [products]);
 
-  // Update URL search parameters
-  const updateUrlParams = (newParams) => {
-    const current = new URLSearchParams(searchParams);
-    Object.entries(newParams).forEach(([key, value]) => {
-      if (value) {
-        current.set(key, value);
-      } else {
-        current.delete(key);
-      }
-    });
-    setSearchParams(current);
+  // Fetch real products from backend API
+  useEffect(() => {
+    dispatch(
+      fetchProductsAsync({
+        limit,
+        skip,
+        category: selectedCategory && selectedCategory !== "All Categories" ? selectedCategory : undefined,
+        price: sortOrder,
+      })
+    );
+  }, [dispatch, limit, skip, selectedCategory, sortOrder]);
+
+  // Client-side text search filtering over returned backend products
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) return products;
+    return products.filter((p) =>
+      p.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.category?.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [products, searchQuery]);
+
+  const handleAddToCart = async (product) => {
+    if (!isAuthenticated) {
+      toast.info("Please log in to add items to your cart.");
+      navigate(APP_ROUTES.LOGIN);
+      return;
+    }
+
+    const result = await dispatch(
+      addToCartAsync({ productId: product._id, requestedQuantity: 1 })
+    );
+
+    if (addToCartAsync.fulfilled.match(result)) {
+      toast.success(`${product.name} added to cart!`);
+    } else {
+      toast.error(result.payload || "Failed to add item to cart.");
+    }
   };
 
-  const handleCategoryChange = (cat) => {
-    const categoryValue = cat === "All Categories" ? "" : cat;
-    setSelectedCategory(categoryValue);
-    updateUrlParams({ category: categoryValue, page: "1" });
+  const handleCategorySelect = (category) => {
+    const newCategory = category === "All Categories" ? "" : category;
+    setSelectedCategory(newCategory);
+    updateQueryParams({ category: newCategory, page: "1" });
   };
 
   const handleSortChange = (e) => {
-    const val = e.target.value;
-    setSortOrder(val);
-    updateUrlParams({ price: val, page: "1" });
+    const value = e.target.value;
+    setSortOrder(value);
+    updateQueryParams({ price: value, page: "1" });
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    updateUrlParams({ q: searchQuery.trim(), page: "1" });
+    updateQueryParams({ q: searchQuery, page: "1" });
   };
 
   const handleClearFilters = () => {
@@ -108,40 +131,52 @@ export const ProductListingPage = () => {
     setSearchParams({});
   };
 
-  const handleAddToCart = (product) => {
-    if (!isAuthenticated) {
-      toast.info("Please log in to add items to your cart.");
-      return;
-    }
-    toast.success(`${product.name} added to cart!`);
+  const updateQueryParams = (newParams) => {
+    const updated = new URLSearchParams(searchParams);
+    Object.entries(newParams).forEach(([key, val]) => {
+      if (val) {
+        updated.set(key, val);
+      } else {
+        updated.delete(key);
+      }
+    });
+    setSearchParams(updated);
   };
-
-  // Client-side search filtering if search query query param `q` exists
-  const filteredProducts = products ? products.filter((item) => {
-    if (!searchQueryParam) return true;
-    const query = searchQueryParam.toLowerCase();
-    return (
-      item.name?.toLowerCase().includes(query) ||
-      item.description?.toLowerCase().includes(query) ||
-      item.category?.toLowerCase().includes(query)
-    );
-  }) : [];
 
   return (
     <div className="py-8 bg-slate-50/50 min-h-screen">
       <Container>
-        {/* Page Title & Breadcrumb Header */}
+        {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Product Discovery
+              Product Catalog
             </h1>
             <p className="text-sm text-slate-500 mt-1">
-              Explore available items with live category filtering and sorting.
+              Explore products from real backend sellers.
             </p>
           </div>
 
+          {/* Quick Search & Sort Bar */}
           <div className="flex items-center gap-3">
+            <form onSubmit={handleSearchSubmit} className="relative flex-1 sm:w-64">
+              <Input
+                placeholder="Search products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                leftIcon={Search}
+                className="py-2.5 text-xs"
+              />
+            </form>
+
+            <Select
+              options={SORT_OPTIONS}
+              value={sortOrder}
+              onChange={handleSortChange}
+              className="w-44 py-2.5 text-xs"
+            />
+
+            {/* Mobile Filter Button */}
             <Button
               variant="outline"
               size="sm"
@@ -154,142 +189,155 @@ export const ProductListingPage = () => {
           </div>
         </div>
 
-        {/* Top Control Bar: Search & Sorting */}
-        <div className="rounded-2xl bg-white p-4 shadow-sm border border-slate-100 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Search Bar */}
-          <form onSubmit={handleSearchSubmit} className="w-full md:w-80">
-            <Input
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              leftIcon={Search}
-            />
-          </form>
-
-          {/* Active Filter Chips & Sorting Selector */}
-          <div className="flex flex-wrap items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-            {(selectedCategory || searchQueryParam) && (
-              <Button
-                variant="ghost"
-                size="sm"
-                leftIcon={RefreshCcw}
-                onClick={handleClearFilters}
-                className="text-xs text-rose-600 hover:bg-rose-50"
-              >
-                Clear Filters
-              </Button>
-            )}
-
-            <div className="w-48">
-              <Select
-                options={SORT_OPTIONS}
-                value={sortOrder}
-                onChange={handleSortChange}
-                placeholder=""
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Main Grid + Sidebar Layout */}
+        {/* Main Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Desktop Filter Sidebar */}
-          <aside className="hidden lg:block lg:col-span-1 space-y-6">
+          <div className="hidden lg:block lg:col-span-1 space-y-6">
             <div className="rounded-3xl bg-white p-6 shadow-sm border border-slate-100 space-y-6">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
-                  <SlidersHorizontal size={16} />
-                  <span>Categories</span>
+              <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <SlidersHorizontal size={18} className="text-indigo-600" />
+                  <span>Real Categories</span>
                 </h3>
+                {(selectedCategory || searchQuery) && (
+                  <button
+                    onClick={handleClearFilters}
+                    className="text-xs font-semibold text-rose-600 hover:underline cursor-pointer"
+                  >
+                    Reset
+                  </button>
+                )}
               </div>
 
+              {/* Dynamic Category List */}
               <div className="space-y-1">
-                {CATEGORY_OPTIONS.map((cat) => {
+                {categoryOptions.map((cat) => {
                   const isActive =
-                    (cat === "All Categories" && !selectedCategory) ||
+                    (!selectedCategory && cat === "All Categories") ||
                     selectedCategory === cat;
+
                   return (
                     <button
                       key={cat}
-                      onClick={() => handleCategoryChange(cat)}
-                      className={`flex w-full items-center justify-between px-3.5 py-2.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+                      onClick={() => handleCategorySelect(cat)}
+                      className={`flex w-full items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                         isActive
                           ? "bg-indigo-600 text-white shadow-sm"
-                          : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                          : "text-slate-600 hover:bg-slate-50"
                       }`}
                     >
                       <span>{cat}</span>
+                      {isActive && <Badge variant="outline" size="sm">Selected</Badge>}
                     </button>
                   );
                 })}
               </div>
             </div>
-          </aside>
+          </div>
 
-          {/* Product Cards Grid */}
-          <main className="lg:col-span-3 space-y-8">
-            {loading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <ProductCardSkeleton count={6} />
+          {/* Product Grid Column */}
+          <div className="lg:col-span-3 space-y-8">
+            {/* Active Filter Chips */}
+            {(selectedCategory || searchQuery) && (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs text-slate-500 font-medium">Active Filters:</span>
+                {selectedCategory && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold border border-indigo-100">
+                    Category: {selectedCategory}
+                    <button onClick={() => handleCategorySelect("All Categories")} className="cursor-pointer">
+                      <X size={14} />
+                    </button>
+                  </span>
+                )}
+                {searchQuery && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200">
+                    Query: "{searchQuery}"
+                    <button onClick={() => setSearchQuery("")} className="cursor-pointer">
+                      <X size={14} />
+                    </button>
+                  </span>
+                )}
               </div>
-            ) : error ? (
+            )}
+
+            {/* Loading Grid State */}
+            {loading && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {[...Array(6)].map((_, i) => (
+                  <ProductCardSkeleton key={i} />
+                ))}
+              </div>
+            )}
+
+            {/* Error State */}
+            {error && !loading && (
               <ErrorState
-                title="Unable to fetch products"
-                message={
-                  error.includes("log in")
-                    ? "Please log in to browse products."
-                    : error
+                title="Unable to Load Products"
+                message={error}
+                onRetry={() =>
+                  dispatch(
+                    fetchProductsAsync({
+                      limit,
+                      skip,
+                      category: selectedCategory && selectedCategory !== "All Categories" ? selectedCategory : undefined,
+                      price: sortOrder,
+                    })
+                  )
                 }
-                onRetry={() => dispatch(fetchProductsAsync({ limit, skip }))}
               />
-            ) : filteredProducts.length === 0 ? (
+            )}
+
+            {/* Empty State */}
+            {!loading && !error && filteredProducts.length === 0 && (
               <EmptyState
-                title="No Products Match Your Search"
-                description="Try clearing filters or searching with a different term."
-                actionLabel="Clear Filters"
+                title="No Products Found"
+                description="We couldn't find any products matching your selected category or search query."
+                actionLabel="Reset All Filters"
                 onAction={handleClearFilters}
               />
-            ) : (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {filteredProducts.map((product) => (
-                    <ProductCard
-                      key={product._id}
-                      product={product}
-                      onAddToCart={handleAddToCart}
-                    />
-                  ))}
-                </div>
-
-                {/* Pagination Controls */}
-                <div className="flex items-center justify-between border-t border-slate-200 pt-6">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled={pageParam <= 1}
-                    leftIcon={ChevronLeft}
-                    onClick={() => updateUrlParams({ page: String(pageParam - 1) })}
-                  >
-                    Previous
-                  </Button>
-
-                  <span className="text-xs font-bold text-slate-700">
-                    Page {pageParam}
-                  </span>
-
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled={products.length < limit}
-                    rightIcon={ChevronRight}
-                    onClick={() => updateUrlParams({ page: String(pageParam + 1) })}
-                  >
-                    Next
-                  </Button>
-                </div>
-              </>
             )}
-          </main>
+
+            {/* Real Product Grid */}
+            {!loading && !error && filteredProducts.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
+                  <ProductCard
+                    key={product._id}
+                    product={product}
+                    onAddToCart={handleAddToCart}
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Pagination Controls */}
+            {!loading && !error && products.length >= limit && (
+              <div className="flex items-center justify-between border-t border-slate-200 pt-6">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  leftIcon={ChevronLeft}
+                  disabled={pageParam <= 1}
+                  onClick={() => updateQueryParams({ page: (pageParam - 1).toString() })}
+                >
+                  Previous
+                </Button>
+
+                <span className="text-xs font-semibold text-slate-600">
+                  Page {pageParam}
+                </span>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  rightIcon={ChevronRight}
+                  onClick={() => updateQueryParams({ page: (pageParam + 1).toString() })}
+                >
+                  Next
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </Container>
 
@@ -298,35 +346,23 @@ export const ProductListingPage = () => {
         isOpen={isFilterDrawerOpen}
         onClose={() => setIsFilterDrawerOpen(false)}
         title="Filter Products"
-        position="left"
       >
-        <div className="space-y-6">
+        <div className="space-y-6 py-4">
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
-              Categories
-            </h4>
+            <h4 className="text-sm font-bold text-slate-800 mb-3">Categories</h4>
             <div className="space-y-1">
-              {CATEGORY_OPTIONS.map((cat) => {
-                const isActive =
-                  (cat === "All Categories" && !selectedCategory) ||
-                  selectedCategory === cat;
-                return (
-                  <button
-                    key={cat}
-                    onClick={() => {
-                      handleCategoryChange(cat);
-                      setIsFilterDrawerOpen(false);
-                    }}
-                    className={`flex w-full items-center justify-between px-3.5 py-2.5 text-xs font-semibold rounded-xl transition-all ${
-                      isActive
-                        ? "bg-indigo-600 text-white"
-                        : "text-slate-600 hover:bg-slate-50"
-                    }`}
-                  >
-                    <span>{cat}</span>
-                  </button>
-                );
-              })}
+              {categoryOptions.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    handleCategorySelect(cat);
+                    setIsFilterDrawerOpen(false);
+                  }}
+                  className="w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-100 rounded-lg"
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
         </div>

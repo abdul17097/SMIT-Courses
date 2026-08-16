@@ -13,7 +13,7 @@ const setAuthCookie = (res, token) => {
   res.cookie("token", token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
     maxAge: 3600000,
   });
 };
@@ -104,7 +104,7 @@ export const signup = async (req, res, next) => {
       });
     }
 
-    const token = generateToken(newUser.email, newUser._id);
+    const token = generateToken(newUser.role, newUser._id);
     setAuthCookie(res, token);
 
     return res.status(201).json({
@@ -197,7 +197,7 @@ export const logout = async (req, res, next) => {
     res.clearCookie("token", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
     });
 
     return res.status(200).json({

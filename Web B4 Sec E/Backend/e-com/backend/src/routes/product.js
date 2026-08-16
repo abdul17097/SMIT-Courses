@@ -12,12 +12,7 @@ const router = Router();
 
 // for seller only
 router.post("/create", authMiddleware, checkRole(["SELLER"]), createProduct);
-router.get(
-  "/get",
-  authMiddleware,
-  checkRole(["SELLER", "BUYER", "ADMIN"]),
-  getAllProducts,
-);
+router.get("/get", getAllProducts);
 router.put(
   "/:productId",
   authMiddleware,
