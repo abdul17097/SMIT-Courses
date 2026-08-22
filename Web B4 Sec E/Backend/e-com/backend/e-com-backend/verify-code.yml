@@ -1,0 +1,23 @@
+info:
+  name: verify-code
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:5000/api/auth/verify-reset-code
+  body:
+    type: json
+    data: |-
+      {
+      "email": "alimuzmmil294@gmail.com",
+      "resetCode": "af750e"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

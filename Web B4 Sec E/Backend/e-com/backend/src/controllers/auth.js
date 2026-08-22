@@ -2,6 +2,9 @@ import { User } from "../modals/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { AppError } from "../utils/appError.js";
+import { v4 as uuidv4 } from "uuid";
+import sendEmail from "../utils/nodemailer.js";
+
 
 const generateToken = (role, userId) => {
   return jwt.sign({ role, id: userId }, process.env.JWT_SECRET, {
@@ -208,3 +211,99 @@ export const logout = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+export const forgetPassword = async (req, res, next) => {
+  try {
+    const { email } = req.body;
+
+
+    if (!email) {
+      return next(new AppError("Email is required", 400));
+    }
+    const findUser = await User.findOne({ email });
+
+
+    if (!findUser) {
+      return next(new AppError("User not found Please Signup", 404));
+    }
+    const resetCode = uuidv4().slice(0, 6);
+    findUser.resetCode = resetCode;
+    findUser.resetCodeExpires = Date.now() + 10 * 60 * 1000;
+    await findUser.save();
+    await sendEmail({
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: "Password Reset Request",
+      text: `You requested to reset your password. Use this code: ${resetCode}`,
+      html: `<p>You requested to reset your password. Use this code: <strong>${resetCode}</strong></p>`,
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Reset code sent successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const verifyResetCode = async (req, res, next) => {
+  try {
+    const { email, resetCode } = req.body;
+
+    if (!email || !resetCode) {
+      return next(new AppError("Email and reset code are required", 400));
+    }
+    const findUser = await User.findOne({ email });
+    if (!findUser) {
+      return next(new AppError("User not found", 404));
+    }
+    if (findUser.resetCode !== resetCode) {
+      return next(new AppError("Invalid reset code", 400));
+    }
+    if (findUser.resetCodeExpires < Date.now()) {
+      return next(new AppError("Reset code has expired", 400));
+    }
+    return res.status(200).json({
+      success: true,
+      message: "Reset code verified successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const resetPassword = async (req, res, next) => {
+  try {
+    const { email, resetCode, password } = req.body;
+
+    if (!email || !resetCode || !password) {
+      return next(new AppError("Email, reset code and password are required", 400));
+    }
+    const findUser = await User.findOne({ email });
+    if (!findUser) {
+      return next(new AppError("User not found", 404));
+    }
+    if (findUser.resetCode !== resetCode) {
+      return next(new AppError("Invalid reset code", 400));
+    }
+    if (findUser.resetCodeExpires < Date.now()) {
+      return next(new AppError("Reset code has expired", 400));
+    }
+    const hashedPassword = await bcrypt.hash(password, 10);
+    findUser.password = hashedPassword;
+    findUser.resetCode = null;
+    findUser.resetCodeExpires = null;
+    await findUser.save();
+    return res.status(200).json({
+      success: true,
+      message: "Password reset successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+

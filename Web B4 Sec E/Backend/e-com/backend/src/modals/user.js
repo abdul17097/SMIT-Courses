@@ -33,6 +33,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    resetCode: {
+      type: String,
+      default: "",
+    },
+    resetCodeExpires: {
+      type: Date,
+      default: null,
+    },
     role: {
       type: String,
       enum: ["SELLER", "BUYER", "ADMIN"],
