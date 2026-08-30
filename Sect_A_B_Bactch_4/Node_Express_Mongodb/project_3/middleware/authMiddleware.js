@@ -1,22 +1,29 @@
 import jwt from "jsonwebtoken";
+import { user } from "../db/user.js";
 
-const user = {
-  _id: 2342343,
-  email: "hello@gmail.com",
-};
 export const authMiddlware = (req, res, next) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const secret_key =
-    "adklaslkjf94350934809uiroifjlaskdjflasjdfoj@#$#$$%^%#$@#$@";
+  try {
+    const token = req?.headers?.authorization?.split(" ")[1];
+    if (!token) {
+      return res.json({
+        message: "You don't have permission",
+      });
+    }
 
-  const payload = jwt.verify(token, secret_key);
+    const payload = jwt.verify(token, process.env.SECRET_KEY);
 
-  if (user._id !== payload.id && user.email !== payload.email) {
-    return res.status(401).json({
-      message: "Access Denied!",
-      success: false,
+    if (user._id !== payload.id && user.email !== payload.email) {
+      return res.status(401).json({
+        message: "Access Denied!",
+        success: false,
+      });
+    }
+
+    req.user = payload;
+    next();
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
     });
   }
-
-  next();
 };

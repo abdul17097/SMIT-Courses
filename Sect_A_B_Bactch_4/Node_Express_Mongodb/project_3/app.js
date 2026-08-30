@@ -2,7 +2,9 @@ import express from "express";
 import authRouter from "./routes/auth.js";
 import userRouter from "./routes/user.js";
 import morgan from "morgan";
+import { config } from "dotenv";
 
+config();
 const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
@@ -18,3 +20,5 @@ app.get("/", (req, res) => {
 app.listen(2000, () => {
   console.log("http://localhost:2000");
 });
+
+// package name: npm i dotenv
