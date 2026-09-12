@@ -7,6 +7,9 @@
 // let students = "Ahmaed", "Waqas", "Saqib"
 
 let students = ["Ahmed", "Waqas", "Ali", "saqib", "umar"];
+
+// console.log(students.slice(1, 3));
+
 // console.log(students.length);
 
 // console.log(students[1]);
@@ -51,5 +54,9 @@ console.log(students);
 // students.splice(starting_index, delete_count, add_element | replace_element);
 
 // delete 'saqib'
-students.splice(3, 1);
+// students.splice(3, 1);
+// students.splice(1, 1, "jawad");
+console.log(students.includes("Ali")); // boolean : true | false
+console.log(students.indexOf("saqib"));
+
 console.log(students);
