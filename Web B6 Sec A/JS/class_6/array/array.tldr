@@ -308,9 +308,9 @@
 			"editingShapeId": null,
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:5_i2483QY3ord2yRgXA6H"
+				"shape:wAbvsmXPPW9YQyXbgIkjq"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:wAbvsmXPPW9YQyXbgIkjq",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -370,8 +370,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 48.333335876464844,
-			"y": 334.3333435058594,
+			"x": 57.00000762939453,
+			"y": 326.3333435058594,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -842,7 +842,7 @@
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "move",
+				"type": "default",
 				"rotation": 0
 			},
 			"isFocusMode": false,
