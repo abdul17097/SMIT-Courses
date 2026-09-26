@@ -25,4 +25,5 @@ function welcome(name) {
 }
 
 let studentName = prompt("Enter Student Name: ");
-welcome("Kamran"); // Aurgument
+// welcome("Kamran"); // Aurgument
+welcome(studentName);
