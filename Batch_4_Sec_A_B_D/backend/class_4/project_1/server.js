@@ -5,7 +5,9 @@ const app = express();
 app.use(express.json());
 
 app.get("/products", (req, res) => {
-  const products = [
+  const { category, price, page } = req.query;
+
+  let products = [
     {
       id: 1,
       name: "iPhone 15",
@@ -97,7 +99,11 @@ app.get("/products", (req, res) => {
       inStock: true,
     },
   ];
-
+  if (category) {
+    products = products.filter((item) => {
+      return item.category === category;
+    });
+  }
   res.json({ products: products });
 });
 
@@ -411,14 +417,31 @@ app.put("/products/:productId", (req, res) => {
   res.json({ products });
 });
 
-app.delete("/", (req, res) => {
-  res.send("Delete Method");
+app.delete("/", (req, res, next) => {
+  let admin = false;
+  try {
+    if (!admin) {
+      next(new Error("you are not an admin! asdf"));
+    }
+  } catch (error) {
+    next();
+  }
 });
 
 app.patch("/", (req, res) => {
   res.send("patch Method");
 });
 
+const handleError = (error, req, res, next) => {
+  console.log(error.message);
+
+  res.status(500).json({
+    success: false,
+    message: error.message,
+  });
+};
+
+app.use(handleError);
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
