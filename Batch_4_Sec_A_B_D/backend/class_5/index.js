@@ -4,6 +4,10 @@ import jwt from "jsonwebtoken";
 import { db } from "./db.js";
 import { authMiddleware } from "./middlewares/authMiddleware.js";
 
+import { config } from "dotenv";
+import { verifyRole } from "./middlewares/verifyRole.js";
+
+config();
 const app = express();
 
 app.use(express.json());
@@ -56,10 +60,13 @@ app.post("/login", async (req, res) => {
       message: "Invalid Credientials",
     });
   }
-  const SECRET_KEY = "klal;sdkfoiad798asdfjq4rj9as8ufoiasjdf;asdjf89u34ioh;adj";
-  const token = jwt.sign({ email: isExistUser.email }, SECRET_KEY, {
-    expiresIn: "1d",
-  });
+  const token = jwt.sign(
+    { email: isExistUser.email, role: isExistUser.role },
+    process.env.SECRET_KEY,
+    {
+      expiresIn: "1d",
+    },
+  );
 
   res.json({
     message: "You have Login Successfully!",
@@ -74,7 +81,13 @@ app.post("/login", async (req, res) => {
 
 app.get("/me", authMiddleware, (req, res) => {
   res.json({
-    message: "You profile data",
+    message: "Your profile data is Avaliable",
+  });
+});
+
+app.get("/users", authMiddleware, verifyRole("seller"), (req, res) => {
+  res.json({
+    message: "All Users",
   });
 });
 
