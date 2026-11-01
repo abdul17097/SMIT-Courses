@@ -1,9 +1,9 @@
+import "dotenv/config";
 import express from "express";
 import userRoutes from "./src/routes/user.js";
-import { config } from "dotenv";
-config();
 import { mailOptions, transporter } from "./src/config/emailConfig.js";
-
+import { connectDb } from "./src/config/connectDb.js";
+connectDb();
 const app = express();
 
 app.get("/", async (req, res) => {
