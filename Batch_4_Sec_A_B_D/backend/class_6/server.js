@@ -1,10 +1,13 @@
 import "dotenv/config";
 import express from "express";
 import userRoutes from "./src/routes/user.js";
+import authRoutes from "./src/routes/auth.js";
 import { mailOptions, transporter } from "./src/config/emailConfig.js";
 import { connectDb } from "./src/config/connectDb.js";
 connectDb();
 const app = express();
+
+app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
@@ -20,6 +23,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/users", userRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(3000, () => {
   console.log("http://localhost:3000");
