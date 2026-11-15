@@ -5,11 +5,13 @@ import {
   updateUser,
   userprofile,
 } from "../controllers/user.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { verifyRole } from "../middlewares/verifyUser.js";
 
 const routes = Router();
 
 routes.get("/me", userprofile);
-routes.get("/all", allUsers);
+routes.get("/all", authMiddleware, verifyRole("admin"), allUsers);
 routes.delete("/:userId", deleteUser);
 routes.patch("/:userId", updateUser);
 
