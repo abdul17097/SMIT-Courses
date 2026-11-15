@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Cards</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 16px;
+      }
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .product-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 16px;
+        width: 200px;
+      }
+      button {
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      #result {
+        margin-top: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Our Products</h1>
+    <div class="products">
+      <div class="product-card">
+        <h2>Keyboard</h2>
+        <p class="price">Rs. 3000</p>
+        <button class="buy-btn">Select Product</button>
+      </div>
+      <div class="product-card">
+        <h2>Wireless Mouse</h2>
+        <p class="price">Rs. 1500</p>
+        <button class="buy-btn">Select Product</button>
+      </div>
+      <div class="product-card">
+        <h2>Headphones</h2>
+        <p class="price">Rs. 4500</p>
+        <button class="buy-btn">Select Product</button>
+      </div>
+    </div>
+    <p id="result">Select a product to see its details.</p>
+    <script>
+      const products = document.querySelector(".products");
+      const result = document.getElementById("result");
+      products.addEventListener("click", function (event) {
+        if (!event.target.matches(".buy-btn")) {
+          return;
+        }
+        const card = event.target.closest(".product-card");
+        if (!card) {
+          return;
+        }
+        const name = card.querySelector("h2").textContent;
+        const price = card.querySelector(".price").textContent;
+        result.textContent = "Selected: " + name + " — " + price;
+      });
+    </script>
+  </body>
+</html>
