@@ -88,3 +88,9 @@ app.listen(3000, () => {
 });
 
 // /users/me
+
+// let numbsers = [2,4,6,7];
+
+// let nums_copy = [...numbsers]
+
+// nums_copy.push(9)
