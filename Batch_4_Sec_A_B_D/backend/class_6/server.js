@@ -9,6 +9,9 @@ import path from "path";
 import { uploadProfileImg } from "./src/config/multer.js";
 import { cloudinary, cloudinaryConfig } from "./src/config/cloudinary.js";
 import { buffer } from "stream/consumers";
+import { USER } from "./src/models/user.js";
+import { Profile } from "./src/models/profile.js";
+import { Blog } from "./src/models/blog.js";
 connectDb();
 const app = express();
 
@@ -38,6 +41,86 @@ const upload = multer({
 //     data: { ...req.body, proimg: req.file },
 //   });
 // });
+
+app.post("/new-user", async (req, res) => {
+  try {
+    const { fullname, email, password, bio, phone } = req.body;
+    const newUser = await USER.insertOne({
+      fullname,
+      email,
+      password,
+    });
+
+    if (!newUser._id) {
+      return res.json({
+        message: "User Not Created Please try agian!",
+      });
+    }
+
+    await Profile.create({
+      bio,
+      phone,
+      user: newUser._id,
+    });
+
+    res.json({
+      message: "User Created Succesfully!",
+      success: true,
+    });
+  } catch (error) {
+    res.json({
+      message: error.message,
+    });
+  }
+});
+
+app.get("/me", async (req, res) => {
+  try {
+    const userProfile = await Profile.findOne({
+      user: "6b0aa2640e63eafa20cac557",
+    }).populate("user");
+
+    res.json({
+      data: userProfile,
+    });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
+// create blog
+app.post("/create-blog", async (req, res) => {
+  try {
+    const { title, description } = req.body;
+
+    const newBlog = await Blog.insertOne({
+      title,
+      description,
+      user: "6b0aa2640e63eafa20cac557",
+    });
+
+    res.json({
+      message: "Created",
+      data: newBlog,
+    });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
+// All Blog By User
+app.get("/all-blog", async (req, res) => {
+  try {
+    const blogs = await Blog.find({
+      user: "6b0aa2640e63eafa20cac557",
+    }).populate("user");
+    res.json({
+      data: blogs,
+    });
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
 
 const uploadCloudinary = async (buffer) => {
   return new Promise((resolve, reject) => {
